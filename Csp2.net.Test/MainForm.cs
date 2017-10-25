@@ -24,9 +24,6 @@ namespace Csp2dotnet
         public bool DataSend { get; set; }
         private string TxtReader { get; set; }
         private bool ClearData { get; set; }
-        private string ID { get; set; }
-        private string SwVersion { get; set; }
-        private int StatusCheck { get; set; }
 
         public delegate void Action();
 
@@ -81,28 +78,76 @@ namespace Csp2dotnet
                         new ParamInfo( "Buzzer Toggle", 0x55 ),
                         new ParamInfo( "Buzzer Auto On", 0x56 ),
                         new ParamInfo( "RSS", 0x14 ),
-                        //new ParamInfo( "Scratch Pad", 0x26 ),
         };
 
         List<Int32> Ports = new List<Int32>();
 
         private void CallbackFunction(Int32 nComport)
         {
-            try
+            int iRet = -1;
+            ComCheck = nComport;
+
+            if (Opticon.csp2.DataAvailable(nComport) > 0)
             {
-                int iRet = -1;
-                ComCheck = nComport;
+                iRet = Opticon.csp2.ReadData(nComport);
+            }
+            else if (Opticon.csp2.GetDSR(nComport) > 0)
+            {
+                iRet = Opticon.csp2.Interrogate(nComport);
+            }
+            if (iRet >= 0)
+            {
+                if (Ports.Contains(nComport) == false)
+                    Ports.Add(nComport);
+            }
+            else
+            {
+                if (Ports.Contains(nComport) == true)
+                    Ports.Remove(nComport);
+            }
+
+            //Connection Status Label
+            BeginInvoke((Action)delegate ()
+            {
+                if (Ports.Count > 0)
+                {
+                    labelConnected.Text = "Connected on COM " + nComport;
+                }
+                else
+                {
+                    labelConnected.Text = "Not Connected";
+                }
+            });
+
+            if (iRet >= 0L)
+            {
+                Trace.WriteLine("\nOPN-2001 Connected at " + nComport);
+                Trace.WriteLine(ReadBarcodes);
+                Int32 iCount = iRet;   //Number of barcodes in scanner
+                Trace.WriteLine(String.Format("Number of barcodes = {0}", iCount));
+
+                ReadBarcodes = iCount;
+
+                //Quantity Scanned Label
+                BeginInvoke((Action)delegate ()
+                {
+                    labelNumBarcodes.Text = ReadBarcodes.ToString();
+                });
 
                 if (DataSend == true)
                 {
                     using (System.IO.StreamWriter file =
                        new System.IO.StreamWriter(@"../../Csp2.net.Test/Data.txt"))
                     {
-                        file.WriteLine("<S/N>" + "\t"  + ID);
-                        Trace.WriteLine("<S/N>" + "\t" + ID);
-                        
-                        file.WriteLine("<SwVersion>" + "\t" + SwVersion);
-                        Trace.WriteLine("<SwVersion>" + "\t" + SwVersion);
+                        string szDeviceId;
+                        iRet = Opticon.csp2.GetDeviceId(out szDeviceId, nComport);
+                        file.WriteLine("<S/N> " + szDeviceId);
+                        Trace.WriteLine("<S/N> " + szDeviceId);
+
+                        StringBuilder szSoftwareVersion = new StringBuilder(256);
+                        Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
+                        file.WriteLine("<SwVersion> " + szSoftwareVersion);
+                        Trace.WriteLine("<SwVersion> " + szSoftwareVersion);
 
                         StringBuilder sbBarcodes = new StringBuilder(1000);
                         for (Int32 i = 0; i < ReadBarcodes; i++)
@@ -111,11 +156,15 @@ namespace Csp2dotnet
                             iRet = Opticon.csp2.GetPacket(out aPacket, i, nComport);
                             if (aPacket.strBarData != null)
                             {
-                                sbBarcodes.AppendLine(String.Format("<Item>" + "\t" + aPacket.strBarData));
+                                sbBarcodes.AppendLine(String.Format("<Item> " + aPacket.strBarData));
                             }
                         };
                         file.WriteLine(sbBarcodes);
                         Trace.WriteLine(sbBarcodes);
+
+                        file.WriteLine("<end>");
+                        Trace.WriteLine("<end>");
+
                         ClearData = true;
                         DataSend = false;
                     }
@@ -131,69 +180,10 @@ namespace Csp2dotnet
                     ClearData = false;
                 }
 
-                if (Opticon.csp2.DataAvailable(nComport) > 0)
-                {
-                    iRet = Opticon.csp2.ReadData(nComport);
-                }
-                else if (Opticon.csp2.GetDSR(nComport) > 0)     // Is Connected?
-                {
-                    iRet = Opticon.csp2.Interrogate(nComport);
-                }
-                if (iRet >= 0)
-                {
-                    if (Ports.Contains(nComport) == false)
-                        Ports.Add(nComport);
-                }
-                else
-                {
-                    if (Ports.Contains(nComport) == true)
-                        Ports.Remove(nComport);
-                }
-
-
-                //Connection Status Label
-                BeginInvoke((Action)delegate ()
-                {
-                    if (Ports.Count > 0)
-                    {
-                        labelConnected.Text = "Connected on COM " + nComport;
-                    }
-                    else
-                    {
-                        labelConnected.Text = "Not Connected";
-                    }
-                });
-
-                if (iRet >= 0L)
-                {
-                    Opticon.csp2.GetDeviceId(out string szDeviceId, nComport);
-                    ID = szDeviceId;
-
-                    StringBuilder szSoftwareVersion = new StringBuilder(256);
-                    Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
-                    SwVersion = szSoftwareVersion.ToString();
-
-                    Trace.WriteLine("\nOPN-2001 Connected at " + nComport);
-                    Trace.WriteLine(ReadBarcodes);
-                    Int32 iCount = iRet;   //Number of barcodes in scanner
-                    Trace.WriteLine(String.Format("Number of barcodes = {0}", iCount));
-
-                    ReadBarcodes = iCount;
-
-                    //Quantity Scanned Label
-                    BeginInvoke((Action)delegate ()
-                    {
-                        labelNumBarcodes.Text = ReadBarcodes.ToString();
-                    });
-                }
-                else
-                {
-                    Trace.WriteLine("OPN-2001 Disconnected from " + nComport);
-                }
             }
-            catch (Exception e)
+            else
             {
-                Trace.WriteLine(e);
+                Trace.WriteLine("OPN-2001 Disconnected from " + nComport);
             }
         }
 
@@ -307,16 +297,20 @@ namespace Csp2dotnet
         public void Stop()
         {
             Opticon.csp2.DisablePolling();
-        }        
+        }
 
         private void SendData_Click(object sender, EventArgs e)
         {
-            Stop();
-            ClearData = false;                                                                                                                   
+            //Create file w/ scanner data
+            ClearData = false;
             DataSend = true;
-      
+            CallbackFunction(ComCheck);
+            //Stop main thread from blocking api
+            Stop();
+            //Make an attempt to send data via api and give appropriate response message
             RunApi();
             ResponseForm();
+            //Start polling again to jumpstart main thread to life again
             Start();
             CallbackFunction(ComCheck);
         }
@@ -325,7 +319,7 @@ namespace Csp2dotnet
         {
             //XDocument orderData = wrapperGenerator(Global.orderType, XElement.Load(Global.fileHandle));
             //string postData = orderData.ToString();
-            byte[] byteArray = System.IO.File.ReadAllBytes(@"../../Csp2.net.Test/Data.txt");                      
+            byte[] byteArray = System.IO.File.ReadAllBytes(@"../../Csp2.net.Test/Data.txt");
             //byte[] byteArray = Encoding.UTF8.GetBytes(postData);
             WebRequest request = WebRequest.Create("https://ws2.wisvis.com/aws/test/order.php");
             request.Method = "POST";
@@ -335,7 +329,7 @@ namespace Csp2dotnet
             dataStream.Write(byteArray, 0, byteArray.Length);
             dataStream.Close();
             WebResponse response = request.GetResponse();
-            
+
             Trace.WriteLine(((HttpWebResponse)response).StatusDescription);
             // Get the stream containing content returned by the server.
             dataStream = response.GetResponseStream();
@@ -353,13 +347,10 @@ namespace Csp2dotnet
 
         public void ResponseForm()
         {
-            if (DataSend == true)
-            {
-                var msgForm = new MessageForm();
-                if (Application.OpenForms.OfType<MessageForm>().Count() == 1)
-                    Application.OpenForms.OfType<MessageForm>().First().Close();
-                msgForm.ShowDialog();
-            }
+            var msgForm = new MessageForm();
+            if (Application.OpenForms.OfType<MessageForm>().Count() == 1)
+                Application.OpenForms.OfType<MessageForm>().First().Close();
+            msgForm.ShowDialog();
         }
 
         private void SetParameters()
@@ -374,13 +365,13 @@ namespace Csp2dotnet
             {
                 foreach (ParamInfo p in Description)
                 {
-                        ComCheck = Opticon.csp2.Init(ComCheck);
-                        int line = Convert.ToInt32(File.ReadLines(@"../../Csp2.net.Test/TextDocs/" + TxtReader).Skip(counter).Take(1).First());
-                        szString[0] = (byte)line;
-                        nParam = p.ParamNumber;
-                        ComCheck = Opticon.csp2.SetParam(nParam, szString, nMaxLength);
-                        counter++;
-                        PrefPB.Value++;                    
+                    ComCheck = Opticon.csp2.Init(ComCheck);
+                    int line = Convert.ToInt32(File.ReadLines(@"../../Csp2.net.Test/TextDocs/" + TxtReader).Skip(counter).Take(1).First());
+                    szString[0] = (byte)line;
+                    nParam = p.ParamNumber;
+                    ComCheck = Opticon.csp2.SetParam(nParam, szString, nMaxLength);
+                    counter++;
+                    PrefPB.Value++;
                 }
                 if (counter == 50)
                 {
@@ -398,7 +389,7 @@ namespace Csp2dotnet
                 errorMessageForm.Show();
             }
             PrefPB.Value = 0;
-            Start();         
+            Start();
         }
 
         // Scan UPC only button (tab2)
