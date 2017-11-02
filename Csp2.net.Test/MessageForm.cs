@@ -11,9 +11,13 @@ namespace Csp2dotnet
 {
     public partial class MessageForm : Form
     {
+        public static string Response { get; set; }
+
         public MessageForm()
         {
-            InitializeComponent();      
+            InitializeComponent();
+
+            label1.Text = Response;            
         }
     }
 }

@@ -246,8 +246,7 @@ namespace Csp2dotnet
             this.AccountTextBox.Location = new System.Drawing.Point(21, 95);
             this.AccountTextBox.Name = "AccountTextBox";
             this.AccountTextBox.Size = new System.Drawing.Size(380, 47);
-            this.AccountTextBox.TabIndex = 4;            
-            //this.AccountTextBox.Text = ("Set to: " + AccountNumber);           
+            this.AccountTextBox.TabIndex = 4;                      
             this.AccountTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // LLViewCart

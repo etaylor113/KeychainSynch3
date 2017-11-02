@@ -9,7 +9,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
@@ -18,7 +17,6 @@ namespace Csp2dotnet
 {
     public partial class MainForm : Form
     {
-
         public Int32 ComCheck { get; set; }
         public int ReadBarcodes { get; set; } = 0;
         public bool DataSend { get; set; }
@@ -87,7 +85,7 @@ namespace Csp2dotnet
         List<Int32> Ports = new List<Int32>();
 
         private void CallbackFunction(Int32 nComport)
-        {            
+        {
                 int iRet = -1;
                 ComCheck = nComport;
 
@@ -148,9 +146,7 @@ namespace Csp2dotnet
                             using (System.IO.StreamWriter file =
                                new System.IO.StreamWriter(@"../../Csp2.net.Test/Data.txt"))
                             {
-                                Trace.WriteLine("\nCreating file...");
-
-                                
+                                Trace.WriteLine("\nCreating file...");                          
 
                                 string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                                 file.WriteLine("<DT>" + "\t" + time);
@@ -220,14 +216,15 @@ namespace Csp2dotnet
                 else
                 {
                     Trace.WriteLine("OPN-2001 Disconnected from " + nComport);
-                }                      
+                }
+            Thread.Sleep(2000);
         }
 
         public MainForm()
         {           
             InitializeComponent();
 
-            try{ AccountNumber = File.ReadLines(@"C:\Users\Taylo\Desktop\Csp2.net.Test\TextDocs\Account_Number.txt").Skip(0).Take(1).First(); } catch{}
+            try{ AccountNumber = File.ReadLines(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\TextDocs\Account_Number.txt").Skip(0).Take(1).First(); } catch{}
             if (AccountNumber != null)
             {              
                 AccountTextBox.Text = ("Set to: " + AccountNumber);
@@ -317,6 +314,7 @@ namespace Csp2dotnet
 
         Opticon.csp2.csp2CallBackFunctionAll Csp2Callback = null;   // Make global to avoid garbage collector from disgarding the call-back
 
+       
         public void Start()
         {
             if (!Started)
@@ -361,7 +359,8 @@ namespace Csp2dotnet
         }        
 
         private void SendData_Click(object sender, EventArgs e)
-        {                    
+        {
+            sendData.Enabled = false;
             //Create file w/ scanner data
             DataSend = true;
             CallbackFunction(ComCheck);
@@ -380,9 +379,11 @@ namespace Csp2dotnet
                     Application.OpenForms.OfType<ActNumErrorForm>().First().Close();
                 anef.ShowDialog();
             }
+            
             //Jumpstart main thread to life again
             Start();
-            CallbackFunction(ComCheck);       
+            CallbackFunction(ComCheck);;
+            sendData.Enabled = true;
         }
 
         public void RunApi()
@@ -405,11 +406,18 @@ namespace Csp2dotnet
             {
                 ApiSuccessful = true;
                 ClearData = true;
+
+                //Test Error Form
+                //MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
+                //MessageForm message = new MessageForm();
+                //message.ShowDialog();
             }
             else
             {
                 ApiSuccessful = false;
-                ClearData = false;
+                MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
+                MessageForm message = new MessageForm();
+                message.ShowDialog();
             }
                            
             // Get the stream containing content returned by the server.
@@ -558,7 +566,7 @@ namespace Csp2dotnet
          {                         
             AccountNumber = AccountTextBox.Text;        
             using (System.IO.StreamWriter file =
-              new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\Csp2.net.Test\TextDocs\Account_Number.txt"))
+              new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\TextDocs\Account_Number.txt"))
             {
                 file.WriteLine(AccountNumber);
             }
