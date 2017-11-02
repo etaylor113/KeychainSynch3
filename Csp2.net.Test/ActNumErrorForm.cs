@@ -5,15 +5,16 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Csp2dotnet
 {
-    public partial class MessageForm : Form
+    public partial class ActNumErrorForm : Form
     {
-        public MessageForm()
+        public ActNumErrorForm()
         {
-            InitializeComponent();      
+            InitializeComponent();
         }
     }
 }

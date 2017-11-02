@@ -1,8 +1,6 @@
-﻿using System.Drawing;
-
-namespace Csp2dotnet
+﻿namespace Csp2dotnet
 {
-    partial class MessageForm
+    partial class ActNumErrorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,36 +28,29 @@ namespace Csp2dotnet
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageForm));
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 26F);
-            this.label1.Location = new System.Drawing.Point(25, 67);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(12, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(387, 52);
+            this.label1.Size = new System.Drawing.Size(276, 72);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Scanner data sent!";          
+            this.label1.Text = "You must enter your WVA account \nnumber in the 'My Account' tab before \nsending barcod" +
+    "es!";
             // 
-            // MessageForm
+            // ActNumErrorForm
             // 
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(436, 333);
+            this.ClientSize = new System.Drawing.Size(390, 150);
             this.Controls.Add(this.label1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "MessageForm";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WVA - Keychain Synch 3.0";
+            this.Name = "ActNumErrorForm";
+            this.Text = "Account Error";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -44,8 +44,10 @@ namespace Csp2dotnet
             this.sendData = new System.Windows.Forms.Button();
             this.labelMainDividerLine = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.AccountLabel = new System.Windows.Forms.Label();
+            this.AccountTextBox = new System.Windows.Forms.TextBox();
             this.LLViewCart = new System.Windows.Forms.LinkLabel();
-            this.labelViewCart = new System.Windows.Forms.Label();
             this.logoTab2 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button2 = new System.Windows.Forms.Button();
@@ -202,8 +204,10 @@ namespace Csp2dotnet
             // tabPage2
             // 
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage2.Controls.Add(this.button5);
+            this.tabPage2.Controls.Add(this.AccountLabel);
+            this.tabPage2.Controls.Add(this.AccountTextBox);
             this.tabPage2.Controls.Add(this.LLViewCart);
-            this.tabPage2.Controls.Add(this.labelViewCart);
             this.tabPage2.Controls.Add(this.logoTab2);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(6);
@@ -211,36 +215,58 @@ namespace Csp2dotnet
             this.tabPage2.Padding = new System.Windows.Forms.Padding(6);
             this.tabPage2.Size = new System.Drawing.Size(854, 543);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "My Cart";
+            this.tabPage2.Text = "My Account";
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(21, 180);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(380, 60);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "Set Account Number";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // AccountLabel
+            // 
+            this.AccountLabel.AutoSize = true;
+            this.AccountLabel.Location = new System.Drawing.Point(-12, 230);
+            this.AccountLabel.Name = "AccountLabel";
+            this.AccountLabel.Size = new System.Drawing.Size(388, 40);
+            this.AccountLabel.TabIndex = 5;
+            this.AccountLabel.Text = "Enter account number";
+            this.AccountLabel.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // AccountTextBox
+            // 
+            this.AccountTextBox.Location = new System.Drawing.Point(21, 95);
+            this.AccountTextBox.Name = "AccountTextBox";
+            this.AccountTextBox.Size = new System.Drawing.Size(380, 47);
+            this.AccountTextBox.TabIndex = 4;            
+            //this.AccountTextBox.Text = ("Set to: " + AccountNumber);           
+            this.AccountTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // LLViewCart
             // 
             this.LLViewCart.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LLViewCart.LinkColor = System.Drawing.Color.Black;
-            this.LLViewCart.Location = new System.Drawing.Point(73, 148);
+            this.LLViewCart.Location = new System.Drawing.Point(25, 340);
             this.LLViewCart.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.LLViewCart.Name = "LLViewCart";
-            this.LLViewCart.Size = new System.Drawing.Size(348, 50);
+            this.LLViewCart.Size = new System.Drawing.Size(400, 50);
             this.LLViewCart.TabIndex = 0;
             this.LLViewCart.TabStop = true;
-            this.LLViewCart.Text = "www.wisvis.com";
+            this.LLViewCart.Text = "Review my order";
             this.LLViewCart.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLViewCart_LinkClicked);
-            // 
-            // labelViewCart
-            // 
-            this.labelViewCart.AutoSize = true;
-            this.labelViewCart.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelViewCart.Location = new System.Drawing.Point(73, 92);
-            this.labelViewCart.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.labelViewCart.Name = "labelViewCart";
-            this.labelViewCart.Size = new System.Drawing.Size(680, 51);
-            this.labelViewCart.TabIndex = 1;
-            this.labelViewCart.Text = "Review your order and checkout at ";
             // 
             // logoTab2
             // 
             this.logoTab2.Image = ((System.Drawing.Image)(resources.GetObject("logoTab2.Image")));
-            this.logoTab2.Location = new System.Drawing.Point(-220, -323);
+            this.logoTab2.Location = new System.Drawing.Point(-20, -350);
             this.logoTab2.Margin = new System.Windows.Forms.Padding(6);
             this.logoTab2.Name = "logoTab2";
             this.logoTab2.Size = new System.Drawing.Size(1283, 1292);
@@ -378,8 +404,7 @@ namespace Csp2dotnet
             this.labelContactNum.Name = "labelContactNum";
             this.labelContactNum.Size = new System.Drawing.Size(783, 84);
             this.labelContactNum.TabIndex = 2;
-            this.labelContactNum.Text = "For questions and concerns, please contact WVA \nScanner Support at 800.747.9000 x" +
-    "8191";
+            this.labelContactNum.Text = "For questions and concerns, please contact WVA \nScanner Support at 800.747.9000 x" +"8191";
             // 
             // backdrop
             // 
@@ -403,12 +428,19 @@ namespace Csp2dotnet
             this.labelComport.TabIndex = 5;
             this.labelComport.Text = "Connected to port: Not Connected";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(0, 0);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            // 
             // labelPrefs
             // 
             this.labelPrefs.Location = new System.Drawing.Point(0, 0);
             this.labelPrefs.Name = "labelPrefs";
             this.labelPrefs.Size = new System.Drawing.Size(100, 23);
-            this.labelPrefs.TabIndex = 0;
+            this.labelPrefs.TabIndex = 0;         
             // 
             // MainForm
             // 
@@ -465,11 +497,13 @@ namespace Csp2dotnet
         private System.Windows.Forms.Label labelContact;
         private System.Windows.Forms.Label labelContactNum;
         private System.Windows.Forms.LinkLabel LLViewCart;
-        private System.Windows.Forms.Label labelViewCart;
         private System.Windows.Forms.PictureBox logoTab1;
         private System.Windows.Forms.PictureBox logoTab2;
         private System.Windows.Forms.PictureBox backdrop;
         private System.Windows.Forms.Button sendData;
+        private Label AccountLabel;
+        private TextBox AccountTextBox;
+        private Button button5;
     }      
 }
 
