@@ -179,29 +179,26 @@ namespace Csp2dotnet
                                 file.WriteLine(sbBarcodes);
                                 Trace.WriteLine(sbBarcodes);
 
-                            using (StreamWriter sw = File.CreateText(@"C:\Users\Taylo\Desktop\csp2.net.Test\ScannerData\" + time))
-                            {
-                                sw.Close();
-                            }
 
                             using (System.IO.StreamWriter writer =
-                               new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\csp2.net.Test\ScannerData\" + time))
+                               new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\ScannerData\" + time))
                             {
                                 writer.Write("<Date Created> " + time);
+                                writer.Write("\r\n<Account Number> " + AccountNumber);                            
                                 writer.Write("\r\n<Scanner Id> " + szDeviceId);
                                 writer.Write("\r\n<Software Version> " + szSoftwareVersion);
                                 writer.Write("\r\n" + sbBarcodes);
 
                                 writer.Close();
-                            }                       
-                            DataSend = false;
+                            }                                                  
                             }
-                        }
+                        }                   
                         else
                         {
                             ActNumSet = false;
                         }
-                    }
+                    DataSend = false;
+                }
 
                     if (ClearData == true)
                     {
@@ -571,11 +568,6 @@ namespace Csp2dotnet
                 file.WriteLine(AccountNumber);
             }
             AccountTextBox.Text = ("Set to: " + AccountNumber);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-           
         }
 
     }

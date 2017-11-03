@@ -28,4 +28,3 @@ C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Tes
 C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\obj\x86\Release\Csp2.net.Test.csproj.CoreCompileInputs.cache
 C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\obj\x86\Release\Csp2dotnet.exe
 C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\obj\x86\Release\Csp2dotnet.pdb
-C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\obj\x86\Release\Csp2.net.Test.csprojResolveAssemblyReference.cache
