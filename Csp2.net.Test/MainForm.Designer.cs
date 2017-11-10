@@ -239,7 +239,6 @@ namespace Csp2dotnet
             this.AccountLabel.Size = new System.Drawing.Size(388, 40);
             this.AccountLabel.TabIndex = 5;
             this.AccountLabel.Text = "Enter account number";
-            this.AccountLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // AccountTextBox
             // 

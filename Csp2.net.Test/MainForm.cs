@@ -12,6 +12,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
+using Newtonsoft.Json;
 
 namespace Csp2dotnet
 {
@@ -22,10 +23,11 @@ namespace Csp2dotnet
         public bool DataSend { get; set; }
         private string TxtReader { get; set; }
         private bool ClearData { get; set; }
-        private int NumApiTries { get; set; }
         private bool ApiSuccessful { get; set; }
         public string AccountNumber { get; set; }
         private bool ActNumSet { get; set; }
+        List<object> data = new List<object>();
+
 
         public delegate void Action();
 
@@ -146,24 +148,29 @@ namespace Csp2dotnet
                             using (System.IO.StreamWriter file =
                                new System.IO.StreamWriter(@"../../Csp2.net.Test/Data.txt"))
                             {
+                                data.Clear();
                                 Trace.WriteLine("\nCreating file...");                          
 
                                 string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-                                file.WriteLine("<DT>" + "\t" + time);
-                                Trace.WriteLine("<DT>" + "\t" + time );
+                                data.Add(time);
+                                //file.WriteLine("<DT>" + "\t" + time);
+                                //Trace.WriteLine("<DT>" + "\t" + time );
 
-                                file.WriteLine("<ACT>" + "\t" + AccountNumber);
-                                Trace.WriteLine("<ACT>" + "\t" + AccountNumber);
+                                data.Add(AccountNumber);
+                                //file.WriteLine("<ACT>" + "\t" + AccountNumber);
+                                //Trace.WriteLine("<ACT>" + "\t" + AccountNumber);
 
                                 string szDeviceId;
                                 iRet = Opticon.csp2.GetDeviceId(out szDeviceId, nComport);
-                                file.WriteLine("<ID>" + "\t" + szDeviceId);
-                                Trace.WriteLine("<ID>" + "\t" + szDeviceId);
+                                data.Add(szDeviceId);
+                                //file.WriteLine("<ID>" + "\t" + szDeviceId);
+                                //Trace.WriteLine("<ID>" + "\t" + szDeviceId);
 
                                 StringBuilder szSoftwareVersion = new StringBuilder(256);
                                 Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
-                                file.WriteLine("<SwV>" + "\t" + szSoftwareVersion);
-                                Trace.WriteLine("<SwV>" +"\t" + szSoftwareVersion);
+                                data.Add(szSoftwareVersion.ToString());
+                                //file.WriteLine("<SwV>" + "\t" + szSoftwareVersion);
+                                //Trace.WriteLine("<SwV>" +"\t" + szSoftwareVersion);
 
                                 StringBuilder sbBarcodes = new StringBuilder(1000);
                                 for (Int32 i = 0; i < ReadBarcodes; i++)
@@ -172,25 +179,25 @@ namespace Csp2dotnet
                                     iRet = Opticon.csp2.GetPacket(out aPacket, i, nComport);
                                     if (aPacket.strBarData != null)
                                     {
+                                        data.Add(aPacket.strBarData.ToString());
                                         sbBarcodes.AppendLine(String.Format("<Item>" + "\t" + aPacket.strBarData));
                                     }
                                 };
 
-                                file.WriteLine(sbBarcodes);
-                                Trace.WriteLine(sbBarcodes);
+                                //file.WriteLine(sbBarcodes);
+                                //Trace.WriteLine(sbBarcodes);
+            
+                                using (System.IO.StreamWriter writer =
+                                   new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\ScannerData\" + time))
+                                {
+                                    writer.Write("<Date Created> " + time);
+                                    writer.Write("\r\n<Account Number> " + AccountNumber);                            
+                                    writer.Write("\r\n<Scanner Id> " + szDeviceId);
+                                    writer.Write("\r\n<Software Version> " + szSoftwareVersion);
+                                    writer.Write("\r\n" + sbBarcodes);
 
-
-                            using (System.IO.StreamWriter writer =
-                               new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\ScannerData\" + time))
-                            {
-                                writer.Write("<Date Created> " + time);
-                                writer.Write("\r\n<Account Number> " + AccountNumber);                            
-                                writer.Write("\r\n<Scanner Id> " + szDeviceId);
-                                writer.Write("\r\n<Software Version> " + szSoftwareVersion);
-                                writer.Write("\r\n" + sbBarcodes);
-
-                                writer.Close();
-                            }                                                  
+                                    writer.Close();
+                                }                                                  
                             }
                         }                   
                         else
@@ -311,7 +318,6 @@ namespace Csp2dotnet
 
         Opticon.csp2.csp2CallBackFunctionAll Csp2Callback = null;   // Make global to avoid garbage collector from disgarding the call-back
 
-       
         public void Start()
         {
             if (!Started)
@@ -363,21 +369,21 @@ namespace Csp2dotnet
             CallbackFunction(ComCheck);
             if (ActNumSet != false)
             {
-                //Stop main thread from blocking api
+                //Stop polling thread from blocking api
                 Stop();
-                //Make an attempt to send data via api and give appropriate response message           
+                //Make an attempt to send data file to api and give appropriate response message back to user          
                 RunApi();
-                CheckAPI();
             }
             else
             {
+                //If api fails, open form telling user there was a problem
                 var anef = new ActNumErrorForm();
                 if (Application.OpenForms.OfType<ActNumErrorForm>().Count() == 1)
                     Application.OpenForms.OfType<ActNumErrorForm>().First().Close();
                 anef.ShowDialog();
             }
             
-            //Jumpstart main thread to life again
+            //Attempt to jumpstart main thread to life again to start polling
             Start();
             CallbackFunction(ComCheck);;
             sendData.Enabled = true;
@@ -385,81 +391,86 @@ namespace Csp2dotnet
 
         public void RunApi()
         {
-            //LOCAL QA API URL https://ws2-qa.wisvis.com/aws/scanner/test3.rb
-            
-            byte[] byteArray = System.IO.File.ReadAllBytes(@"../../Csp2.net.Test/Data.txt");                      
-            WebRequest request = WebRequest.Create("https://ws2.wisvis.com/aws/test/order.php");
-            request.Method = "POST";
-            request.ContentType = "text";
-            request.ContentLength = byteArray.Length;
-            Stream dataStream = request.GetRequestStream();
-            dataStream.Write(byteArray, 0, byteArray.Length);
-            dataStream.Close();
-            WebResponse response = request.GetResponse();
-            
-            Trace.WriteLine(((HttpWebResponse)response).StatusDescription);
-
-            if ((((HttpWebResponse)response).StatusDescription) == "OK")
+            try
             {
-                ApiSuccessful = true;
-                ClearData = true;
+                // https://ws2-qa.wisvis.com/aws/scanner/practice.rb
+                // https://ws2-qa.wisvis.com/aws/scanner/test.rb
+                // https://ws2.wisvis.com/aws/test/order.php
+                //byte[] byteArray = System.IO.File.ReadAllBytes(@"../../Csp2.net.Test/Data.txt");
+                var json = JsonConvert.SerializeObject(data);
 
-                //Test Error Form
-                //MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
-                //MessageForm message = new MessageForm();
-                //message.ShowDialog();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/test/order.php");
+                request.Method = "POST";
+
+                System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
+                Byte[] byteArray = encoding.GetBytes(json);
+
+                request.ContentLength = byteArray.Length;
+                request.ContentType = @"application/json";
+
+                using (Stream dataStream = request.GetRequestStream())
+                {
+                    dataStream.Write(byteArray, 0, byteArray.Length);
+                }
+
+                WebResponse response = request.GetResponse();
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+                    string responseFromServer = reader.ReadToEnd();
+                    Trace.WriteLine(responseFromServer);
+                    reader.Close();
+                }
+
+                Trace.WriteLine(((HttpWebResponse)response).StatusDescription);
+
+                if ((((HttpWebResponse)response).StatusDescription) == "OK")
+                {
+                    ApiSuccessful = true;
+                    ClearData = true;
+                    Trace.WriteLine("=== API Successful!! :D ");
+                }
+                else
+                {
+                    ApiSuccessful = false;
+                    MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
+                    MessageForm message = new MessageForm();
+                    message.ShowDialog();
+                }
+              
+                response.Close();
+
+
+                //WebRequest request = WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/practice.rb");
+                //request.Method = "POST";
+                //request.ContentType = "application/json";
+                //request.ContentLength = byteArray.Length;
+                //Stream dataStream = request.GetRequestStream();
+                //dataStream.Write(byteArray, 0, byteArray.Length);
+                //dataStream.Close();
+                //WebResponse response = request.GetResponse();
+
+
+
+                // Get the stream containing content returned by the server.
+                //dataStream = response.GetResponseStream();
+                // Open the stream using a StreamReader for easy access.
+                //StreamReader reader = new StreamReader(dataStream);
+                // Read content.
+
+                // Display content.
+
+                // Clean up streams.
+
             }
-            else
+            catch (Exception e)
             {
+                Trace.WriteLine(e);
                 ApiSuccessful = false;
                 MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
                 MessageForm message = new MessageForm();
                 message.ShowDialog();
-            }
-                           
-            // Get the stream containing content returned by the server.
-             dataStream = response.GetResponseStream();
-            // Open the stream using a StreamReader for easy access.
-            StreamReader reader = new StreamReader(dataStream);
-            // Read the content.
-            string responseFromServer = reader.ReadToEnd();
-            // Display the content.
-            Trace.WriteLine(responseFromServer);
-            // Clean up the streams.
-            reader.Close();
-            dataStream.Close();
-            response.Close();
-
-            NumApiTries++;
-        }
-
-        private void CheckAPI()
-        {
-            if (ApiSuccessful == true)
-            {
-                ParseDataFromApi();
-            }
-            else
-            {
-                if (NumApiTries == 1)
-                    RunApi();
-               else
-                    RunErrorResponseForm();
-            }                
-        }
-
-        private void ParseDataFromApi()
-        {
-            //Parse response data
-            //Open api message form
-            NumApiTries = 0;
-        }
-
-        private void RunErrorResponseForm()
-        {
-            //pull text from error log
-            //open default error message form
-            NumApiTries = 0;
+            }      
         }
 
         public void ResponseForm()
@@ -554,11 +565,6 @@ namespace Csp2dotnet
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void button5_Click(object sender, EventArgs e)
          {                         
             AccountNumber = AccountTextBox.Text;        
@@ -569,7 +575,6 @@ namespace Csp2dotnet
             }
             AccountTextBox.Text = ("Set to: " + AccountNumber);
         }
-
     }
 
     public class ParamInfo
