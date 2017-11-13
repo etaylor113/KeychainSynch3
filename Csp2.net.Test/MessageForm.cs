@@ -17,7 +17,16 @@ namespace Csp2dotnet
         {
             InitializeComponent();
 
-            label1.Text = Response;            
+            label1.Text = Response;
+
+            var pos = label1.Location;
+            pos = backdrop.PointToClient(pos);
+            label1.Parent = backdrop;
+            label1.Location = pos;
+            label1.BackColor = Color.Transparent;
+
         }
+
+        
     }
 }

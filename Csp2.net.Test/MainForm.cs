@@ -13,9 +13,13 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using Newtonsoft.Json;
+using System.Runtime.InteropServices;
 
 namespace Csp2dotnet
 {
+
+    // Be sure to uncomment out ClearData on/near line 436
+
     public partial class MainForm : Form
     {
         public Int32 ComCheck { get; set; }
@@ -26,10 +30,11 @@ namespace Csp2dotnet
         private bool ApiSuccessful { get; set; }
         public string AccountNumber { get; set; }
         private bool ActNumSet { get; set; }
+        public string MessageFromApi { get; set; }
         List<object> data = new List<object>();
 
-
-        public delegate void Action();
+        [DllImport("Opticon.csp2.net")]
+        static extern void SetParameters([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
 
         ParamInfo[] Description = {
                         new ParamInfo( "Code 39", 0x1f ),
@@ -84,6 +89,7 @@ namespace Csp2dotnet
                         new ParamInfo( "RSS", 0x14 ),
         };
 
+
         List<Int32> Ports = new List<Int32>();
 
         private void CallbackFunction(Int32 nComport)
@@ -100,6 +106,7 @@ namespace Csp2dotnet
                 {
                     iRet = Opticon.csp2.Interrogate(nComport);
                 }
+
                 if (iRet >= 0)
                 {
                     if (Ports.Contains(nComport) == false)
@@ -127,7 +134,6 @@ namespace Csp2dotnet
                 if (iRet >= 0L)
                 {
                     Trace.WriteLine("\nOPN-2001 Connected at " + nComport);
-                    Trace.WriteLine(ReadBarcodes);
                     Int32 iCount = iRet;   
                     Trace.WriteLine(String.Format("Number of barcodes = {0}", iCount));
 
@@ -152,25 +158,17 @@ namespace Csp2dotnet
                                 Trace.WriteLine("\nCreating file...");                          
 
                                 string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-                                data.Add(time);
-                                //file.WriteLine("<DT>" + "\t" + time);
-                                //Trace.WriteLine("<DT>" + "\t" + time );
+                                data.Add(time);                              
 
-                                data.Add(AccountNumber);
-                                //file.WriteLine("<ACT>" + "\t" + AccountNumber);
-                                //Trace.WriteLine("<ACT>" + "\t" + AccountNumber);
+                                data.Add(AccountNumber);                                
 
                                 string szDeviceId;
                                 iRet = Opticon.csp2.GetDeviceId(out szDeviceId, nComport);
                                 data.Add(szDeviceId);
-                                //file.WriteLine("<ID>" + "\t" + szDeviceId);
-                                //Trace.WriteLine("<ID>" + "\t" + szDeviceId);
 
                                 StringBuilder szSoftwareVersion = new StringBuilder(256);
                                 Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
-                                data.Add(szSoftwareVersion.ToString());
-                                //file.WriteLine("<SwV>" + "\t" + szSoftwareVersion);
-                                //Trace.WriteLine("<SwV>" +"\t" + szSoftwareVersion);
+                                data.Add(szSoftwareVersion.ToString());                              
 
                                 StringBuilder sbBarcodes = new StringBuilder(1000);
                                 for (Int32 i = 0; i < ReadBarcodes; i++)
@@ -182,11 +180,9 @@ namespace Csp2dotnet
                                         data.Add(aPacket.strBarData.ToString());
                                         sbBarcodes.AppendLine(String.Format("<Item>" + "\t" + aPacket.strBarData));
                                     }
-                                };
-
-                                //file.WriteLine(sbBarcodes);
-                                //Trace.WriteLine(sbBarcodes);
+                                };                               
             
+                                //Create backup files for support team to reference if need be
                                 using (System.IO.StreamWriter writer =
                                    new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\ScannerData\" + time))
                                 {
@@ -221,6 +217,7 @@ namespace Csp2dotnet
                 {
                     Trace.WriteLine("OPN-2001 Disconnected from " + nComport);
                 }
+                //Slow down thread polling to consume less memory
             Thread.Sleep(2000);
         }
 
@@ -331,6 +328,17 @@ namespace Csp2dotnet
                     Trace.WriteLine(" Fail!");
                 }
 
+                StringBuilder szDLLVersion = new StringBuilder(256);
+                iRet = Opticon.csp2.GetDllVersion(szDLLVersion, 100);
+                if (iRet < 0)
+                {
+                    Trace.WriteLine(String.Format(" Fail {0} ", iRet));
+                }
+                else
+                {
+                    Trace.WriteLine(String.Format("DLL Version = {0}", szDLLVersion));
+                }
+
                 Int32[] ports = new Int32[100];
 
                 int Count = Opticon.csp2.GetOpnCompatiblePorts(ports);
@@ -363,15 +371,13 @@ namespace Csp2dotnet
 
         private void SendData_Click(object sender, EventArgs e)
         {
+            //turn off button so user can't spam api calls
             sendData.Enabled = false;
-            //Create file w/ scanner data
             DataSend = true;
             CallbackFunction(ComCheck);
             if (ActNumSet != false)
             {
-                //Stop polling thread from blocking api
-                Stop();
-                //Make an attempt to send data file to api and give appropriate response message back to user          
+                Stop();                     
                 RunApi();
             }
             else
@@ -382,24 +388,21 @@ namespace Csp2dotnet
                     Application.OpenForms.OfType<ActNumErrorForm>().First().Close();
                 anef.ShowDialog();
             }
-            
-            //Attempt to jumpstart main thread to life again to start polling
-            Start();
-            CallbackFunction(ComCheck);;
+
+            //turn button back on after api has finished executing 
             sendData.Enabled = true;
+            //Attempt to jumpstart main thread to life again to begin polling
+            Start();
+            CallbackFunction(ComCheck);            
         }
 
         public void RunApi()
         {
             try
             {
-                // https://ws2-qa.wisvis.com/aws/scanner/practice.rb
-                // https://ws2-qa.wisvis.com/aws/scanner/test.rb
-                // https://ws2.wisvis.com/aws/test/order.php
-                //byte[] byteArray = System.IO.File.ReadAllBytes(@"../../Csp2.net.Test/Data.txt");
                 var json = JsonConvert.SerializeObject(data);
-
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/test/order.php");
+          
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
                 request.Method = "POST";
 
                 System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
@@ -417,18 +420,23 @@ namespace Csp2dotnet
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-                    string responseFromServer = reader.ReadToEnd();
-                    Trace.WriteLine(responseFromServer);
+                    MessageFromApi = reader.ReadToEnd();
+                    Trace.WriteLine(MessageFromApi);
                     reader.Close();
                 }
 
                 Trace.WriteLine(((HttpWebResponse)response).StatusDescription);
+                response.Close();
 
                 if ((((HttpWebResponse)response).StatusDescription) == "OK")
                 {
                     ApiSuccessful = true;
-                    ClearData = true;
+                    //ClearData = true;
                     Trace.WriteLine("=== API Successful!! :D ");
+
+                    MessageForm.Response = MessageFromApi;
+                    MessageForm message = new MessageForm();
+                    message.ShowDialog();
                 }
                 else
                 {
@@ -436,32 +444,7 @@ namespace Csp2dotnet
                     MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
                     MessageForm message = new MessageForm();
                     message.ShowDialog();
-                }
-              
-                response.Close();
-
-
-                //WebRequest request = WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/practice.rb");
-                //request.Method = "POST";
-                //request.ContentType = "application/json";
-                //request.ContentLength = byteArray.Length;
-                //Stream dataStream = request.GetRequestStream();
-                //dataStream.Write(byteArray, 0, byteArray.Length);
-                //dataStream.Close();
-                //WebResponse response = request.GetResponse();
-
-
-
-                // Get the stream containing content returned by the server.
-                //dataStream = response.GetResponseStream();
-                // Open the stream using a StreamReader for easy access.
-                //StreamReader reader = new StreamReader(dataStream);
-                // Read content.
-
-                // Display content.
-
-                // Clean up streams.
-
+                }                              
             }
             catch (Exception e)
             {
@@ -489,6 +472,8 @@ namespace Csp2dotnet
             Int32 nParam = 0;
             byte[] szString = new byte[100];
             Int32 nMaxLength = 1;
+
+
             try
             {
                 foreach (ParamInfo p in Description)
@@ -497,7 +482,7 @@ namespace Csp2dotnet
                         int line = Convert.ToInt32(File.ReadLines(@"../../Csp2.net.Test/TextDocs/" + TxtReader).Skip(counter).Take(1).First());
                         szString[0] = (byte)line;
                         nParam = p.ParamNumber;
-                        ComCheck = Opticon.csp2.SetParam(nParam, szString, nMaxLength);
+                        Int32 iRet = Opticon.csp2.SetParam(nParam, szString, nMaxLength);
                         counter++;
                         PrefPB.Value++;                    
                 }
