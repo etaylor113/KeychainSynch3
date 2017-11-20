@@ -38,6 +38,7 @@ namespace Csp2dotnet
             // 
             // label1
             // 
+            this.label1.MaximumSize = new Size(730, 0);
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
             this.label1.Location = new System.Drawing.Point(30, 70);

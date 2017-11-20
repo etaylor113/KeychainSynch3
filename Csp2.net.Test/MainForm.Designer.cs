@@ -86,7 +86,7 @@ namespace Csp2dotnet
             this.tabControl1.Margin = new System.Windows.Forms.Padding(6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(862, 591);
+            this.tabControl1.Size = new System.Drawing.Size(855, 591);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -105,9 +105,9 @@ namespace Csp2dotnet
             this.tabPage1.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage1.Size = new System.Drawing.Size(854, 543);
+            this.tabPage1.Size = new System.Drawing.Size(847, 543);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Scan";
+            this.tabPage1.Text = " Scan  ";
             // 
             // logoTab1
             // 
@@ -128,19 +128,18 @@ namespace Csp2dotnet
             this.labelStatusHead.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelStatusHead.Name = "labelStatusHead";
             this.labelStatusHead.Size = new System.Drawing.Size(119, 38);
-            this.labelStatusHead.TabIndex = 5;
+            this.labelStatusHead.TabIndex = 4;
             this.labelStatusHead.Text = "Status:";
             // 
             // labelBarcodes
             // 
             this.labelBarcodes.AutoSize = true;
-            this.labelBarcodes.BackColor = System.Drawing.Color.Transparent;
             this.labelBarcodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelBarcodes.Location = new System.Drawing.Point(30, 230);
             this.labelBarcodes.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelBarcodes.Name = "labelBarcodes";
             this.labelBarcodes.Size = new System.Drawing.Size(303, 38);
-            this.labelBarcodes.TabIndex = 4;
+            this.labelBarcodes.TabIndex = 5;
             this.labelBarcodes.Text = "Scanned Barcodes:";
             // 
             // labelNumBarcodes
@@ -151,7 +150,7 @@ namespace Csp2dotnet
             this.labelNumBarcodes.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelNumBarcodes.Name = "labelNumBarcodes";
             this.labelNumBarcodes.Size = new System.Drawing.Size(390, 50);
-            this.labelNumBarcodes.TabIndex = 4;
+            this.labelNumBarcodes.TabIndex = 6;
             this.labelNumBarcodes.Text = "Not Connected";
             // 
             // labelConnected
@@ -163,7 +162,7 @@ namespace Csp2dotnet
             this.labelConnected.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelConnected.Name = "labelConnected";
             this.labelConnected.Size = new System.Drawing.Size(390, 50);
-            this.labelConnected.TabIndex = 3;
+            this.labelConnected.TabIndex = 7;
             this.labelConnected.Text = "Not Connected";
             // 
             // labelMain
@@ -174,7 +173,7 @@ namespace Csp2dotnet
             this.labelMain.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelMain.Name = "labelMain";
             this.labelMain.Size = new System.Drawing.Size(737, 35);
-            this.labelMain.TabIndex = 2;
+            this.labelMain.TabIndex = 8;
             this.labelMain.Text = "Be sure device is connected before sending data.";
             // 
             // sendData
@@ -213,9 +212,9 @@ namespace Csp2dotnet
             this.tabPage2.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage2.Size = new System.Drawing.Size(854, 543);
+            this.tabPage2.Size = new System.Drawing.Size(847, 543);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "My Account";
+            this.tabPage2.Text = " My Account ";
             // 
             // button5
             // 
@@ -223,7 +222,7 @@ namespace Csp2dotnet
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(21, 180);
+            this.button5.Location = new System.Drawing.Point(21, 191);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(380, 60);
             this.button5.TabIndex = 6;
@@ -245,7 +244,7 @@ namespace Csp2dotnet
             this.AccountTextBox.Location = new System.Drawing.Point(21, 95);
             this.AccountTextBox.Name = "AccountTextBox";
             this.AccountTextBox.Size = new System.Drawing.Size(380, 47);
-            this.AccountTextBox.TabIndex = 4;                      
+            this.AccountTextBox.TabIndex = 4;
             // 
             // LLViewCart
             // 
@@ -284,9 +283,9 @@ namespace Csp2dotnet
             this.tabPage3.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage3.Size = new System.Drawing.Size(854, 543);
+            this.tabPage3.Size = new System.Drawing.Size(847, 543);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Preferences";
+            this.tabPage3.Text = " Preferences ";
             // 
             // button2
             // 
@@ -294,7 +293,7 @@ namespace Csp2dotnet
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(229, 120);
+            this.button2.Location = new System.Drawing.Point(225, 120);
             this.button2.Margin = new System.Windows.Forms.Padding(6);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(367, 74);
@@ -309,7 +308,7 @@ namespace Csp2dotnet
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(229, 222);
+            this.button3.Location = new System.Drawing.Point(225, 222);
             this.button3.Margin = new System.Windows.Forms.Padding(6);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(367, 74);
@@ -324,7 +323,7 @@ namespace Csp2dotnet
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(229, 323);
+            this.button4.Location = new System.Drawing.Point(225, 323);
             this.button4.Margin = new System.Windows.Forms.Padding(6);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(367, 74);
@@ -335,7 +334,7 @@ namespace Csp2dotnet
             // 
             // PrefPB
             // 
-            this.PrefPB.Location = new System.Drawing.Point(138, 425);
+            this.PrefPB.Location = new System.Drawing.Point(134, 425);
             this.PrefPB.Margin = new System.Windows.Forms.Padding(6);
             this.PrefPB.Maximum = 50;
             this.PrefPB.Name = "PrefPB";
@@ -345,8 +344,8 @@ namespace Csp2dotnet
             // labelPrefHead
             // 
             this.labelPrefHead.AutoSize = true;
-            this.labelPrefHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrefHead.Location = new System.Drawing.Point(183, 13);
+            this.labelPrefHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPrefHead.Location = new System.Drawing.Point(179, 13);
             this.labelPrefHead.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelPrefHead.Name = "labelPrefHead";
             this.labelPrefHead.Size = new System.Drawing.Size(459, 78);
@@ -365,15 +364,15 @@ namespace Csp2dotnet
             this.tabPage4.Margin = new System.Windows.Forms.Padding(6);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(6);
-            this.tabPage4.Size = new System.Drawing.Size(854, 543);
+            this.tabPage4.Size = new System.Drawing.Size(847, 543);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Help";
+            this.tabPage4.Text = " Help ";
             // 
             // LLContact
             // 
             this.LLContact.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LLContact.LinkColor = System.Drawing.Color.Black;
-            this.LLContact.Location = new System.Drawing.Point(336, 517);
+            this.LLContact.Location = new System.Drawing.Point(329, 517);
             this.LLContact.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.LLContact.Name = "LLContact";
             this.LLContact.Size = new System.Drawing.Size(348, 42);
@@ -385,7 +384,7 @@ namespace Csp2dotnet
             // labelContact
             // 
             this.labelContact.AutoSize = true;
-            this.labelContact.Location = new System.Drawing.Point(37, 203);
+            this.labelContact.Location = new System.Drawing.Point(32, 203);
             this.labelContact.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelContact.Name = "labelContact";
             this.labelContact.Size = new System.Drawing.Size(683, 40);
@@ -396,12 +395,13 @@ namespace Csp2dotnet
             // 
             this.labelContactNum.AutoSize = true;
             this.labelContactNum.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelContactNum.Location = new System.Drawing.Point(37, 83);
+            this.labelContactNum.Location = new System.Drawing.Point(32, 83);
             this.labelContactNum.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.labelContactNum.Name = "labelContactNum";
             this.labelContactNum.Size = new System.Drawing.Size(783, 84);
             this.labelContactNum.TabIndex = 2;
-            this.labelContactNum.Text = "For questions and concerns, please contact WVA \nScanner Support at 800.747.9000 x" +"8191";
+            this.labelContactNum.Text = "For questions or concerns, please contact WVA \nScanner Support at 800.747.9000 x" +
+    "8191";
             // 
             // backdrop
             // 
@@ -437,14 +437,14 @@ namespace Csp2dotnet
             this.labelPrefs.Location = new System.Drawing.Point(0, 0);
             this.labelPrefs.Name = "labelPrefs";
             this.labelPrefs.Size = new System.Drawing.Size(100, 23);
-            this.labelPrefs.TabIndex = 0;         
+            this.labelPrefs.TabIndex = 0;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(862, 591);
+            this.ClientSize = new System.Drawing.Size(855, 591);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

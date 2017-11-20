@@ -22,15 +22,12 @@ namespace Csp2dotnet
 
     public partial class MainForm : Form
     {
-        public Int32 ComCheck { get; set; }
+        public static Int32 ComCheck { get; set; }
         public int ReadBarcodes { get; set; } = 0;
         public bool DataSend { get; set; }
         private string TxtReader { get; set; }
-        private bool ClearData { get; set; }
-        private bool ApiSuccessful { get; set; }
+        public static bool ClearData { get; set; }
         public string AccountNumber { get; set; }
-        private bool ActNumSet { get; set; }
-        public string MessageFromApi { get; set; }
         List<object> data = new List<object>();
 
         [DllImport("Opticon.csp2.net")]
@@ -92,7 +89,7 @@ namespace Csp2dotnet
 
         List<Int32> Ports = new List<Int32>();
 
-        private void CallbackFunction(Int32 nComport)
+        public void CallbackFunction(Int32 nComport)
         {
                 int iRet = -1;
                 ComCheck = nComport;
@@ -147,9 +144,8 @@ namespace Csp2dotnet
 
                     if (DataSend == true)
                     {
-                        if (AccountNumber != null)
+                        if (AccountNumber != null && AccountNumber != "")
                         {
-                            ActNumSet = true;
                            
                             using (System.IO.StreamWriter file =
                                new System.IO.StreamWriter(@"../../Csp2.net.Test/Data.txt"))
@@ -182,7 +178,7 @@ namespace Csp2dotnet
                                     }
                                 };                               
             
-                                //Create backup files for support team to reference if need be
+                                //Create backup files for support team to reference
                                 using (System.IO.StreamWriter writer =
                                    new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\ScannerData\" + time))
                                 {
@@ -195,11 +191,7 @@ namespace Csp2dotnet
                                     writer.Close();
                                 }                                                  
                             }
-                        }                   
-                        else
-                        {
-                            ActNumSet = false;
-                        }
+                        }                                        
                     DataSend = false;
                 }
 
@@ -225,14 +217,16 @@ namespace Csp2dotnet
         {           
             InitializeComponent();
 
+            // Check if user has typed an account number
             try{ AccountNumber = File.ReadLines(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\TextDocs\Account_Number.txt").Skip(0).Take(1).First(); } catch{}
-            if (AccountNumber != null)
+            if (AccountNumber != null && AccountNumber != "" && AccountNumber != " ") 
             {              
                 AccountTextBox.Text = ("Set to: " + AccountNumber);
             }
 
             Start();
 
+            // Allows labels to be bound to background image and set as transparent
             var pos = labelContact.Location;
             pos = backdrop.PointToClient(pos);
             labelContact.Parent = backdrop;
@@ -375,7 +369,7 @@ namespace Csp2dotnet
             sendData.Enabled = false;
             DataSend = true;
             CallbackFunction(ComCheck);
-            if (ActNumSet != false)
+            if (AccountNumber != null && AccountNumber != "")
             {
                 Stop();                     
                 RunApi();
@@ -400,6 +394,7 @@ namespace Csp2dotnet
         {
             try
             {
+                string MessageFromApi;
                 var json = JsonConvert.SerializeObject(data);
           
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
@@ -421,6 +416,14 @@ namespace Csp2dotnet
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     MessageFromApi = reader.ReadToEnd();
+                    if (MessageFromApi == "Able to connect to remote server but File Send was not successful\nNo Response")
+                    {
+                        MessageForm.Response = "There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, please call WVA Scanner Support. ";
+                        MessageForm message = new MessageForm();
+                        message.ShowDialog();
+                        return;
+                    }
+                                   
                     Trace.WriteLine(MessageFromApi);
                     reader.Close();
                 }
@@ -430,9 +433,8 @@ namespace Csp2dotnet
 
                 if ((((HttpWebResponse)response).StatusDescription) == "OK")
                 {
-                    ApiSuccessful = true;
                     //ClearData = true;
-                    Trace.WriteLine("=== API Successful!! :D ");
+                    Trace.WriteLine("=== API Successful!");
 
                     MessageForm.Response = MessageFromApi;
                     MessageForm message = new MessageForm();
@@ -440,7 +442,6 @@ namespace Csp2dotnet
                 }
                 else
                 {
-                    ApiSuccessful = false;
                     MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
                     MessageForm message = new MessageForm();
                     message.ShowDialog();
@@ -449,21 +450,12 @@ namespace Csp2dotnet
             catch (Exception e)
             {
                 Trace.WriteLine(e);
-                ApiSuccessful = false;
                 MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
                 MessageForm message = new MessageForm();
                 message.ShowDialog();
             }      
         }
-
-        public void ResponseForm()
-        {           
-                var msgForm = new MessageForm();
-                if (Application.OpenForms.OfType<MessageForm>().Count() == 1)
-                    Application.OpenForms.OfType<MessageForm>().First().Close();
-                msgForm.ShowDialog();     
-        }
-
+        
         private void SetParameters()
         {
             Stop();
@@ -472,7 +464,6 @@ namespace Csp2dotnet
             Int32 nParam = 0;
             byte[] szString = new byte[100];
             Int32 nMaxLength = 1;
-
 
             try
             {
@@ -494,38 +485,33 @@ namespace Csp2dotnet
                     prefComp.ShowDialog();
                 }
             }
-            catch
-            {
-                var errorMessageForm = new ErrorMessage();
-                if (Application.OpenForms.OfType<MessageForm>().Count() == 1)
-                    Application.OpenForms.OfType<MessageForm>().First().Close();
-                errorMessageForm.Show();
-            }
+            catch (System.AccessViolationException){}
             PrefPB.Value = 0;
             Start();         
         }
 
-        // Scan UPC only button (tab2)
+        // Scan UPC only button (tab3)
         private void button2_Click(object sender, EventArgs e)
         {
             TxtReader = "ReadUPC_Only.txt";
             SetParameters();
         }
 
-        // Scan OPC only button (tab2)
+        // Scan OPC only button (tab3)
         private void button3_Click(object sender, EventArgs e)
         {
             TxtReader = "ReadStockOnly.txt";
             SetParameters();
         }
 
-        // Scan both UPC and OPC button (tab2)
+        // Scan both UPC and OPC button (tab3)
         private void button4_Click(object sender, EventArgs e)
         {
             TxtReader = "ReadStock+UPC.txt";
             SetParameters();
         }
 
+        // Contact info link (tab4)
         private void LLContact_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -538,6 +524,7 @@ namespace Csp2dotnet
             }
         }
 
+        // Review order link (tab2)
         private void LLViewCart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -550,16 +537,25 @@ namespace Csp2dotnet
             }
         }
 
+        // Set Account number button (tab2)
         private void button5_Click(object sender, EventArgs e)
-         {                         
-            AccountNumber = AccountTextBox.Text;        
-            using (System.IO.StreamWriter file =
-              new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\TextDocs\Account_Number.txt"))
+         {
+            AccountNumber = AccountTextBox.Text;
+
+            if (AccountNumber != "")
             {
-                file.WriteLine(AccountNumber);
-            }
-            AccountTextBox.Text = ("Set to: " + AccountNumber);
-        }
+                if (AccountNumber.Contains("Set to: "))
+                {
+                    AccountNumber = AccountNumber.Remove(0, 8);
+                }
+                using (System.IO.StreamWriter file =
+                  new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\TextDocs\Account_Number.txt"))
+                {
+                    file.WriteLine(AccountNumber);
+                }
+                AccountTextBox.Text = ("Set to: " + AccountNumber);
+            }          
+        }      
     }
 
     public class ParamInfo
@@ -592,3 +588,4 @@ namespace Csp2dotnet
         }
     }
 }
+

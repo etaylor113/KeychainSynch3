@@ -1,4 +1,6 @@
-﻿namespace Csp2dotnet
+﻿using System.Drawing;
+
+namespace Csp2dotnet
 {
     partial class ActNumErrorForm
     {
@@ -34,23 +36,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(12, 34);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.label1.Location = new System.Drawing.Point(16, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.MaximumSize = new System.Drawing.Size(560, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(276, 72);
+            this.label1.Size = new System.Drawing.Size(738, 64);
             this.label1.TabIndex = 0;
-            this.label1.Text = "You must enter your WVA account \nnumber in the 'My Account' tab before \nsending barcod" +
-    "es!";
+            this.label1.Text = "Be sure your scanner is plugged in and you have entered your account number in th" +
+    "e \'My Account\' tab.";
             // 
             // ActNumErrorForm
             // 
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(126)))), ((int)(((byte)(195)))));
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(390, 150);
+            this.ClientSize = new System.Drawing.Size(575, 300);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ActNumErrorForm";
-            this.Text = "Account Error";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "WVA - Keychain Synch 3.0";
             this.ResumeLayout(false);
             this.PerformLayout();
 

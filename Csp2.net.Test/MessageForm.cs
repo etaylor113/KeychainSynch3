@@ -24,9 +24,6 @@ namespace Csp2dotnet
             label1.Parent = backdrop;
             label1.Location = pos;
             label1.BackColor = Color.Transparent;
-
         }
-
-        
     }
 }
