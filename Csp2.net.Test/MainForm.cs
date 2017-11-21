@@ -92,7 +92,6 @@ namespace Csp2dotnet
         public void CallbackFunction(Int32 nComport)
         {
                 int iRet = -1;
-                ComCheck = nComport;
 
                 if (Opticon.csp2.DataAvailable(nComport) > 0)
                 {
@@ -210,7 +209,7 @@ namespace Csp2dotnet
                     Trace.WriteLine("OPN-2001 Disconnected from " + nComport);
                 }
                 //Slow down thread polling to consume less memory
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);
         }
 
         public MainForm()
@@ -292,7 +291,7 @@ namespace Csp2dotnet
 
         public void CleanDirectory()
         {
-            string[] files = Directory.GetFiles(@"C:\Users\Taylo\Desktop\csp2.net.Test\ScannerData");
+            string[] files = Directory.GetFiles(@"..\..\Csp2.net.Test\ScannerData");
             foreach (string file in files)
             {
                 if (File.Exists(file))
@@ -394,10 +393,12 @@ namespace Csp2dotnet
         {
             try
             {
+                // https://ws2.wisvis.com/aws/test/order.php
+                // https://ws2-qa.wisvis.com/aws/scanner/final.rb
                 string MessageFromApi;
                 var json = JsonConvert.SerializeObject(data);
           
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/test/order.php");
                 request.Method = "POST";
 
                 System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
@@ -549,7 +550,7 @@ namespace Csp2dotnet
                     AccountNumber = AccountNumber.Remove(0, 8);
                 }
                 using (System.IO.StreamWriter file =
-                  new System.IO.StreamWriter(@"C:\Users\Taylo\Desktop\WorkStuff\KeychainSynchBackup\KeychainSynch3\Csp2.net.Test\TextDocs\Account_Number.txt"))
+                  new System.IO.StreamWriter(@"..\..\Csp2.net.Test\TextDocs\Account_Number.txt"))
                 {
                     file.WriteLine(AccountNumber);
                 }
