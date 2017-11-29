@@ -1,0 +1,16 @@
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\Release\Csp2dotnet.exe.config
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\Release\Csp2dotnet.exe
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\Release\Csp2dotnet.pdb
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\Release\Newtonsoft.Json.dll
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\Release\Opticon.csp2.net.dll
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\Release\Newtonsoft.Json.xml
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2dotnet.ActNumErrorForm.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2dotnet.ErrorMessage.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2dotnet.MainForm.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2dotnet.MessageForm.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2dotnet.PrefCompleted.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2dotnet.Properties.Resources.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2.net.Test.csproj.GenerateResource.Cache
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2.net.Test.csproj.CoreCompileInputs.cache
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2dotnet.exe
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\Csp2dotnet.pdb
