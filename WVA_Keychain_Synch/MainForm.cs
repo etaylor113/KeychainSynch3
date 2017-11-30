@@ -15,7 +15,7 @@ using System.Net.Sockets;
 using Newtonsoft.Json;
 using System.Runtime.InteropServices;
 
-namespace Csp2dotnet
+namespace WVA_Keychain_Synch
 {
 
     // Be sure to uncomment out ClearData on/near line 436

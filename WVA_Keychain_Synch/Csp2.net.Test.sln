@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Csp2.net.Test", "Csp2.net.Test.csproj", "{E3026F78-3952-4CD8-BF22-D0C7B3AEE15B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WVA_Keychain_Synch", "WVA_Keychain_Synch.csproj", "{E3026F78-3952-4CD8-BF22-D0C7B3AEE15B}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WVA_Keychain_Synch_Setup", "..\WVA_Keychain_Synch_Setup\WVA_Keychain_Synch_Setup.vdproj", "{B51A36AA-B6B9-4A6E-9194-28A644B6F9DC}"
 EndProject

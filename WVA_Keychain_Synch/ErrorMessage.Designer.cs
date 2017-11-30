@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Csp2dotnet
+namespace WVA_Keychain_Synch
 {
     partial class ErrorMessage
     {

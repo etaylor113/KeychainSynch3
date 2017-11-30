@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace Csp2dotnet
+namespace WVA_Keychain_Synch
 {
     partial class MessageForm
     {
@@ -48,7 +48,7 @@ namespace Csp2dotnet
             // 
             // backdrop
             // 
-            this.backdrop.Image = global::Csp2dotnet.Properties.Resources.WVA;
+            this.backdrop.Image = global::WVA_Keychain_Synch.Properties.Resources.WVA;
             this.backdrop.Location = new System.Drawing.Point(-292, -289);
             this.backdrop.Name = "backdrop";
             this.backdrop.Size = new System.Drawing.Size(1299, 1300);

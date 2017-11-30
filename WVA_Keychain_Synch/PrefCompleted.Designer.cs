@@ -1,4 +1,4 @@
-﻿namespace Csp2dotnet
+﻿namespace WVA_Keychain_Synch
 {
     partial class PrefCompleted
     {
@@ -46,7 +46,7 @@
             // 
             // backdrop
             // 
-            this.backdrop.Image = global::Csp2dotnet.Properties.Resources.WVA;
+            this.backdrop.Image = global::WVA_Keychain_Synch.Properties.Resources.WVA;
             this.backdrop.Location = new System.Drawing.Point(-291, -267);
             this.backdrop.Margin = new System.Windows.Forms.Padding(2);
             this.backdrop.Name = "backdrop";

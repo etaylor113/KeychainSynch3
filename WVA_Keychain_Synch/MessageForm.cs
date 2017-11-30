@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Csp2dotnet
+namespace WVA_Keychain_Synch
 {
     public partial class MessageForm : Form
     {

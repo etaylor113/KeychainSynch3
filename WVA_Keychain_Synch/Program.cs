@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace Csp2dotnet
+namespace WVA_Keychain_Synch
 {
     static class Program
     {
