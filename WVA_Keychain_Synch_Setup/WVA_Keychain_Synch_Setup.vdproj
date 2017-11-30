@@ -15,19 +15,31 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_019283F09D8D42ADBBE9E2ECE3D78277"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_05B7A6632640B31E75845262C4D469B0"
         "OwnerKey" = "8:_BA8FBF76B0514EFEB563E6F0CC980BB0"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_065C306AF9EC404098530F2D560BCD8C"
+        "MsmKey" = "8:_068130005AC84E97A523ED460D9235D2"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_068130005AC84E97A523ED460D9235D2"
+        "MsmKey" = "8:_0CFFB7D4C42F48FF8E1CC1E6B1A6C2C5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_102A4A534692462BAFBC9105F3DCFB2F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -87,12 +99,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_273016DBD18C8FEBCBCD103F76942509"
-        "OwnerKey" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_2CFE0735A47C414A8065D8B9EB20E8B9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -119,18 +125,6 @@
         {
         "MsmKey" = "8:_364CE2925DD901F31D22E0B969E6D4EC"
         "OwnerKey" = "8:_E66FA7D2ED7A4B8C9782C037B2CA665A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3783DCD0136142AC8B717EFCBF06CE60"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_3B2902C06D0F4A508CA07E0BED8DD34D"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -171,7 +165,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4E3CCA9E0646448DB0F9DA52EEDB7407"
+        "MsmKey" = "8:_4EA56DCA7C5E4E6682CB822AF388F86F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -209,12 +203,6 @@
         {
         "MsmKey" = "8:_514508DC9C474B7229E4E01443E6AA61"
         "OwnerKey" = "8:_E66FA7D2ED7A4B8C9782C037B2CA665A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_54666CE8345B4DCD84DC3353919C5F29"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -291,12 +279,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6D1CDB9B084BCF9E6BF97CD4DAA1041F"
-        "OwnerKey" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6E3A1F10D36C63130A65148C2603A012"
         "OwnerKey" = "8:_24B16C9FB8614C2DA930C1A20EBF1AF8"
         "MsmSig" = "8:_UNDEFINED"
@@ -305,6 +287,18 @@
         {
         "MsmKey" = "8:_6E3A1F10D36C63130A65148C2603A012"
         "OwnerKey" = "8:_E66FA7D2ED7A4B8C9782C037B2CA665A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_6EEC6539A5EF4CB9A41F0574C227E02D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_772F3B9E3EB9C6505CE10530E93A6E96"
+        "OwnerKey" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -447,7 +441,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D3ABCF10FD9C4DEAA0416F5BC4FBFAAD"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DE4DBB5E1882EA7F1025F60FDE805765"
+        "OwnerKey" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DFD42E7D2A584F0EA4CDDDB50E6E8AD9"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E14A24B6DD2E4887BB51DA279E852EF5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -485,6 +497,12 @@
         {
         "MsmKey" = "8:_E870ACB2BF5848E3826424ADEF4CC634"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_E9D050DD8B9192FB1FF443778ADDED9F"
+        "OwnerKey" = "8:_4EA56DCA7C5E4E6682CB822AF388F86F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -550,7 +568,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F4F58A1902FB7C68346F49DD334F1C2B"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_ED1C05193FF348459EA9204163238E5A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E9D050DD8B9192FB1FF443778ADDED9F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -676,6 +706,12 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_4EA56DCA7C5E4E6682CB822AF388F86F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_467E6C24E078AFB72BE410ADB65FE8BE"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -718,12 +754,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F4F58A1902FB7C68346F49DD334F1C2B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_1C94B0C91CDA490D56561D0C41BE4BF7"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -736,13 +766,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_273016DBD18C8FEBCBCD103F76942509"
+        "OwnerKey" = "8:_772F3B9E3EB9C6505CE10530E93A6E96"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6D1CDB9B084BCF9E6BF97CD4DAA1041F"
+        "OwnerKey" = "8:_DE4DBB5E1882EA7F1025F60FDE805765"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -770,6 +800,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -794,6 +832,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -824,6 +870,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_019283F09D8D42ADBBE9E2ECE3D78277"
+            {
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\app.manifest"
+            "TargetName" = "8:app.manifest"
+            "Tag" = "8:"
+            "Folder" = "8:_732227F0A1884A568BFA50DB2DFCE5AE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_05B7A6632640B31E75845262C4D469B0"
             {
             "AssemblyRegister" = "3:1"
@@ -855,12 +921,12 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_065C306AF9EC404098530F2D560BCD8C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_068130005AC84E97A523ED460D9235D2"
             {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\Resources.Designer.cs"
-            "TargetName" = "8:Resources.Designer.cs"
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\packages\\Newtonsoft.Json.10.0.3\\lib\\net20\\Newtonsoft.Json.xml"
+            "TargetName" = "8:Newtonsoft.Json.xml"
             "Tag" = "8:"
-            "Folder" = "8:_5B5935D8D38F4802ADD02A2AC71C7F1B"
+            "Folder" = "8:_3F721D6F52BB443AA43F315033E746DA"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -875,12 +941,32 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_068130005AC84E97A523ED460D9235D2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0CFFB7D4C42F48FF8E1CC1E6B1A6C2C5"
             {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\packages\\Newtonsoft.Json.10.0.3\\lib\\net20\\Newtonsoft.Json.xml"
-            "TargetName" = "8:Newtonsoft.Json.xml"
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\Settings.settings"
+            "TargetName" = "8:Settings.settings"
             "Tag" = "8:"
-            "Folder" = "8:_3F721D6F52BB443AA43F315033E746DA"
+            "Folder" = "8:_732227F0A1884A568BFA50DB2DFCE5AE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_102A4A534692462BAFBC9105F3DCFB2F"
+            {
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\Resources.Designer.cs"
+            "TargetName" = "8:Resources.Designer.cs"
+            "Tag" = "8:"
+            "Folder" = "8:_732227F0A1884A568BFA50DB2DFCE5AE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -920,7 +1006,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\packages\\Newtonsoft.Json.10.0.3\\Newtonsoft.Json.10.0.3.nupkg"
             "TargetName" = "8:Newtonsoft.Json.10.0.3.nupkg"
             "Tag" = "8:"
-            "Folder" = "8:_342760E8C823486FA427246D57AB3CFA"
+            "Folder" = "8:_16FB480426784E99B611EB465F85C432"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1033,7 +1119,7 @@
             "SourcePath" = "8:..\\..\\WVA_Keychain_Synch\\Release\\Csp2.dll"
             "TargetName" = "8:Csp2.dll"
             "Tag" = "8:"
-            "Folder" = "8:_2D4DAE62AD5345D4AA7AE68E7115E8B3"
+            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1046,37 +1132,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_273016DBD18C8FEBCBCD103F76942509"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Opticon.csp2.net, Version=1.0.7.0, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_273016DBD18C8FEBCBCD103F76942509"
-                    {
-                    "Name" = "8:Opticon.csp2.net.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Opticon.csp2.net.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_2D4DAE62AD5345D4AA7AE68E7115E8B3"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2CFE0735A47C414A8065D8B9EB20E8B9"
@@ -1172,46 +1227,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3783DCD0136142AC8B717EFCBF06CE60"
-            {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\AssemblyInfo.cs"
-            "TargetName" = "8:AssemblyInfo.cs"
-            "Tag" = "8:"
-            "Folder" = "8:_5B5935D8D38F4802ADD02A2AC71C7F1B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3B2902C06D0F4A508CA07E0BED8DD34D"
-            {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\Resources.resx"
-            "TargetName" = "8:Resources.resx"
-            "Tag" = "8:"
-            "Folder" = "8:_5B5935D8D38F4802ADD02A2AC71C7F1B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4138F7916E6B4AE8BA131125BAA676A4"
             {
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\packages\\Newtonsoft.Json.10.0.3\\lib\\netstandard1.3\\Newtonsoft.Json.xml"
@@ -1299,7 +1314,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\ReadStock+UPC.txt"
             "TargetName" = "8:ReadStock+UPC.txt"
             "Tag" = "8:"
-            "Folder" = "8:_733FA75E88AF4FA48B2A8A88D210DDC3"
+            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1314,12 +1329,23 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4E3CCA9E0646448DB0F9DA52EEDB7407"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4EA56DCA7C5E4E6682CB822AF388F86F"
             {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\Settings.Designer.cs"
-            "TargetName" = "8:Settings.Designer.cs"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Keychain Synch, Version=2.0.4.9, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_4EA56DCA7C5E4E6682CB822AF388F86F"
+                    {
+                    "Name" = "8:Keychain Synch.ico"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\..\\WorkStuff\\Logos\\Keychain Synch.ico"
+            "TargetName" = "8:"
             "Tag" = "8:"
-            "Folder" = "8:_5B5935D8D38F4802ADD02A2AC71C7F1B"
+            "Folder" = "8:_6EB68CC6EB884170BF7AEEAC4B2D2F08"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1425,26 +1451,6 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_54666CE8345B4DCD84DC3353919C5F29"
-            {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\Settings.settings"
-            "TargetName" = "8:Settings.settings"
-            "Tag" = "8:"
-            "Folder" = "8:_5B5935D8D38F4802ADD02A2AC71C7F1B"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_570BB7D67727465DB59E95D4EC5D5D6F"
@@ -1565,7 +1571,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\Data.txt"
             "TargetName" = "8:Data.txt"
             "Tag" = "8:"
-            "Folder" = "8:_733FA75E88AF4FA48B2A8A88D210DDC3"
+            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1605,7 +1611,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\app.config"
             "TargetName" = "8:app.config"
             "Tag" = "8:"
-            "Folder" = "8:_0B5A662BA05C4DB3BD8C0EA6C1293643"
+            "Folder" = "8:_0FEDB67C1BF54B748EF9A457918AC43F"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1682,37 +1688,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6D1CDB9B084BCF9E6BF97CD4DAA1041F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_6D1CDB9B084BCF9E6BF97CD4DAA1041F"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_2D4DAE62AD5345D4AA7AE68E7115E8B3"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6E3A1F10D36C63130A65148C2603A012"
             {
             "AssemblyRegister" = "3:1"
@@ -1730,6 +1705,57 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_05E750B526FF4E6DA6A1478134D6B4F9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6EEC6539A5EF4CB9A41F0574C227E02D"
+            {
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\AssemblyInfo.cs"
+            "TargetName" = "8:AssemblyInfo.cs"
+            "Tag" = "8:"
+            "Folder" = "8:_732227F0A1884A568BFA50DB2DFCE5AE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_772F3B9E3EB9C6505CE10530E93A6E96"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Opticon.csp2.net, Version=1.0.7.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_772F3B9E3EB9C6505CE10530E93A6E96"
+                    {
+                    "Name" = "8:Opticon.csp2.net.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Opticon.csp2.net.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1811,7 +1837,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\Release\\Newtonsoft.Json.xml"
             "TargetName" = "8:Newtonsoft.Json.xml"
             "Tag" = "8:"
-            "Folder" = "8:_2D4DAE62AD5345D4AA7AE68E7115E8B3"
+            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1862,7 +1888,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\ReadUPC_Only.txt"
             "TargetName" = "8:ReadUPC_Only.txt"
             "Tag" = "8:"
-            "Folder" = "8:_733FA75E88AF4FA48B2A8A88D210DDC3"
+            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1944,7 +1970,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\Resources\\WVA.jpg"
             "TargetName" = "8:WVA.jpg"
             "Tag" = "8:"
-            "Folder" = "8:_0D94C1F71BAB4F63B012C5E57D01604B"
+            "Folder" = "8:_6EB68CC6EB884170BF7AEEAC4B2D2F08"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2097,7 +2123,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\ReadStockOnly.txt"
             "TargetName" = "8:ReadStockOnly.txt"
             "Tag" = "8:"
-            "Folder" = "8:_733FA75E88AF4FA48B2A8A88D210DDC3"
+            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2132,12 +2158,83 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D3ABCF10FD9C4DEAA0416F5BC4FBFAAD"
+            {
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\Settings.Designer.cs"
+            "TargetName" = "8:Settings.Designer.cs"
+            "Tag" = "8:"
+            "Folder" = "8:_732227F0A1884A568BFA50DB2DFCE5AE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DE4DBB5E1882EA7F1025F60FDE805765"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_DE4DBB5E1882EA7F1025F60FDE805765"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DFD42E7D2A584F0EA4CDDDB50E6E8AD9"
             {
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\packages.config"
             "TargetName" = "8:packages.config"
             "Tag" = "8:"
-            "Folder" = "8:_0B5A662BA05C4DB3BD8C0EA6C1293643"
+            "Folder" = "8:_0FEDB67C1BF54B748EF9A457918AC43F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E14A24B6DD2E4887BB51DA279E852EF5"
+            {
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Properties\\Resources.resx"
+            "TargetName" = "8:Resources.resx"
+            "Tag" = "8:"
+            "Folder" = "8:_732227F0A1884A568BFA50DB2DFCE5AE"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2265,6 +2362,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E9D050DD8B9192FB1FF443778ADDED9F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:TRUE"
+            "AssemblyAsmDisplayName" = "8:ADODB, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+                "ScatterAssemblies"
+                {
+                    "_E9D050DD8B9192FB1FF443778ADDED9F"
+                    {
+                    "Name" = "8:ADODB.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ADODB.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_6EB68CC6EB884170BF7AEEAC4B2D2F08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_ED1C05193FF348459EA9204163238E5A"
             {
             "AssemblyRegister" = "3:1"
@@ -2301,7 +2429,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\KS_ErrorLog.txt"
             "TargetName" = "8:KS_ErrorLog.txt"
             "Tag" = "8:"
-            "Folder" = "8:_733FA75E88AF4FA48B2A8A88D210DDC3"
+            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2321,7 +2449,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\Account_Number.txt"
             "TargetName" = "8:Account_Number.txt"
             "Tag" = "8:"
-            "Folder" = "8:_733FA75E88AF4FA48B2A8A88D210DDC3"
+            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2403,7 +2531,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\packages\\Newtonsoft.Json.10.0.3\\LICENSE.md"
             "TargetName" = "8:LICENSE.md"
             "Tag" = "8:"
-            "Folder" = "8:_342760E8C823486FA427246D57AB3CFA"
+            "Folder" = "8:_16FB480426784E99B611EB465F85C432"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2426,7 +2554,7 @@
         {
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_0B5A662BA05C4DB3BD8C0EA6C1293643"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFilesFolder]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -2434,189 +2562,200 @@
             "Property" = "8:TARGETDIR"
                 "Folders"
                 {
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0D94C1F71BAB4F63B012C5E57D01604B"
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_0FEDB67C1BF54B748EF9A457918AC43F"
                     {
-                    "Name" = "8:Resources"
+                    "Name" = "8:WVA_Keychain_Synch"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
-                    "Property" = "8:_5173DD088A3540018C5D05DAAFA7AD7F"
+                    "Property" = "8:_3929BB99FE704E75A794E42D0D8014AE"
                         "Folders"
                         {
-                        }
-                    }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_2D4DAE62AD5345D4AA7AE68E7115E8B3"
-                    {
-                    "Name" = "8:Release"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_8D12BC56C8F14244A859439429CB05DF"
-                        "Folders"
-                        {
-                        }
-                    }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_46FB6312F67647B3B077C3E2F6B8BA50"
-                    {
-                    "Name" = "8:ScannerData"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_1CEC8B0E6ABC4A4BAA1947092BD026CF"
-                        "Folders"
-                        {
-                        }
-                    }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_5B5935D8D38F4802ADD02A2AC71C7F1B"
-                    {
-                    "Name" = "8:Properties"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_3952882DB5914B3AAD5DA3F3E8EA901B"
-                        "Folders"
-                        {
-                        }
-                    }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_733FA75E88AF4FA48B2A8A88D210DDC3"
-                    {
-                    "Name" = "8:TextDocs"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_D53A83F016144D53A6B7D2D4F4B45F42"
-                        "Folders"
-                        {
-                        }
-                    }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_E740669B5E2648CEB41A1A6212A48ED1"
-                    {
-                    "Name" = "8:packages"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_16CFDA4C1B7746A98539CE769E38FA3E"
-                        "Folders"
-                        {
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_342760E8C823486FA427246D57AB3CFA"
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_6EB68CC6EB884170BF7AEEAC4B2D2F08"
                             {
-                            "Name" = "8:Newtonsoft.Json.10.0.3"
+                            "Name" = "8:Resources"
                             "AlwaysCreate" = "11:FALSE"
                             "Condition" = "8:"
                             "Transitive" = "11:FALSE"
-                            "Property" = "8:_1E57548065FB4D86AD840818FA18C8D6"
+                            "Property" = "8:_5173DD088A3540018C5D05DAAFA7AD7F"
                                 "Folders"
                                 {
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_E9E0995178AD45528EAD79EB709B8FFF"
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_732227F0A1884A568BFA50DB2DFCE5AE"
+                            {
+                            "Name" = "8:Properties"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_863813E44ADD4A08B9B4D81E038CE8D1"
+                                "Folders"
+                                {
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_73C70D8B9191402C8B0FA2A0C8851E6F"
+                            {
+                            "Name" = "8:packages"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_16CFDA4C1B7746A98539CE769E38FA3E"
+                                "Folders"
+                                {
+                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_16FB480426784E99B611EB465F85C432"
                                     {
-                                    "Name" = "8:tools"
+                                    "Name" = "8:Newtonsoft.Json.10.0.3"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
-                                    "Property" = "8:_F93CEFB879334A9A9493F9E57B2B5E9A"
+                                    "Property" = "8:_1E57548065FB4D86AD840818FA18C8D6"
                                         "Folders"
                                         {
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_E9E0995178AD45528EAD79EB709B8FFF"
+                                            {
+                                            "Name" = "8:tools"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_F93CEFB879334A9A9493F9E57B2B5E9A"
+                                                "Folders"
+                                                {
+                                                }
+                                            }
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_F0DDB701D9734E358F6BCAEAB8BA5152"
+                                            {
+                                            "Name" = "8:lib"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_EE8C6F98C4674B399098F3AFC4171877"
+                                                "Folders"
+                                                {
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_05E750B526FF4E6DA6A1478134D6B4F9"
+                                                    {
+                                                    "Name" = "8:netstandard1.0"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_F316F2EE060F42F9852A9FC9E6C842EA"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_2DDD5411E35F45C786CF40CE425B60D6"
+                                                    {
+                                                    "Name" = "8:net40"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_7329BAEE2A8E4C9B80E63A6B2A9BA19A"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_35C68DD55BFD46FD8B3CED0BAAA55624"
+                                                    {
+                                                    "Name" = "8:portable-net45+win8+wp8+wpa81"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_DB81C2FA63534BC98ED34244104A4E94"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_3F721D6F52BB443AA43F315033E746DA"
+                                                    {
+                                                    "Name" = "8:net20"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_99B8BFDBF3694E8CB332FDEE33D02B5A"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_796690F5D3824BD7A1092CA24A23BE15"
+                                                    {
+                                                    "Name" = "8:portable-net40+sl5+win8+wp8+wpa81"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_D1971BE7C1474EF0B24B993950D944E4"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_7CAA937EF39C48E58EE48E0533E882FE"
+                                                    {
+                                                    "Name" = "8:netstandard1.3"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_B8AFC6A8B1FF42C791507AE2402582FF"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_B8A7F2E490C547D788979A1259B75098"
+                                                    {
+                                                    "Name" = "8:net35"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_32A3596709EF4AF3B5031564959A2670"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_D764219DD95646F6B0F0BE0283DFB8E4"
+                                                    {
+                                                    "Name" = "8:net45"
+                                                    "AlwaysCreate" = "11:FALSE"
+                                                    "Condition" = "8:"
+                                                    "Transitive" = "11:FALSE"
+                                                    "Property" = "8:_3FDA64B3ED5B47A9BC15FC81D7924364"
+                                                        "Folders"
+                                                        {
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
-                                    "{9EF0B969-E518-4E46-987F-47570745A589}:_F0DDB701D9734E358F6BCAEAB8BA5152"
-                                    {
-                                    "Name" = "8:lib"
-                                    "AlwaysCreate" = "11:FALSE"
-                                    "Condition" = "8:"
-                                    "Transitive" = "11:FALSE"
-                                    "Property" = "8:_EE8C6F98C4674B399098F3AFC4171877"
-                                        "Folders"
-                                        {
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_05E750B526FF4E6DA6A1478134D6B4F9"
-                                            {
-                                            "Name" = "8:netstandard1.0"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_F316F2EE060F42F9852A9FC9E6C842EA"
-                                                "Folders"
-                                                {
-                                                }
-                                            }
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_2DDD5411E35F45C786CF40CE425B60D6"
-                                            {
-                                            "Name" = "8:net40"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_7329BAEE2A8E4C9B80E63A6B2A9BA19A"
-                                                "Folders"
-                                                {
-                                                }
-                                            }
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_35C68DD55BFD46FD8B3CED0BAAA55624"
-                                            {
-                                            "Name" = "8:portable-net45+win8+wp8+wpa81"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_DB81C2FA63534BC98ED34244104A4E94"
-                                                "Folders"
-                                                {
-                                                }
-                                            }
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_3F721D6F52BB443AA43F315033E746DA"
-                                            {
-                                            "Name" = "8:net20"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_99B8BFDBF3694E8CB332FDEE33D02B5A"
-                                                "Folders"
-                                                {
-                                                }
-                                            }
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_796690F5D3824BD7A1092CA24A23BE15"
-                                            {
-                                            "Name" = "8:portable-net40+sl5+win8+wp8+wpa81"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_D1971BE7C1474EF0B24B993950D944E4"
-                                                "Folders"
-                                                {
-                                                }
-                                            }
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_7CAA937EF39C48E58EE48E0533E882FE"
-                                            {
-                                            "Name" = "8:netstandard1.3"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_B8AFC6A8B1FF42C791507AE2402582FF"
-                                                "Folders"
-                                                {
-                                                }
-                                            }
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_B8A7F2E490C547D788979A1259B75098"
-                                            {
-                                            "Name" = "8:net35"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_32A3596709EF4AF3B5031564959A2670"
-                                                "Folders"
-                                                {
-                                                }
-                                            }
-                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_D764219DD95646F6B0F0BE0283DFB8E4"
-                                            {
-                                            "Name" = "8:net45"
-                                            "AlwaysCreate" = "11:FALSE"
-                                            "Condition" = "8:"
-                                            "Transitive" = "11:FALSE"
-                                            "Property" = "8:_3FDA64B3ED5B47A9BC15FC81D7924364"
-                                                "Folders"
-                                                {
-                                                }
-                                            }
-                                        }
-                                    }
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_7610BB3077D843FF8A7C96EC79EDFF22"
+                            {
+                            "Name" = "8:Release"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_8D12BC56C8F14244A859439429CB05DF"
+                                "Folders"
+                                {
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_DCF55951AB0C42179D8924FCB0329DDD"
+                            {
+                            "Name" = "8:TextDocs"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_D53A83F016144D53A6B7D2D4F4B45F42"
+                                "Folders"
+                                {
+                                }
+                            }
+                            "{9EF0B969-E518-4E46-987F-47570745A589}:_DE23291988C7434DA50D2DE15C2D907A"
+                            {
+                            "Name" = "8:ScannerData"
+                            "AlwaysCreate" = "11:FALSE"
+                            "Condition" = "8:"
+                            "Transitive" = "11:FALSE"
+                            "Property" = "8:_1CEC8B0E6ABC4A4BAA1947092BD026CF"
+                                "Folders"
+                                {
                                 }
                             }
                         }
@@ -2662,7 +2801,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WVA_Keychain_Synch_Setup"
         "ProductCode" = "8:{4914904A-8B42-4273-B51D-C9E7968A6D1A}"
-        "PackageCode" = "8:{5FF2D43A-F36C-4309-9AA5-99D2BF0A62A7}"
+        "PackageCode" = "8:{C2A1DB36-4503-465B-BA24-1BFA89606E37}"
         "UpgradeCode" = "8:{C63B0803-5A47-44F5-8D30-232BBDF39F71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2670,12 +2809,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:Wisconsin Vision Associates"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:WVA_Keychain_Synch_Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:WVA Keychain Synch"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -2782,6 +2921,20 @@
         }
         "Shortcut"
         {
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_0FE4DA9DD8C948CB93545BD3261BACE2"
+            {
+            "Name" = "8:WVA Keychain Synch"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:32512"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
+            "Folder" = "8:_ABE5E9CC9A2044E49C91C13824FBB2BC"
+            "WorkingFolder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
+            "Icon" = "8:_4EA56DCA7C5E4E6682CB822AF388F86F"
+            "Feature" = "8:"
+            }
         }
         "UserInterface"
         {
@@ -3181,7 +3334,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_13B17A576B4E46CDA002F5FD81606663"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_448EA85FCD4E42CAA19EDBF0F1200E4A"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -3209,7 +3362,35 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3FBEFA693381402FA1E00D71EF55612A"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_81CF87D8A84147EA87C581AEFEA9211F"
+            {
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\obj\\x86\\Release\\Csp2dotnet.exe"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:Built"
+            "OutputProjectGuid" = "8:{E3026F78-3952-4CD8-BF22-D0C7B3AEE15B}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_9E7F23CA501A4E479DA43E904778EF74"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -3237,63 +3418,7 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_7DF7D7F8D68C47E9ADA81B56AB98BA75"
-            {
-            "SourcePath" = "8:"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_0B5A662BA05C4DB3BD8C0EA6C1293643"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Symbols"
-            "OutputProjectGuid" = "8:{E3026F78-3952-4CD8-BF22-D0C7B3AEE15B}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_81CF87D8A84147EA87C581AEFEA9211F"
-            {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\obj\\x86\\Release\\Csp2dotnet.exe"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_2D4DAE62AD5345D4AA7AE68E7115E8B3"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:"
-            "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{E3026F78-3952-4CD8-BF22-D0C7B3AEE15B}"
-            "ShowKeyOutput" = "11:TRUE"
-                "ExcludeFilters"
-                {
-                }
-            }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B77968FB8B854DCA88633A261D7E7D8A"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E16A2ADCBF6F4CFDAA81ADACEAB1953D"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"

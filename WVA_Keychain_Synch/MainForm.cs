@@ -398,7 +398,6 @@ namespace Csp2dotnet
         {
             try
             {
-                // https://ws2.wisvis.com/aws/test/order.php
                 // https://ws2-qa.wisvis.com/aws/scanner/final.rb
                 string MessageFromApi = "";
                 var json = JsonConvert.SerializeObject(data);
