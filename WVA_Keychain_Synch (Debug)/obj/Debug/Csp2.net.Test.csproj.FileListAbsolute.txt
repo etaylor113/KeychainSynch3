@@ -1,0 +1,8 @@
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Debug\WVA_Keychain_Synch.ActNumErrorForm.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Debug\WVA_Keychain_Synch.ErrorMessage.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Debug\WVA_Keychain_Synch.MainForm.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Debug\WVA_Keychain_Synch.MessageForm.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Debug\WVA_Keychain_Synch.PrefCompleted.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Debug\WVA_Keychain_Synch.Properties.Resources.resources
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Debug\Csp2.net.Test.csproj.GenerateResource.Cache
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Debug\Csp2.net.Test.csproj.CoreCompileInputs.cache
