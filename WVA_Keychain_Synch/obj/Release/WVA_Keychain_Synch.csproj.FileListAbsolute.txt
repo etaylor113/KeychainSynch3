@@ -14,3 +14,4 @@ C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\Release\Opticon.csp
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\Release\Newtonsoft.Json.xml
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\WVA_Keychain_Synch.exe
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\WVA_Keychain_Synch.pdb
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\WVA_Keychain_Synch.csprojResolveAssemblyReference.cache

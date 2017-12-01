@@ -21,6 +21,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_04648F2EA0FD4D3EB5556AB9B300C8F8"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_05B7A6632640B31E75845262C4D469B0"
         "OwnerKey" = "8:_BA8FBF76B0514EFEB563E6F0CC980BB0"
         "MsmSig" = "8:_UNDEFINED"
@@ -233,12 +239,6 @@
         {
         "MsmKey" = "8:_5E1A7AF49E6F5D9285F9B26FD733DD2D"
         "OwnerKey" = "8:_E66FA7D2ED7A4B8C9782C037B2CA665A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_61A5EF19973B449A946E2B0E51EDF093"
-        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -508,18 +508,6 @@
         "Entry"
         {
         "MsmKey" = "8:_ED1C05193FF348459EA9204163238E5A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_EF975EB0088D40E9B0E95F51EB9A94F0"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F192AB5B1CAF438C82992EC9ECD786CC"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -876,6 +864,26 @@
             "TargetName" = "8:app.manifest"
             "Tag" = "8:"
             "Folder" = "8:_732227F0A1884A568BFA50DB2DFCE5AE"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_04648F2EA0FD4D3EB5556AB9B300C8F8"
+            {
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\Data.txt"
+            "TargetName" = "8:Data.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1566,26 +1574,6 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61A5EF19973B449A946E2B0E51EDF093"
-            {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\Data.txt"
-            "TargetName" = "8:Data.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_64FC96288F5449E0AAF7BCDFA1DCF8F8"
             {
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\packages\\Newtonsoft.Json.10.0.3\\lib\\portable-net40+sl5+win8+wp8+wpa81\\Newtonsoft.Json.xml"
@@ -1611,7 +1599,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\app.config"
             "TargetName" = "8:app.config"
             "Tag" = "8:"
-            "Folder" = "8:_0FEDB67C1BF54B748EF9A457918AC43F"
+            "Folder" = "8:_0B5A662BA05C4DB3BD8C0EA6C1293643"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2214,7 +2202,7 @@
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\packages.config"
             "TargetName" = "8:packages.config"
             "Tag" = "8:"
-            "Folder" = "8:_0FEDB67C1BF54B748EF9A457918AC43F"
+            "Folder" = "8:_0B5A662BA05C4DB3BD8C0EA6C1293643"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2410,46 +2398,6 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2DDD5411E35F45C786CF40CE425B60D6"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_EF975EB0088D40E9B0E95F51EB9A94F0"
-            {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\KS_ErrorLog.txt"
-            "TargetName" = "8:KS_ErrorLog.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F192AB5B1CAF438C82992EC9ECD786CC"
-            {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\TextDocs\\Account_Number.txt"
-            "TargetName" = "8:Account_Number.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_DCF55951AB0C42179D8924FCB0329DDD"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2747,17 +2695,6 @@
                                 {
                                 }
                             }
-                            "{9EF0B969-E518-4E46-987F-47570745A589}:_DE23291988C7434DA50D2DE15C2D907A"
-                            {
-                            "Name" = "8:ScannerData"
-                            "AlwaysCreate" = "11:FALSE"
-                            "Condition" = "8:"
-                            "Transitive" = "11:FALSE"
-                            "Property" = "8:_1CEC8B0E6ABC4A4BAA1947092BD026CF"
-                                "Folders"
-                                {
-                                }
-                            }
                         }
                     }
                 }
@@ -2801,7 +2738,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WVA_Keychain_Synch_Setup"
         "ProductCode" = "8:{4914904A-8B42-4273-B51D-C9E7968A6D1A}"
-        "PackageCode" = "8:{C2A1DB36-4503-465B-BA24-1BFA89606E37}"
+        "PackageCode" = "8:{336BE2A9-E531-426D-B6A9-C2E0B05E511D}"
         "UpgradeCode" = "8:{C63B0803-5A47-44F5-8D30-232BBDF39F71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -2931,6 +2868,20 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
             "Folder" = "8:_ABE5E9CC9A2044E49C91C13824FBB2BC"
+            "WorkingFolder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
+            "Icon" = "8:_4EA56DCA7C5E4E6682CB822AF388F86F"
+            "Feature" = "8:"
+            }
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8C6C51EA06134412B99E1EA67F214E2E"
+            {
+            "Name" = "8:WVA Keychain Synch"
+            "Arguments" = "8:"
+            "Description" = "8:"
+            "ShowCmd" = "3:1"
+            "IconIndex" = "3:32512"
+            "Transitive" = "11:FALSE"
+            "Target" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
+            "Folder" = "8:_0FEDB67C1BF54B748EF9A457918AC43F"
             "WorkingFolder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
             "Icon" = "8:_4EA56DCA7C5E4E6682CB822AF388F86F"
             "Feature" = "8:"
@@ -3364,7 +3315,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_81CF87D8A84147EA87C581AEFEA9211F"
             {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\obj\\x86\\Release\\Csp2dotnet.exe"
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\obj\\x86\\Release\\WVA_Keychain_Synch.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
