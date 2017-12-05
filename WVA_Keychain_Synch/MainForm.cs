@@ -134,17 +134,15 @@ namespace WVA_Keychain_Synch
                         labelNumBarcodes.Text = ReadBarcodes.ToString();
                     });
 
-                    if (DataSend == true)
-                    {
-                        try
+                        if (DataSend == true)
                         {
-                            if (AccountNumber != null && AccountNumber != "")
+                            try
                             {
-                                string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                                string ErrorFileName = (dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
-
-                                using (System.IO.StreamWriter file = new System.IO.StreamWriter(dirAppData + @"\WVA_Keychain_Synch\Data.txt"))
+                                if (AccountNumber != null && AccountNumber != "")
                                 {
+                                    string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                                    string ErrorFileName = (dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
+                              
                                     data.Clear();
                               
                                     if (File.Exists(ErrorFileName))
@@ -159,8 +157,7 @@ namespace WVA_Keychain_Synch
                                         }
                                         File.Delete(ErrorFileName);
                                     }
-
-                                
+                          
                                     string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                                     data.Add(time);
 
@@ -196,21 +193,20 @@ namespace WVA_Keychain_Synch
                                         writer.Write("\r\n" + sbBarcodes);
 
                                         writer.Close();
-                                    }
-                                file.Close();
+                                    }                             
                                 }
                             }
-                        }
-                        catch (Exception e1)
-                        {
-                            Error = e1.ToString();
-                            Error += "(Location: CallBack() :DataSend Block)";
-                            PrintToErrorLog();
-                        }
+                            catch (Exception e1)
+                            {
+                                Error = e1.ToString();
+                                Error += "(Location: CallBack() :DataSend Block)";
+                                PrintToErrorLog();
+                            }
 
-                    DataSend = false;
-                    return;
-                }
+                        DataSend = false;
+                        return;
+
+                        }
                     if (ClearData == true)
                     {
                         if (Opticon.csp2.ClearData(nComport) != 0)
@@ -315,13 +311,16 @@ namespace WVA_Keychain_Synch
                 string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 string DirErrorLog = (dirAppData + @"\WVA_Keychain_Synch\ErrorLog\");
 
-                if (!Directory.Exists(DirErrorLog))
+                if (!Directory.Exists(DirErrorLog)) { }
                     Directory.CreateDirectory(DirErrorLog);
 
                 if (!File.Exists(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt"))
-                    File.Create(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
-
-                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt"))
+                {
+                   var file = File.Create(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
+                    file.Close();
+                }
+                                 
+                using (System.IO.StreamWriter writer = new System.IO.StreamWriter((dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt"), true))
                 {
                     writer.Write(Error);
                     writer.Close();
