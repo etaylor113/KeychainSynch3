@@ -111,7 +111,6 @@ namespace WVA_Keychain_Synch
                         Ports.Remove(nComport);
                 }
 
-                //Changes Connection Status Label
                 BeginInvoke((Action)delegate ()
                 {
                     if (Ports.Count > 0)
@@ -126,13 +125,10 @@ namespace WVA_Keychain_Synch
 
                 if (iRet >= 0L)
                 {
-                    Trace.WriteLine("\nOPN-2001 Connected at " + nComport);
                     Int32 iCount = iRet;   
-                    Trace.WriteLine(String.Format("Number of barcodes = {0}", iCount));
 
                     ReadBarcodes = iCount;
-
-                    //Changes Quantity Scanned Label
+                
                     BeginInvoke((Action)delegate ()
                     {
                         labelNumBarcodes.Text = ReadBarcodes.ToString();
@@ -145,12 +141,26 @@ namespace WVA_Keychain_Synch
                             if (AccountNumber != null && AccountNumber != "")
                             {
                                 string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                                string ErrorFileName = (dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
 
                                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(dirAppData + @"\WVA_Keychain_Synch\Data.txt"))
                                 {
                                     data.Clear();
-                                    Trace.WriteLine("\nCreating file...");
+                              
+                                    if (File.Exists(ErrorFileName))
+                                    {
+                                        string DirErrorLog = (ErrorFileName);
+                                        string[] readErrorLog = File.ReadAllLines(DirErrorLog);
 
+                                        foreach (var line in readErrorLog)
+                                        {
+                                            if (line != "")
+                                                data.Add("<Error> " + line);
+                                        }
+                                        File.Delete(ErrorFileName);
+                                    }
+
+                                
                                     string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                                     data.Add(time);
 
@@ -170,13 +180,12 @@ namespace WVA_Keychain_Synch
                                         Opticon.csp2.BarCodeDataPacket aPacket;
                                         iRet = Opticon.csp2.GetPacket(out aPacket, i, nComport);
                                         if (aPacket.strBarData != null)
-                                        {
+                                        {                                       
                                             data.Add(aPacket.strBarData.ToString());
                                             sbBarcodes.AppendLine(String.Format("<Item>" + "\t" + aPacket.strBarData));
                                         }
                                     };
 
-                                    //Create backup files for support team to reference
                                     using (System.IO.StreamWriter writer =
                                            new System.IO.StreamWriter(dirAppData + @"\WVA_Keychain_Synch\ScannerData\" + time))
                                     {
@@ -195,30 +204,26 @@ namespace WVA_Keychain_Synch
                         catch (Exception e1)
                         {
                             Error = e1.ToString();
+                            Error += "(Location: CallBack() :DataSend Block)";
                             PrintToErrorLog();
                         }
 
                     DataSend = false;
                     return;
                 }
-
                     if (ClearData == true)
                     {
                         if (Opticon.csp2.ClearData(nComport) != 0)
                         {
                             Error = "Erasing Failed!";
+                            Error += "(Location: CallBack() :ClearData Block)";
                             PrintToErrorLog();
-                    }
+                        }
                         ReadBarcodes = 0;
                         ClearData = false;
                     }
                 }
-                else
-                {
-                    Trace.WriteLine("OPN-2001 Disconnected from " + nComport);
-                }
-                //Slow down thread polling to consume less memory
-            Thread.Sleep(2000);
+            Thread.Sleep(1000);                          
         }
 
         public MainForm()
@@ -232,8 +237,7 @@ namespace WVA_Keychain_Synch
         }
 
         private void BindObjsToBkrd()
-        {
-            // Allows labels to be bound to background image and set as transparent
+        { 
             try
             {
                 var pos = labelContact.Location;
@@ -299,26 +303,33 @@ namespace WVA_Keychain_Synch
             catch (Exception e)
             {
                 Error = e.ToString();
+                Error += "(Location: BindObjsToBkrd)";
                 PrintToErrorLog();
             }
         }
 
         public void PrintToErrorLog()
         {
-            string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string DirErrorLog = (dirAppData + @"\WVA_Keychain_Synch\ErrorLog\");
-
-            if (Directory.Exists(DirErrorLog) == false)
-                Directory.CreateDirectory(DirErrorLog);
-
-            if (!File.Exists(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt"))
-                File.Create(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
-
-            using (System.IO.StreamWriter writer = new System.IO.StreamWriter(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt"))
+            try
             {
-                writer.Write(Error);
-                writer.Close();
+                string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+                string DirErrorLog = (dirAppData + @"\WVA_Keychain_Synch\ErrorLog\");
+
+                if (!Directory.Exists(DirErrorLog))
+                    Directory.CreateDirectory(DirErrorLog);
+
+                if (!File.Exists(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt"))
+                    File.Create(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
+
+                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt"))
+                {
+                    writer.Write(Error);
+                    writer.Close();
+                }
+
+                Error = "";
             }
+            catch{};
         }
 
         private void CreateDirs()
@@ -338,6 +349,7 @@ namespace WVA_Keychain_Synch
                 catch (Exception e1)
                 {
                     Error = e1.ToString();
+                    Error += "(Location: CreateDirs() :e1)";
                     PrintToErrorLog();
                 }
 
@@ -349,6 +361,7 @@ namespace WVA_Keychain_Synch
                 catch (Exception e2)
                 {
                     Error = e2.ToString();
+                    Error += "(Location: CreateDirs() :e2)";
                     PrintToErrorLog();
                 }
 
@@ -367,12 +380,14 @@ namespace WVA_Keychain_Synch
                 catch (Exception e3)
                 {
                     Error = e3.ToString();
+                    Error += "(Location: CreateDirs() :e3)";
                     PrintToErrorLog();
                 }
             }
             catch (Exception e4)
             {
                 Error = e4.ToString();
+                Error += "(Location: CreateDirs() :e4)";
                 PrintToErrorLog();
             }
         }
@@ -411,25 +426,19 @@ namespace WVA_Keychain_Synch
             catch(Exception e)
             {
                 Error = e.ToString();
+                Error += "(Location: CleanDirectory())";
                 PrintToErrorLog();
             }
         }
 
         bool Started = false;
-        Opticon.csp2.csp2CallBackFunctionAll Csp2Callback = null;   // Make global to avoid garbage collector from disgarding the call-back
+        Opticon.csp2.csp2CallBackFunctionAll Csp2Callback = null; 
 
         public void Start()
         {
             if (!Started)
             {
                 Int32 iRet;
-
-                Trace.WriteLine("csp2.SetDebugMode(...)");
-                iRet = Opticon.csp2.SetDebugMode(1);
-                if (iRet != 0)
-                {
-                    Trace.WriteLine(" Fail!");
-                }
 
                 StringBuilder szDLLVersion = new StringBuilder(256);
                 iRet = Opticon.csp2.GetDllVersion(szDLLVersion, 100);
@@ -446,8 +455,6 @@ namespace WVA_Keychain_Synch
 
                 int Count = Opticon.csp2.GetOpnCompatiblePorts(ports);
 
-                Trace.WriteLine("csp2.StartPollingAll()");
-
                 if (Csp2Callback == null)
                     Csp2Callback = new Opticon.csp2.csp2CallBackFunctionAll(CallbackFunction);
 
@@ -455,7 +462,6 @@ namespace WVA_Keychain_Synch
 
                 if (iRet != 0)
                 {
-                    Trace.WriteLine(String.Format(" Fail! {0} ", iRet));
                     return;
                 }
               
@@ -476,9 +482,12 @@ namespace WVA_Keychain_Synch
         {
             try
             {
-                //turn off button so user can't spam api calls
+                this.Cursor = Cursors.WaitCursor;
                 sendData.Enabled = false;
                 DataSend = true;
+                
+                Thread.Sleep(500);
+                Start();
                 CallbackFunction(ComCheck);
 
                 if (AccountNumber != null && AccountNumber != "")
@@ -488,22 +497,22 @@ namespace WVA_Keychain_Synch
                 }
                 else
                 {
-                    //If api fails, open form telling user there was a problem
                     var anef = new ActNumErrorForm();
                     if (Application.OpenForms.OfType<ActNumErrorForm>().Count() == 1)
                         Application.OpenForms.OfType<ActNumErrorForm>().First().Close();
                     anef.ShowDialog();
-                }
-
-                //turn button back on after api has finished executing 
+                }   
+           
                 sendData.Enabled = true;
-                //Attempt to jumpstart main thread to life again to begin polling
+                this.Cursor = Cursors.Arrow;
+
                 Start();
                 CallbackFunction(ComCheck);
             }
             catch (Exception e1)
             {
                 Error = e1.ToString();
+                Error += "(Location: SendDataClick())";
                 PrintToErrorLog();
             }
         }
@@ -542,17 +551,14 @@ namespace WVA_Keychain_Synch
                         return;
                     }
                                    
-                    Trace.WriteLine(MessageFromApi);
                     reader.Close();
                 }
 
-                Trace.WriteLine(((HttpWebResponse)response).StatusDescription);
                 response.Close();
 
                 if ((((HttpWebResponse)response).StatusDescription) == "OK")
                 {
                     ClearData = true;
-                    Trace.WriteLine("=== API Successful!");
 
                     MessageForm.Response = MessageFromApi;
                     MessageForm message = new MessageForm();
@@ -572,6 +578,7 @@ namespace WVA_Keychain_Synch
                 message.ShowDialog();
 
                 Error = e.ToString();
+                Error += "(Location: RunApi())";
                 PrintToErrorLog();
             }
         }
@@ -608,34 +615,31 @@ namespace WVA_Keychain_Synch
             catch (System.AccessViolationException e)
             {
                 Error = e.ToString();
+                Error += "(Location: SetParameters)";
                 PrintToErrorLog();
             }
             PrefPB.Value = 0;
             Start();         
         }
 
-        // Scan UPC only button (tab3)
         private void button2_Click(object sender, EventArgs e)
         {
             TxtReader = "ReadUPC_Only.txt";
             SetParameters();
         }
 
-        // Scan OPC only button (tab3)
         private void button3_Click(object sender, EventArgs e)
         {
             TxtReader = "ReadStockOnly.txt";
             SetParameters();
         }
 
-        // Scan both UPC and OPC button (tab3)
         private void button4_Click(object sender, EventArgs e)
         {
             TxtReader = "ReadStock+UPC.txt";
             SetParameters();
         }
                 
-        // Contact info link (tab4)
         private void LLContact_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -645,11 +649,11 @@ namespace WVA_Keychain_Synch
             catch (Exception e1)
             {
                 Error = e1.ToString();
+                Error += "(Location: LLContact_LinkClicked())";
                 PrintToErrorLog();
             }
         }
 
-        // Review order link (tab2)
         private void LLViewCart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
@@ -659,12 +663,12 @@ namespace WVA_Keychain_Synch
             catch (Exception e1)
             {
                 Error = e1.ToString();
+                Error += "(Location: LLViewCart_LinkClicked())";
                 PrintToErrorLog();
             }
         }
 
-        // Set Account number button (tab2)
-        private void button5_Click(object sender, EventArgs e)
+        private void SetAccountNumberBtn(object sender, EventArgs e)
          {
             try
             {
@@ -692,6 +696,7 @@ namespace WVA_Keychain_Synch
             catch (Exception e1)
             {
                 Error = e1.ToString();
+                Error += "(Location: SetAccountNumberBtn())";
                 PrintToErrorLog();
             }
         }      
