@@ -325,7 +325,7 @@ namespace WVA_Keychain_Synch
                     writer.Write(Error);
                     writer.Close();
                 }
-
+                
                 Error = "";
             }
             catch{};
@@ -489,19 +489,29 @@ namespace WVA_Keychain_Synch
                 Start();
                 CallbackFunction(ComCheck);
 
-                if (AccountNumber != null && AccountNumber != "")
+                if (ReadBarcodes <= 0)
                 {
-                    Stop();
-                    RunApi();
+                    var noScan = new NoScanned();
+                    if (Application.OpenForms.OfType<NoScanned>().Count() == 1)
+                        Application.OpenForms.OfType<NoScanned>().First().Close();
+                    noScan.ShowDialog();
                 }
                 else
                 {
-                    var anef = new ActNumErrorForm();
-                    if (Application.OpenForms.OfType<ActNumErrorForm>().Count() == 1)
-                        Application.OpenForms.OfType<ActNumErrorForm>().First().Close();
-                    anef.ShowDialog();
-                }   
-           
+                    if (AccountNumber != null && AccountNumber != "")
+                    {
+                        Stop();
+                        RunApi();
+                    }
+                    else
+                    {
+                        var anef = new ActNumErrorForm();
+                        if (Application.OpenForms.OfType<ActNumErrorForm>().Count() == 1)
+                            Application.OpenForms.OfType<ActNumErrorForm>().First().Close();
+                        anef.ShowDialog();
+                    }                             
+                }
+
                 sendData.Enabled = true;
                 this.Cursor = Cursors.Arrow;
 

@@ -30,6 +30,7 @@ namespace WVA_Keychain_Synch
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ErrorMessage));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.backdrop = new System.Windows.Forms.PictureBox();
@@ -77,6 +78,7 @@ namespace WVA_Keychain_Synch
             this.Controls.Add(this.label2);
             this.Controls.Add(this.backdrop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
