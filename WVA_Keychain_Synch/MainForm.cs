@@ -14,6 +14,7 @@ using System.Net;
 using System.Net.Sockets;
 using Newtonsoft.Json;
 using System.Runtime.InteropServices;
+using System.Reflection;
 
 namespace WVA_Keychain_Synch
 {
@@ -30,6 +31,9 @@ namespace WVA_Keychain_Synch
 
         [DllImport("Opticon.csp2.net")]
         static extern void SetParameters([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
+
+        [DllImport("Opticon.csp2.net")]
+        static extern void CallbackFunction([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
 
         ParamInfo[] Description = {
                         new ParamInfo( "Code 39", 0x1f ),
@@ -153,11 +157,11 @@ namespace WVA_Keychain_Synch
                                         foreach (var line in readErrorLog)
                                         {
                                             if (line != "")
-                                                data.Add("<Error> " + line);
+                                                data.Add("ERROR! " + line);
                                         }
                                         File.Delete(ErrorFileName);
                                     }
-                          
+
                                     string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                                     data.Add(time);
 
