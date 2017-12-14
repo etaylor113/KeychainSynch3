@@ -14,3 +14,5 @@ C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\WVA_Keychai
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\WVA_Keychain_Synch.csproj.CoreCompileInputs.cache
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\WVA_Keychain_Synch.exe
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\WVA_Keychain_Synch.pdb
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\WVA_Keychain_Synch.csprojResolveAssemblyReference.cache
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\Release\WVA_Keychain_Synch.NoScanned.resources

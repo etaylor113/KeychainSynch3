@@ -26,8 +26,8 @@ namespace WVA_Keychain_Synch
         private string TxtReader { get; set; }
         public static bool ClearData { get; set; }
         public string AccountNumber { get; set; }
-        public string Error { get; set; }
-        List<object> data = new List<object>();
+        
+        public static List<object> data = new List<object>();
 
         [DllImport("Opticon.csp2.net")]
         static extern void SetParameters([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
@@ -144,8 +144,9 @@ namespace WVA_Keychain_Synch
                             {
                                 if (AccountNumber != null && AccountNumber != "")
                                 {
-                                    string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                                    string ErrorFileName = (dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
+                                    string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+
+                                    string ErrorFileName = (dirPublicDocs + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
                               
                                     data.Clear();
                               
@@ -188,12 +189,12 @@ namespace WVA_Keychain_Synch
                                     };
 
                                     using (System.IO.StreamWriter writer =
-                                           new System.IO.StreamWriter(dirAppData + @"\WVA_Keychain_Synch\ScannerData\" + time))
+                                           new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Keychain_Synch\ScannerData\" + time))
                                     {
-                                        writer.Write("<Date Created> " + time);
-                                        writer.Write("\r\n<Account Number> " + AccountNumber);
-                                        writer.Write("\r\n<Scanner Id> " + szDeviceId);
-                                        writer.Write("\r\n<Software Version> " + szSoftwareVersion);
+                                        writer.Write("<Date Created>" + time);
+                                        writer.Write("\r\n<Account Number>" + AccountNumber);
+                                        writer.Write("\r\n<Scanner Id>" + szDeviceId);
+                                        writer.Write("\r\n<Software Version>" + szSoftwareVersion);
                                         writer.Write("\r\n" + sbBarcodes);
 
                                         writer.Close();
@@ -202,9 +203,10 @@ namespace WVA_Keychain_Synch
                             }
                             catch (Exception e1)
                             {
-                                Error = e1.ToString();
-                                Error += "(Location: CallBack() :DataSend Block)";
-                                PrintToErrorLog();
+                                Errors.Error = e1.ToString();
+                                Errors.Error += "(Location: CallBack() :DataSend Block)";
+                                Errors.PrintToErrorLog();
+                       
                             }
 
                         DataSend = false;
@@ -215,9 +217,9 @@ namespace WVA_Keychain_Synch
                     {
                         if (Opticon.csp2.ClearData(nComport) != 0)
                         {
-                            Error = "Erasing Failed!";
-                            Error += "(Location: CallBack() :ClearData Block)";
-                            PrintToErrorLog();
+                            Errors.Error = "Erasing Failed!";
+                            Errors.Error += "(Location: CallBack() :ClearData Block)";
+                            Errors.PrintToErrorLog();
                         }
                         ReadBarcodes = 0;
                         ClearData = false;
@@ -227,13 +229,13 @@ namespace WVA_Keychain_Synch
         }
 
         public MainForm()
-        {           
+        {
             InitializeComponent();
-            BindObjsToBkrd();
-            Start();            
-            CreateDirs();
+            BindObjsToBkrd();                    
+            FileLogic.CreateDirs();
             CheckAccountNumber();
-            CleanDirectory();
+            FileLogic.CleanDirectory();
+            Start();
         }
 
         private void BindObjsToBkrd()
@@ -293,7 +295,7 @@ namespace WVA_Keychain_Synch
                 sendData.Parent = logoTab1;
                 sendData.Location = pos9;
                 sendData.BackColor = Color.White;
-
+            
                 var pos10 = sendData.Location;
                 pos10 = AccountLabel.PointToClient(pos10);
                 AccountLabel.Parent = logoTab2;
@@ -302,96 +304,9 @@ namespace WVA_Keychain_Synch
             }
             catch (Exception e)
             {
-                Error = e.ToString();
-                Error += "(Location: BindObjsToBkrd)";
-                PrintToErrorLog();
-            }
-        }
-
-        public void PrintToErrorLog()
-        {
-            try
-            {
-                string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string DirErrorLog = (dirAppData + @"\WVA_Keychain_Synch\ErrorLog\");
-
-                if (!Directory.Exists(DirErrorLog)) { }
-                    Directory.CreateDirectory(DirErrorLog);
-
-                if (!File.Exists(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt"))
-                {
-                   var file = File.Create(dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
-                    file.Close();
-                }
-                                 
-                using (System.IO.StreamWriter writer = new System.IO.StreamWriter((dirAppData + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt"), true))
-                {
-                    writer.Write(Error);
-                    writer.Close();
-                }
-                
-                Error = "";
-            }
-            catch{};
-        }
-
-        private void CreateDirs()
-        {
-            try
-            {
-                string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string DirErrorLog = (dirAppData + @"\WVA_Keychain_Synch\ErrorLog\");
-                string DirScannerData = (dirAppData + @"\WVA_Keychain_Synch\ScannerData\");
-                var DirAccountNumber = (dirAppData + @"\WVA_Keychain_Synch\AccountNumber\");
-            
-                try
-                {
-                    if (Directory.Exists(DirErrorLog) == false)
-                        Directory.CreateDirectory(DirErrorLog);
-                }
-                catch (Exception e1)
-                {
-                    Error = e1.ToString();
-                    Error += "(Location: CreateDirs() :e1)";
-                    PrintToErrorLog();
-                }
-
-                try
-                {
-                    if (Directory.Exists(DirScannerData) == false)
-                        Directory.CreateDirectory(DirScannerData);
-                }
-                catch (Exception e2)
-                {
-                    Error = e2.ToString();
-                    Error += "(Location: CreateDirs() :e2)";
-                    PrintToErrorLog();
-                }
-
-                try
-                {
-                    if (Directory.Exists(DirAccountNumber) == false)
-                    {
-                        Directory.CreateDirectory(DirAccountNumber);
-                        if (Directory.Exists(DirAccountNumber))
-                        {
-                            var file = File.Create(dirAppData + @"\WVA_Keychain_Synch\AccountNumber\AccountNumber.txt");
-                            file.Close();
-                        }
-                    }                                                            
-                }
-                catch (Exception e3)
-                {
-                    Error = e3.ToString();
-                    Error += "(Location: CreateDirs() :e3)";
-                    PrintToErrorLog();
-                }
-            }
-            catch (Exception e4)
-            {
-                Error = e4.ToString();
-                Error += "(Location: CreateDirs() :e4)";
-                PrintToErrorLog();
+                Errors.Error = e.ToString();
+                Errors.Error += "(Location: BindObjsToBkrd)";
+                Errors.PrintToErrorLog();
             }
         }
 
@@ -399,38 +314,46 @@ namespace WVA_Keychain_Synch
         {
             try
             {
-                string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                 
-                AccountNumber = File.ReadLines(dirAppData + @"\WVA_Keychain_Synch\AccountNumber\AccountNumber.txt").Skip(0).Take(1).First();
-                
-                if (AccountNumber != "" )
+                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+
+                AccountNumber = File.ReadLines(dirPublicDocs + @"\WVA_Keychain_Synch\AccountNumber\AccountNumber.txt").Skip(0).Take(1).First();
+
+                if (AccountNumber != "")
                     AccountTextBox.Text = ("Set to: " + AccountNumber);
             }
-            catch{}
+            catch { }
         }
 
-        private void CleanDirectory()
+        public void SetAccountNumberBtn(object sender, EventArgs e)
         {
             try
             {
-                string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string[] files = Directory.GetFiles(dirAppData + @"\WVA_Keychain_Synch\ScannerData\");
+                AccountNumber = AccountTextBox.Text;
 
-                foreach (string file in files)
+                if (AccountNumber != "")
                 {
-                    FileInfo fi = new FileInfo(file);
+                    if (AccountNumber.Contains("Set to: "))
+                        AccountNumber = AccountNumber.Remove(0, 8);
 
-                    if (fi.CreationTime < DateTime.Now.AddDays(-30))
+                    if (AccountNumber.Contains("Set to:"))
+                        AccountNumber = AccountNumber.Remove(0, 7);
+
+                    string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Keychain_Synch\AccountNumber\AccountNumber.txt"))
                     {
-                        fi.Delete();
-                    }      
+                        file.WriteLine(AccountNumber);
+                        file.Close();
+                    }
+
+                    AccountTextBox.Text = ("Set to: " + AccountNumber);
                 }
             }
-            catch(Exception e)
+            catch (Exception e1)
             {
-                Error = e.ToString();
-                Error += "(Location: CleanDirectory())";
-                PrintToErrorLog();
+                Errors.Error = e1.ToString();
+                Errors.Error += "(Location: SetAccountNumberBtn())";
+                Errors.PrintToErrorLog();
             }
         }
 
@@ -505,7 +428,7 @@ namespace WVA_Keychain_Synch
                     if (AccountNumber != null && AccountNumber != "")
                     {
                         Stop();
-                        RunApi();
+                        API.RunApi();
                     }
                     else
                     {
@@ -524,75 +447,9 @@ namespace WVA_Keychain_Synch
             }
             catch (Exception e1)
             {
-                Error = e1.ToString();
-                Error += "(Location: SendDataClick())";
-                PrintToErrorLog();
-            }
-        }
-
-        public void RunApi()
-        {
-            try
-            {
-                string MessageFromApi = "";
-                var json = JsonConvert.SerializeObject(data);
-          
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
-                request.Method = "POST";
-
-                System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
-                Byte[] byteArray = encoding.GetBytes(json);
-
-                request.ContentLength = byteArray.Length;
-                request.ContentType = @"application/json";
-
-                using (Stream dataStream = request.GetRequestStream())
-                {
-                    dataStream.Write(byteArray, 0, byteArray.Length);
-                }
-
-                WebResponse response = request.GetResponse();
-                using (Stream responseStream = response.GetResponseStream())
-                {
-                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-                    MessageFromApi = reader.ReadToEnd();
-                    if (MessageFromApi == "Able to connect to remote server but File Send was not successful\nNo Response")
-                    {
-                        MessageForm.Response = "There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, please call WVA Scanner Support. ";
-                        MessageForm message = new MessageForm();
-                        message.ShowDialog();
-                        return;
-                    }
-                                   
-                    reader.Close();
-                }
-
-                response.Close();
-
-                if ((((HttpWebResponse)response).StatusDescription) == "OK")
-                {
-                    ClearData = true;
-
-                    MessageForm.Response = MessageFromApi;
-                    MessageForm message = new MessageForm();
-                    message.ShowDialog();
-                }
-                else
-                {
-                    MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
-                    MessageForm message = new MessageForm();
-                    message.ShowDialog();
-                }                              
-            }
-            catch (Exception e)
-            {     
-                MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
-                MessageForm message = new MessageForm();
-                message.ShowDialog();
-
-                Error = e.ToString();
-                Error += "(Location: RunApi())";
-                PrintToErrorLog();
+                Errors.Error = e1.ToString();
+                Errors.Error += "(Location: SendDataClick())";
+                Errors.PrintToErrorLog();
             }
         }
         
@@ -627,9 +484,9 @@ namespace WVA_Keychain_Synch
             }
             catch (System.AccessViolationException e)
             {
-                Error = e.ToString();
-                Error += "(Location: SetParameters)";
-                PrintToErrorLog();
+                Errors.Error = e.ToString();
+                Errors.Error += "(Location: SetParameters)";
+                Errors.PrintToErrorLog();
             }
             PrefPB.Value = 0;
             Start();         
@@ -661,9 +518,9 @@ namespace WVA_Keychain_Synch
             }
             catch (Exception e1)
             {
-                Error = e1.ToString();
-                Error += "(Location: LLContact_LinkClicked())";
-                PrintToErrorLog();
+                Errors.Error = e1.ToString();
+                Errors.Error += "(Location: LLContact_LinkClicked())";
+                Errors.PrintToErrorLog();
             }
         }
 
@@ -675,44 +532,11 @@ namespace WVA_Keychain_Synch
             }
             catch (Exception e1)
             {
-                Error = e1.ToString();
-                Error += "(Location: LLViewCart_LinkClicked())";
-                PrintToErrorLog();
+                Errors.Error = e1.ToString();
+                Errors.Error += "(Location: LLViewCart_LinkClicked())";
+                Errors.PrintToErrorLog();
             }
-        }
-
-        private void SetAccountNumberBtn(object sender, EventArgs e)
-         {
-            try
-            {
-                AccountNumber = AccountTextBox.Text;
-
-                if (AccountNumber != "")
-                {
-                    if (AccountNumber.Contains("Set to: "))
-                        AccountNumber = AccountNumber.Remove(0, 8);
-
-                    if (AccountNumber.Contains("Set to:"))
-                        AccountNumber = AccountNumber.Remove(0, 7);
-
-                    string dirAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(dirAppData + @"\WVA_Keychain_Synch\AccountNumber\AccountNumber.txt"))
-                    {
-                        file.WriteLine(AccountNumber);
-                        file.Close();
-                    }
-
-                    AccountTextBox.Text = ("Set to: " + AccountNumber);
-                }
-            }
-            catch (Exception e1)
-            {
-                Error = e1.ToString();
-                Error += "(Location: SetAccountNumberBtn())";
-                PrintToErrorLog();
-            }
-        }      
+        }          
     }
 
     public class ParamInfo
