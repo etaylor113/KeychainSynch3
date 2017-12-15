@@ -20,12 +20,8 @@ namespace WVA_Keychain_Synch
             label1.Parent = backdrop;
             label1.Location = pos;
             label1.BackColor = Color.Transparent;
-
-            var pos1 = label2.Location;
-            pos1 = backdrop.PointToClient(pos1);
-            label2.Parent = backdrop;
-            label2.Location = pos1;
-            label2.BackColor = Color.Transparent;
+     
+            this.label1.Text = Variables.ErrorMessage_Text;
         }
     }
 }

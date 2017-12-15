@@ -34,30 +34,27 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(35, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(301, 25);
+            this.label1.Location = new System.Drawing.Point(27, 28);
             this.label1.MaximumSize = new System.Drawing.Size(350, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(350, 190);
             this.label1.TabIndex = 0;
-            this.label1.Text = "You have not scanned any items!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // NoScanned
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(126)))), ((int)(((byte)(195)))));
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(392, 124);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(126)))), ((int)(((byte)(195)))));
+            this.ClientSize = new System.Drawing.Size(405, 245);
             this.Controls.Add(this.label1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NoScanned";
-            this.Text = "WVA - Keychain Synch 3.0";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "WVA - Keychain Synch 3.0";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

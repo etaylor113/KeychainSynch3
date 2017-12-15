@@ -27,6 +27,7 @@ namespace WVA_Keychain_Synch
         public static bool ClearData { get; set; }
         public string AccountNumber { get; set; }
         
+        
         public static List<object> data = new List<object>();
 
         [DllImport("Opticon.csp2.net")]
@@ -145,23 +146,7 @@ namespace WVA_Keychain_Synch
                                 if (AccountNumber != null && AccountNumber != "")
                                 {
                                     string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-
-                                    string ErrorFileName = (dirPublicDocs + @"\WVA_Keychain_Synch\ErrorLog\ErrorLog.txt");
-                              
-                                    data.Clear();
-                              
-                                    if (File.Exists(ErrorFileName))
-                                    {
-                                        string DirErrorLog = (ErrorFileName);
-                                        string[] readErrorLog = File.ReadAllLines(DirErrorLog);
-
-                                        foreach (var line in readErrorLog)
-                                        {
-                                            if (line != "")
-                                                data.Add("ERROR! " + line);
-                                        }
-                                        File.Delete(ErrorFileName);
-                                    }
+                                  
 
                                     string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                                     data.Add(time);
@@ -176,6 +161,9 @@ namespace WVA_Keychain_Synch
                                     Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
                                     data.Add(szSoftwareVersion.ToString());
 
+                                    // get config file version
+                                    // use LocateConfigFile() so it's reusable
+                                  
                                     StringBuilder sbBarcodes = new StringBuilder(1000);
                                     for (Int32 i = 0; i < ReadBarcodes; i++)
                                     {
@@ -231,29 +219,23 @@ namespace WVA_Keychain_Synch
         public MainForm()
         {
             InitializeComponent();
-            BindObjsToBkrd();                    
+            BindObjsToBkrd();
+            SetVariables();
             FileLogic.CreateDirs();
             CheckAccountNumber();
             FileLogic.CleanDirectory();
             Start();
         }
 
+        private void SetVariables()
+        {
+            this.labelContactNum.Text = Variables.labelContactNum_Text;
+        }
+
         private void BindObjsToBkrd()
         { 
             try
             {
-                var pos = labelContact.Location;
-                pos = backdrop.PointToClient(pos);
-                labelContact.Parent = backdrop;
-                labelContact.Location = pos;
-                labelContact.BackColor = Color.Transparent;
-
-                var pos1 = LLContact.Location;
-                pos = backdrop.PointToClient(pos1);
-                LLContact.Parent = backdrop;
-                LLContact.Location = pos1;
-                LLContact.BackColor = Color.Transparent;
-
                 var pos2 = labelContactNum.Location;
                 pos2 = backdrop.PointToClient(pos2);
                 labelContactNum.Parent = backdrop;
@@ -509,26 +491,12 @@ namespace WVA_Keychain_Synch
             TxtReader = "ReadStock+UPC.txt";
             SetParameters();
         }
-                
-        private void LLContact_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            try
-            {
-                System.Diagnostics.Process.Start("http://www.wisvis.com");
-            }
-            catch (Exception e1)
-            {
-                Errors.Error = e1.ToString();
-                Errors.Error += "(Location: LLContact_LinkClicked())";
-                Errors.PrintToErrorLog();
-            }
-        }
 
         private void LLViewCart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             try
             {
-                System.Diagnostics.Process.Start("http://www.wisvis.com");
+                System.Diagnostics.Process.Start(Variables.ViewCart_Link);
             }
             catch (Exception e1)
             {

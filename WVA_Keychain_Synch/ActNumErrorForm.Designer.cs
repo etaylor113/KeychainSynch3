@@ -30,43 +30,54 @@ namespace WVA_Keychain_Synch
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActNumErrorForm));
             this.label1 = new System.Windows.Forms.Label();
+            this.backdrop = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.backdrop)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label1.Location = new System.Drawing.Point(16, 40);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.MaximumSize = new System.Drawing.Size(560, 0);
+            this.label1.Location = new System.Drawing.Point(25, 20);
+            this.label1.MaximumSize = new System.Drawing.Size(407, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(738, 64);
+            this.label1.Size = new System.Drawing.Size(366, 155);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Be sure your scanner is plugged in and you have entered your account number in th" +
-    "e \'My Account\' tab.";
+            // 
+            // backdrop
+            // 
+            this.backdrop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(126)))), ((int)(((byte)(195)))));
+            this.backdrop.Location = new System.Drawing.Point(-450, -335);
+            this.backdrop.Name = "backdrop";
+            this.backdrop.Size = new System.Drawing.Size(1500, 1500);
+            this.backdrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.backdrop.TabIndex = 3;
+            this.backdrop.TabStop = false;
             // 
             // ActNumErrorForm
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(126)))), ((int)(((byte)(195)))));
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 300);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(126)))), ((int)(((byte)(195)))));
+            this.ClientSize = new System.Drawing.Size(418, 200);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ActNumErrorForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "WVA - Keychain Synch 3.0";
+            ((System.ComponentModel.ISupportInitialize)(this.backdrop)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
+        private System.Windows.Forms.PictureBox backdrop;
         private System.Windows.Forms.Label label1;
     }
 }

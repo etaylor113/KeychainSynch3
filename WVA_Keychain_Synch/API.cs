@@ -11,11 +11,13 @@ namespace WVA_Keychain_Synch
 {
     class API
     {
+        public static string MessageFromApi { get; set; }
+
         public static void RunApi()
         {
             try
             {
-                string MessageFromApi = "";
+                MessageFromApi = "";
                 var json = JsonConvert.SerializeObject(MainForm.data);
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
@@ -54,10 +56,11 @@ namespace WVA_Keychain_Synch
                         MainForm.ClearData = true;
                         MessageFromApi = MessageFromApi.Replace("SUCCESS:", "");
                     }
+
                     switch (MessageFromApi)
                     {
-                        case "UPDATE":
-                            // Run method to update config file
+                        case "UPDATE!":
+                            Update.RunUpdate();
                             break;
                     }
 

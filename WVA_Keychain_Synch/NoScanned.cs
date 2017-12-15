@@ -15,6 +15,8 @@ namespace WVA_Keychain_Synch
         public NoScanned()
         {
             InitializeComponent();
+
+            this.label1.Text = Variables.NoScanned_Text;
         }
      
     }

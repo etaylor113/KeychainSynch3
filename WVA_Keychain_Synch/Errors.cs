@@ -24,7 +24,7 @@ namespace WVA_Keychain_Synch
                 if (!File.Exists(DirErrorLog + @"\ErrorLog.txt"))
                 {
                     var file = File.Create(DirErrorLog + @"\ErrorLog.txt");
-                    //file.Close();
+                    file.Close();
                 }
 
                 using (System.IO.StreamWriter writer = new System.IO.StreamWriter((DirErrorLog + @"\ErrorLog.txt"), true))
