@@ -56,14 +56,7 @@ namespace WVA_Keychain_Synch
                         MainForm.ClearData = true;
                         MessageFromApi = MessageFromApi.Replace("SUCCESS:", "");
                     }
-
-                    switch (MessageFromApi)
-                    {
-                        case "UPDATE!":
-                            Update.RunUpdate();
-                            break;
-                    }
-
+       
                     reader.Close();
                 }
 

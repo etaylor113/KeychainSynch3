@@ -16,12 +16,6 @@ namespace WVA_Keychain_Synch
         {
             InitializeComponent();
 
-            var pos = label1.Location;
-            pos = backdrop.PointToClient(pos);
-            label1.Parent = backdrop;
-            label1.Location = pos;
-            label1.BackColor = Color.Transparent;
-
             this.label1.Text = Variables.ANEF_Text; 
         }
 

@@ -146,7 +146,8 @@ namespace WVA_Keychain_Synch
                                 if (AccountNumber != null && AccountNumber != "")
                                 {
                                     string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                                  
+
+                                    data.Clear();
 
                                     string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                                     data.Add(time);
@@ -161,8 +162,7 @@ namespace WVA_Keychain_Synch
                                     Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
                                     data.Add(szSoftwareVersion.ToString());
 
-                                    // get config file version
-                                    // use LocateConfigFile() so it's reusable
+                                    data.Add(Variables.ConfigFile);
                                   
                                     StringBuilder sbBarcodes = new StringBuilder(1000);
                                     for (Int32 i = 0; i < ReadBarcodes; i++)
@@ -220,10 +220,13 @@ namespace WVA_Keychain_Synch
         {
             InitializeComponent();
             BindObjsToBkrd();
+            //UpdateConfig.RunUpdate();
+            UpdateConfig.AssignVariables();
             SetVariables();
             FileLogic.CreateDirs();
             CheckAccountNumber();
             FileLogic.CleanDirectory();
+            
             Start();
         }
 
@@ -397,7 +400,7 @@ namespace WVA_Keychain_Synch
                 Thread.Sleep(500);
                 Start();
                 CallbackFunction(ComCheck);
-
+                             
                 if (ReadBarcodes <= 0)
                 {
                     var noScan = new NoScanned();
@@ -408,7 +411,7 @@ namespace WVA_Keychain_Synch
                 else
                 {
                     if (AccountNumber != null && AccountNumber != "")
-                    {
+                    {   
                         Stop();
                         API.RunApi();
                     }
@@ -421,11 +424,11 @@ namespace WVA_Keychain_Synch
                     }                             
                 }
 
-                sendData.Enabled = true;
-                this.Cursor = Cursors.Arrow;
-
                 Start();
                 CallbackFunction(ComCheck);
+
+                sendData.Enabled = true;
+                this.Cursor = Cursors.Arrow;          
             }
             catch (Exception e1)
             {

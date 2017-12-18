@@ -31,19 +31,10 @@ namespace WVA_Keychain_Synch
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ActNumErrorForm));
-            this.label1 = new System.Windows.Forms.Label();
             this.backdrop = new System.Windows.Forms.PictureBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.backdrop)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.label1.Location = new System.Drawing.Point(25, 20);
-            this.label1.MaximumSize = new System.Drawing.Size(407, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(366, 155);
-            this.label1.TabIndex = 0;
             // 
             // backdrop
             // 
@@ -54,6 +45,15 @@ namespace WVA_Keychain_Synch
             this.backdrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.backdrop.TabIndex = 3;
             this.backdrop.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(344, 137);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
             // 
             // ActNumErrorForm
             // 

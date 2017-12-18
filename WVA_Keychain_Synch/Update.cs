@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace WVA_Keychain_Synch
 {
-    class Update
+    class UpdateConfig
     {
 
         public static string UpdateString { get; set; }
@@ -86,10 +86,22 @@ namespace WVA_Keychain_Synch
         public static void AssignVariables()
         {
             string line;
+            string selectedDir = "";
 
-            string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-            string updateConfig = @"/WVA_Keychain_Synch/Config/Config.txt";
-            StreamReader file = new StreamReader(dirPublicDocs + updateConfig);
+            if (DoesUpdateFileExist() == true)
+            {
+                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+                string updateConfig = @"/WVA_Keychain_Synch/Config/Config.txt";
+                selectedDir = dirPublicDocs + updateConfig;
+            }
+            else
+            {
+                string dirProgram86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
+                string defaultConfig = @"/WVA_Keychain_Synch/WVA_Keychain_Synch/Config/Config.txt";
+                selectedDir = dirProgram86 + defaultConfig;
+            }   
+      
+            StreamReader file = new StreamReader(selectedDir);
             {
                 try
                 {
@@ -144,6 +156,17 @@ namespace WVA_Keychain_Synch
                 }
                 catch { file.Close(); }
             }
+        }
+
+        public static bool DoesUpdateFileExist()
+        {
+            string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+            string updateConfig = @"/WVA_Keychain_Synch/Config/";
+            
+            if (File.Exists(dirPublicDocs + updateConfig))
+                return true;
+            else
+                return false;
         }
 
         private static string DecryptData(string str)

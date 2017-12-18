@@ -34,13 +34,12 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(27, 28);
-            this.label1.MaximumSize = new System.Drawing.Size(350, 0);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(15, 63);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(350, 190);
+            this.label1.Size = new System.Drawing.Size(364, 131);
             this.label1.TabIndex = 0;
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.Text = "You have not scanned any items!";
             // 
             // NoScanned
             // 

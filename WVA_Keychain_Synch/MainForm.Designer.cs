@@ -57,10 +57,10 @@ namespace WVA_Keychain_Synch
             this.labelPrefHead = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.labelContactNum = new System.Windows.Forms.Label();
+            this.backdrop = new System.Windows.Forms.PictureBox();
             this.labelComport = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.labelPrefs = new System.Windows.Forms.Label();
-            this.backdrop = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoTab1)).BeginInit();
@@ -370,11 +370,22 @@ namespace WVA_Keychain_Synch
             // labelContactNum
             // 
             this.labelContactNum.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelContactNum.Location = new System.Drawing.Point(26, 14);
+            this.labelContactNum.Location = new System.Drawing.Point(26, 53);
             this.labelContactNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelContactNum.Name = "labelContactNum";
             this.labelContactNum.Size = new System.Drawing.Size(557, 155);
             this.labelContactNum.TabIndex = 2;
+            // 
+            // backdrop
+            // 
+            this.backdrop.Image = ((System.Drawing.Image)(resources.GetObject("backdrop.Image")));
+            this.backdrop.Location = new System.Drawing.Point(-227, -215);
+            this.backdrop.Margin = new System.Windows.Forms.Padding(4);
+            this.backdrop.Name = "backdrop";
+            this.backdrop.Size = new System.Drawing.Size(1067, 985);
+            this.backdrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.backdrop.TabIndex = 4;
+            this.backdrop.TabStop = false;
             // 
             // labelComport
             // 
@@ -400,17 +411,6 @@ namespace WVA_Keychain_Synch
             this.labelPrefs.Name = "labelPrefs";
             this.labelPrefs.Size = new System.Drawing.Size(100, 23);
             this.labelPrefs.TabIndex = 0;
-            // 
-            // backdrop
-            // 
-            this.backdrop.Image = ((System.Drawing.Image)(resources.GetObject("backdrop.Image")));
-            this.backdrop.Location = new System.Drawing.Point(-227, -215);
-            this.backdrop.Margin = new System.Windows.Forms.Padding(4);
-            this.backdrop.Name = "backdrop";
-            this.backdrop.Size = new System.Drawing.Size(1067, 985);
-            this.backdrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.backdrop.TabIndex = 4;
-            this.backdrop.TabStop = false;
             // 
             // MainForm
             // 

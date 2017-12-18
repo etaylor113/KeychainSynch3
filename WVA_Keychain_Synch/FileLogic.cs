@@ -92,20 +92,7 @@ namespace WVA_Keychain_Synch
                 Errors.Error += "(Location: CleanDirectory())";
                 Errors.PrintToErrorLog();
             }
-        }
-
-        public static bool DoesUpdateFileExist()
-        {
-            string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);          
-            string updateConfig = @"/WVA_Keychain_Synch/Config/";
-            string defaultConfig = @"../../WVA_Keychain_Synch/Config/";
-
-            if (File.Exists(dirPublicDocs + updateConfig))           
-                return true;         
-            else            
-                return false;
-            
-        }
+        }     
 
     }
 }
