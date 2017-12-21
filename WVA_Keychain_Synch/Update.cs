@@ -25,8 +25,7 @@ namespace WVA_Keychain_Synch
         {
             try
             {
-                API.MessageFromApi = "";
-                string updateString = "UPDATE!";
+                string updateString = "UPDATE";
                 var json = JsonConvert.SerializeObject(updateString + Variables.ConfigFile);
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
@@ -63,24 +62,29 @@ namespace WVA_Keychain_Synch
 
         private static void GetUpdateData()
         {
-            string[] stringArray;
-            string TextFromFile = "";
-
-            stringArray = UpdateString.Split(',');
-
-            string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-            string updateConfig = @"/WVA_Keychain_Synch/Config/Config.txt";
-            File.Create(dirPublicDocs + updateConfig);
-
-            StreamWriter wr = new StreamWriter(dirPublicDocs + updateConfig);
+            try
             {
-                foreach (string word in stringArray)
+                string[] stringArray;
+                string TextFromFile = "";
+
+                stringArray = UpdateString.Split(',');
+
+                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+                string updateConfig = @"/WVA_Keychain_Synch/Config/Config.txt";
+                var publicFile = File.Create(dirPublicDocs + updateConfig);
+                publicFile.Close();
+
+                StreamWriter wr = new StreamWriter(dirPublicDocs + updateConfig);
                 {
-                    word.Trim();
-                    wr.WriteLine(word);
+                    foreach (string word in stringArray)
+                    {
+                        word.Trim();
+                        wr.WriteLine(word);
+                    }
+                    wr.Close();
                 }
-                wr.Close();
             }
+            catch { }
         }
 
         public static void AssignVariables()
@@ -215,6 +219,7 @@ namespace WVA_Keychain_Synch
                 { ".","Jxp" },
                 { "=","0H&" },
                 { "-","Tyl" },
+                { "'","0z4" },
                 { "?","%pG" },
                 { ":","Qez" },
                 { " ","+BE" },
