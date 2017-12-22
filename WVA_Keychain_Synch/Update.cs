@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -24,9 +25,9 @@ namespace WVA_Keychain_Synch
         private static void GetUpdate()
         {
             try
-            {
+            {             
                 string updateString = "UPDATE";
-                var json = JsonConvert.SerializeObject(updateString + Variables.ConfigFile);
+                var json = JsonConvert.SerializeObject(updateString + Variables.ConfigFile);            
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
                 request.Method = "POST";

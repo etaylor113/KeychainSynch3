@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -15,10 +16,24 @@ namespace WVA_Keychain_Synch
 
         public static void RunApi()
         {
-            try
-            {
+            try {
+
+                Trace.WriteLine("=====================================");
+                foreach (var index in MainForm.data)
+                {
+                    Trace.WriteLine(index);
+                }
+                Trace.WriteLine("=====================================");
+
+
                 MessageFromApi = "";
                 var json = JsonConvert.SerializeObject(MainForm.data);
+
+                Trace.WriteLine("=====================================");
+                Trace.WriteLine(json.ToString());
+                Trace.WriteLine("=====================================");
+
+
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
                 request.Method = "POST";
@@ -69,6 +84,7 @@ namespace WVA_Keychain_Synch
                 }
 
                 response.Close();
+                json = "";
 
                 if ((((HttpWebResponse)response).StatusDescription) == "OK")
                 {

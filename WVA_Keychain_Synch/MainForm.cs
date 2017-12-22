@@ -27,7 +27,9 @@ namespace WVA_Keychain_Synch
         public static bool ClearData { get; set; }
         public string AccountNumber { get; set; }  
         public int Status { get; set; }
-        
+        public string Time { get; set; }
+        public static bool SkipMainSleep { get; set; }
+
         public static List<object> data = new List<object>();
 
         [DllImport("Opticon.csp2.net")]
@@ -35,6 +37,13 @@ namespace WVA_Keychain_Synch
 
         [DllImport("Opticon.csp2.net")]
         static extern void CallbackFunction([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
+
+        [DllImport("Opticon.csp2.net")]
+        static extern void SendData([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
+
+        [DllImport("Opticon.csp2.net")]
+        static extern void Stop([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
+
 
         ParamInfo[] Description = {
                         new ParamInfo( "Code 39", 0x1f ),
@@ -94,132 +103,138 @@ namespace WVA_Keychain_Synch
         public void CallbackFunction(Int32 nComport)
         {
             int iRet = -1;
-           
-
-            if (Opticon.csp2.DataAvailable(nComport) > 0)
-            {              
-                iRet = Opticon.csp2.ReadData(nComport);
-            }
-            else if (Opticon.csp2.GetDSR(nComport) > 0)
+            try
             {
-                iRet = Opticon.csp2.Interrogate(nComport);
-                Status = Opticon.csp2.Interrogate(nComport);
-            }
-            else
-            {
-                Status = -1;
-            }
-
-            if (iRet >= 0)
-            {
-                if (Ports.Contains(nComport) == false)
-                    Ports.Add(nComport);
-            }
-            else
-            {
-                if (Ports.Contains(nComport) == true)
-                    Ports.Remove(nComport);
-            }
-
-            ComCheck = nComport;
-
-            BeginInvoke((Action)delegate ()
-            {
-                if (Ports.Count > 0)
+                if (Opticon.csp2.DataAvailable(nComport) > 0)
                 {
-                    labelConnected.Text = "Connected on COM " + nComport;
+                    iRet = Opticon.csp2.ReadData(nComport);
+                    Status = 1;
+                }
+                else if (Opticon.csp2.GetDSR(nComport) > 0)
+                {
+                    Status = 1;
+                    iRet = Opticon.csp2.Interrogate(nComport);
+                    Status = Opticon.csp2.Interrogate(nComport);
                 }
                 else
                 {
-                    labelConnected.Text = "Not Connected";
+                    Status = -1;
                 }
-            });
 
-            if (iRet >= 0L)
-            {
-                Int32 iCount = iRet;   
+                if (iRet >= 0)
+                {
+                    if (Ports.Contains(nComport) == false)
+                        Ports.Add(nComport);
+                }
+                else
+                {
+                    if (Ports.Contains(nComport) == true)
+                        Ports.Remove(nComport);
+                }
 
-                ReadBarcodes = iCount;
-                
+                ComCheck = nComport;
+
                 BeginInvoke((Action)delegate ()
                 {
-                    labelNumBarcodes.Text = ReadBarcodes.ToString();
+                    if (Ports.Count > 0)
+                    {
+                        labelConnected.Text = "Connected on COM " + nComport;
+                    }
+                    else
+                    {
+                        labelConnected.Text = "Not Connected";
+                    }
                 });
 
-                if (DataSend == true)
+                if (iRet >= 0L)
                 {
-                    try
+                    Int32 iCount = iRet;
+
+                    ReadBarcodes = iCount;
+
+                    BeginInvoke((Action)delegate ()
                     {
-                        if (AccountNumber != null && AccountNumber != "")
-                        {
-                            string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+                        labelNumBarcodes.Text = ReadBarcodes.ToString();
+                    });
 
-                            data.Clear();
-
-                            string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-                            data.Add(time);
-
-                            data.Add(AccountNumber);
-
-                            string szDeviceId;
-                            iRet = Opticon.csp2.GetDeviceId(out szDeviceId, nComport);
-                            data.Add(szDeviceId);
-
-                            StringBuilder szSoftwareVersion = new StringBuilder(256);
-                            Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
-                            data.Add(szSoftwareVersion.ToString());
-
-                            data.Add(Variables.ConfigFile);
-                                  
-                            StringBuilder sbBarcodes = new StringBuilder(1000);
-                            for (Int32 i = 0; i < ReadBarcodes; i++)
+                    if (DataSend == true)
+                    {
+                        try
+                        {                     
+                            if (AccountNumber != null && AccountNumber != "")
                             {
-                                Opticon.csp2.BarCodeDataPacket aPacket;
-                                iRet = Opticon.csp2.GetPacket(out aPacket, i, nComport);
-                                if (aPacket.strBarData != null)
-                                {                                       
-                                    data.Add(aPacket.strBarData.ToString());
-                                    sbBarcodes.AppendLine(String.Format("<Item>" + "\t" + aPacket.strBarData));
+                                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
+
+                                data.Clear();
+                              
+                                data.Add(Time);
+                             
+                                data.Add(AccountNumber);
+
+                                string szDeviceId;
+                                iRet = Opticon.csp2.GetDeviceId(out szDeviceId, nComport);
+                                data.Add(szDeviceId);
+
+                                StringBuilder szSoftwareVersion = new StringBuilder(256);
+                                Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
+                                data.Add(szSoftwareVersion.ToString());
+
+                                data.Add(Variables.ConfigFile);
+
+                                StringBuilder sbBarcodes = new StringBuilder(1000);
+                                for (Int32 i = 0; i < ReadBarcodes; i++)
+                                {
+                                    Opticon.csp2.BarCodeDataPacket aPacket;
+                                    iRet = Opticon.csp2.GetPacket(out aPacket, i, nComport);
+                                    if (aPacket.strBarData != null)
+                                    {
+                                        data.Add(aPacket.strBarData.ToString());
+                                        sbBarcodes.AppendLine(String.Format("<Item>" + "\t" + aPacket.strBarData));
+                                    }
+                                };
+
+                                using (System.IO.StreamWriter writer =
+                                        new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Keychain_Synch\ScannerData\" + Time))
+                                {
+                                    writer.Write("<Date Created>" + Time);
+                                    writer.Write("\r\n<Account Number>" + AccountNumber);
+                                    writer.Write("\r\n<Scanner Id>" + szDeviceId);
+                                    writer.Write("\r\n<Software Version>" + szSoftwareVersion);
+                                    writer.Write("\r\n" + sbBarcodes);
+
+                                    writer.Close();
                                 }
-                            };
-
-                            using (System.IO.StreamWriter writer =
-                                    new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Keychain_Synch\ScannerData\" + time))
-                            {
-                                writer.Write("<Date Created>" + time);
-                                writer.Write("\r\n<Account Number>" + AccountNumber);
-                                writer.Write("\r\n<Scanner Id>" + szDeviceId);
-                                writer.Write("\r\n<Software Version>" + szSoftwareVersion);
-                                writer.Write("\r\n" + sbBarcodes);
-
-                                writer.Close();
-                            }                             
+                            }
                         }
-                    }
-                    catch (Exception e1)
-                    {
-                        Errors.Error = e1.ToString();
-                        Errors.Error += "(Location: CallBack() :DataSend Block)";
-                        Errors.PrintToErrorLog();
-                    }
+                        catch (Exception e1)
+                        {
+                            Errors.Error = e1.ToString();
+                            Errors.Error += "(Location: CallBack() :DataSend Block)";
+                            Errors.PrintToErrorLog();
+                        }
 
-                DataSend = false;
-                return;
+                        DataSend = false;
+                        return;
 
-                }
-                if (ClearData == true)
-                {
-                    if (Opticon.csp2.ClearData(nComport) != 0)
-                    {
-                        Errors.Error = "Erasing Failed!";
-                        Errors.Error += "(Location: CallBack() :ClearData Block)";
-                        Errors.PrintToErrorLog();
                     }
-                    ReadBarcodes = 0;
-                    ClearData = false;
+                    if (ClearData == true)
+                    {
+                        if (Opticon.csp2.ClearData(nComport) != 0)
+                        {
+                            Errors.Error = "Erasing Failed!";
+                            Errors.Error += "(Location: CallBack() :ClearData Block)";
+                            Errors.PrintToErrorLog();
+                        }
+                        ReadBarcodes = 0;
+                        ClearData = false;
+                    }
                 }
+                if (SkipMainSleep == true)
+                    SkipMainSleep = false;
+                else
+                    Thread.Sleep(1000);
             }
-            Thread.Sleep(500);                          
+            catch { }
         }
 
         public MainForm()
@@ -298,6 +313,11 @@ namespace WVA_Keychain_Synch
                 Errors.Error += "(Location: BindObjsToBkrd)";
                 Errors.PrintToErrorLog();
             }
+        }
+
+        private void GetTime()
+        {
+            Time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
         }
 
         private void CheckAccountNumber()
@@ -392,6 +412,7 @@ namespace WVA_Keychain_Synch
         public void Stop()
         {
             Opticon.csp2.DisablePolling();
+            Opticon.csp2.StopPolling();
         }        
 
         private void SendData_Click(object sender, EventArgs e)
@@ -401,11 +422,12 @@ namespace WVA_Keychain_Synch
                 this.Cursor = Cursors.WaitCursor;
                 sendData.Enabled = false;
                 DataSend = true;
-                
+                Trace.WriteLine("Stop polling...");
+                Stop();
+                GetTime();
                 Thread.Sleep(500);
-                Start();
                 CallbackFunction(ComCheck);
-                             
+
                 if (ReadBarcodes <= 0)
                 {
                     var noScan = new NoScanned();
@@ -414,11 +436,11 @@ namespace WVA_Keychain_Synch
                     noScan.ShowDialog();
                 }
                 else
-                {
+                {                             
                     if (AccountNumber != null && AccountNumber != "")
-                    {   
-                        Stop();
+                    {     
                         API.RunApi();
+                        Time = "";
                     }
                     else
                     {
@@ -429,6 +451,8 @@ namespace WVA_Keychain_Synch
                     }                             
                 }
 
+                Trace.WriteLine("Starting polling again...");
+                Started = false;
                 Start();
                 CallbackFunction(ComCheck);
 
@@ -450,17 +474,19 @@ namespace WVA_Keychain_Synch
             Int32 nParam = 0;
             byte[] szString = new byte[100];
             Int32 nMaxLength = 1;
-
+           
             try
             {
+                Stop();
+                SkipMainSleep = true;
                 CallbackFunction(ComCheck);       
                 if (Status >= 0)
-                {
-                    Stop();
+                {                   
+                    string dirProgramx86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
                     foreach (ParamInfo p in Description)
                     {
                         ComCheck = Opticon.csp2.Init(ComCheck);
-                        int line = Convert.ToInt32(File.ReadLines(@"../../WVA_Keychain_Synch/TextDocs/" + TxtReader).Skip(counter).Take(1).First());
+                        int line = Convert.ToInt32(File.ReadLines(dirProgramx86 + @"/WVA_Keychain_Synch/WVA_Keychain_Synch/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
                         szString[0] = (byte)line;
                         nParam = p.ParamNumber;
                         Int32 iRet = Opticon.csp2.SetParam(nParam, szString, nMaxLength);
@@ -483,26 +509,40 @@ namespace WVA_Keychain_Synch
                 Errors.PrintToErrorLog();
             }
             PrefPB.Value = 0;
+            SkipMainSleep = true;
+            Started = false;
             Start();
-                                    
+            CallbackFunction(ComCheck);
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {            
+            this.Cursor = Cursors.WaitCursor;
+            button2.Enabled = false;
             TxtReader = "ReadUPC_Only.txt";
             SetParameters();
+            button2.Enabled = true;
+            this.Cursor = Cursors.Arrow;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+            button3.Enabled = false;
             TxtReader = "ReadStockOnly.txt";
             SetParameters();
+            button3.Enabled = true;
+            this.Cursor = Cursors.Arrow;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
+            this.Cursor = Cursors.WaitCursor;
+            button4.Enabled = false;
             TxtReader = "ReadStock+UPC.txt";
             SetParameters();
+            button4.Enabled = true;
+            this.Cursor = Cursors.Arrow;
         }
 
         private void LLViewCart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

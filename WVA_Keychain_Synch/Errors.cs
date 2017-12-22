@@ -29,7 +29,8 @@ namespace WVA_Keychain_Synch
 
                 using (System.IO.StreamWriter writer = new System.IO.StreamWriter((DirErrorLog + @"\ErrorLog.txt"), true))
                 {
-                    writer.Write(Error);
+                    string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+                    writer.Write("(TIME: " + time +"\n" + Error);
                     writer.Close();
                 }
 
