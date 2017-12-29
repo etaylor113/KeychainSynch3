@@ -17,23 +17,8 @@ namespace WVA_Keychain_Synch
         public static void RunApi()
         {
             try {
-
-                Trace.WriteLine("=====================================");
-                foreach (var index in MainForm.data)
-                {
-                    Trace.WriteLine(index);
-                }
-                Trace.WriteLine("=====================================");
-
-
                 MessageFromApi = "";
                 var json = JsonConvert.SerializeObject(MainForm.data);
-
-                Trace.WriteLine("=====================================");
-                Trace.WriteLine(json.ToString());
-                Trace.WriteLine("=====================================");
-
-
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
                 request.Method = "POST";
@@ -54,13 +39,14 @@ namespace WVA_Keychain_Synch
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     MessageFromApi = reader.ReadToEnd();
+
                     if (MessageFromApi == "Able to connect to remote server but File Send was not successful\nNo Response")
                     {
                         MessageForm.Response = "There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, please call WVA Scanner Support. ";
                         MessageForm message = new MessageForm();
                         message.ShowDialog();
                         return;
-                    }
+                    }                  
 
                     if (MessageFromApi.Contains("FAIL:"))
                     {

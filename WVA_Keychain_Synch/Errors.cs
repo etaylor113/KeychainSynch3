@@ -27,10 +27,12 @@ namespace WVA_Keychain_Synch
                     file.Close();
                 }
 
+                string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                 using (System.IO.StreamWriter writer = new System.IO.StreamWriter((DirErrorLog + @"\ErrorLog.txt"), true))
-                {
-                    string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-                    writer.Write("(TIME: " + time +"\n" + Error);
+                {                   
+                    writer.WriteLine("(TIME: "+ time + ")");
+                    writer.WriteLine("(ERROR:" + Error + ")");
+                    writer.WriteLine("");
                     writer.Close();
                 }
 

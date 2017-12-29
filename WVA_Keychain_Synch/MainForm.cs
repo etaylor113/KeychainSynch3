@@ -36,14 +36,7 @@ namespace WVA_Keychain_Synch
         static extern void SetParameters([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
 
         [DllImport("Opticon.csp2.net")]
-        static extern void CallbackFunction([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
-
-        [DllImport("Opticon.csp2.net")]
-        static extern void SendData([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
-
-        [DllImport("Opticon.csp2.net")]
-        static extern void Stop([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
-
+        static extern void CallbackFunction([In, MarshalAs(UnmanagedType.LPArray)] byte[] szDeviceId, [In, MarshalAs(UnmanagedType.LPArray)] byte[] szSoftwareVersion, [In, MarshalAs(UnmanagedType.LPArray)] byte[] sbBarcodes);
 
         ParamInfo[] Description = {
                         new ParamInfo( "Code 39", 0x1f ),
@@ -166,7 +159,8 @@ namespace WVA_Keychain_Synch
                                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
 
                                 data.Clear();
-                              
+
+                                GetTime();
                                 data.Add(Time);
                              
                                 data.Add(AccountNumber);
@@ -422,10 +416,10 @@ namespace WVA_Keychain_Synch
                 this.Cursor = Cursors.WaitCursor;
                 sendData.Enabled = false;
                 DataSend = true;
-                Trace.WriteLine("Stop polling...");
+
                 Stop();
-                GetTime();
-                Thread.Sleep(500);
+               // GetTime();
+                //Thread.Sleep(500);
                 CallbackFunction(ComCheck);
 
                 if (ReadBarcodes <= 0)
@@ -450,8 +444,7 @@ namespace WVA_Keychain_Synch
                         anef.ShowDialog();
                     }                             
                 }
-
-                Trace.WriteLine("Starting polling again...");
+        
                 Started = false;
                 Start();
                 CallbackFunction(ComCheck);
@@ -481,7 +474,8 @@ namespace WVA_Keychain_Synch
                 SkipMainSleep = true;
                 CallbackFunction(ComCheck);       
                 if (Status >= 0)
-                {                   
+                {
+                    this.Cursor = Cursors.WaitCursor;
                     string dirProgramx86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
                     foreach (ParamInfo p in Description)
                     {
@@ -500,10 +494,12 @@ namespace WVA_Keychain_Synch
                             Application.OpenForms.OfType<MessageForm>().First().Close();
                         prefComp.ShowDialog();
                     }
+                    this.Cursor = Cursors.Arrow;
                 }         
             }
             catch (System.AccessViolationException e)
             {
+                this.Cursor = Cursors.Arrow;
                 Errors.Error = e.ToString();
                 Errors.Error += "(Location: SetParameters)";
                 Errors.PrintToErrorLog();
@@ -517,32 +513,26 @@ namespace WVA_Keychain_Synch
 
         private void button2_Click(object sender, EventArgs e)
         {            
-            this.Cursor = Cursors.WaitCursor;
             button2.Enabled = false;
             TxtReader = "ReadUPC_Only.txt";
             SetParameters();
-            button2.Enabled = true;
-            this.Cursor = Cursors.Arrow;
+            button2.Enabled = true;         
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Cursor = Cursors.WaitCursor;
             button3.Enabled = false;
             TxtReader = "ReadStockOnly.txt";
             SetParameters();
             button3.Enabled = true;
-            this.Cursor = Cursors.Arrow;
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.WaitCursor;
+        {          
             button4.Enabled = false;
             TxtReader = "ReadStock+UPC.txt";
             SetParameters();
             button4.Enabled = true;
-            this.Cursor = Cursors.Arrow;
         }
 
         private void LLViewCart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
