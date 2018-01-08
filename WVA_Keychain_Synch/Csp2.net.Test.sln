@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.27130.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WVA_Keychain_Synch", "WVA_Keychain_Synch.csproj", "{E3026F78-3952-4CD8-BF22-D0C7B3AEE15B}"
 EndProject
@@ -31,10 +31,10 @@ Global
 		{E3026F78-3952-4CD8-BF22-D0C7B3AEE15B}.Release|x86.Build.0 = Release|x86
 		{B51A36AA-B6B9-4A6E-9194-28A644B6F9DC}.Debug|Any CPU.ActiveCfg = Debug
 		{B51A36AA-B6B9-4A6E-9194-28A644B6F9DC}.Debug|x64.ActiveCfg = Debug
-		{B51A36AA-B6B9-4A6E-9194-28A644B6F9DC}.Debug|x86.ActiveCfg = Debug
+		{B51A36AA-B6B9-4A6E-9194-28A644B6F9DC}.Debug|x86.ActiveCfg = Release
 		{B51A36AA-B6B9-4A6E-9194-28A644B6F9DC}.Release|Any CPU.ActiveCfg = Release
 		{B51A36AA-B6B9-4A6E-9194-28A644B6F9DC}.Release|x64.ActiveCfg = Release
-		{B51A36AA-B6B9-4A6E-9194-28A644B6F9DC}.Release|x86.ActiveCfg = Release
+		{B51A36AA-B6B9-4A6E-9194-28A644B6F9DC}.Release|x86.ActiveCfg = Debug
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

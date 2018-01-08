@@ -62,8 +62,7 @@ namespace WVA_Keychain_Synch
                         MessageFromApi = MessageFromApi.Replace("UPDATE", "");
                         Variables.ConfigFile = MessageFromApi.Remove(0, 6);
                         MessageFromApi = MessageFromApi.Remove(0, 5);
-                        UpdateConfig.RunUpdate();
-                        
+                        UpdateConfig.RunUpdate();    
                     }
        
                     reader.Close();

@@ -33,10 +33,10 @@ namespace WVA_Keychain_Synch
         public static List<object> data = new List<object>();
 
         [DllImport("Opticon.csp2.net")]
-        static extern void SetParameters([In, MarshalAs(UnmanagedType.LPArray)] byte[] szString);
+        static extern void SetParameters([In, MarshalAs(UnmanagedType.LPStr)] string szString);
 
         [DllImport("Opticon.csp2.net")]
-        static extern void CallbackFunction([In, MarshalAs(UnmanagedType.LPArray)] byte[] szDeviceId, [In, MarshalAs(UnmanagedType.LPArray)] byte[] szSoftwareVersion, [In, MarshalAs(UnmanagedType.LPArray)] byte[] sbBarcodes);
+        static extern void CallbackFunction([In, MarshalAs(UnmanagedType.LPStr)] string szDeviceId, [In, MarshalAs(UnmanagedType.LPStr)] string szSoftwareVersion, [In, MarshalAs(UnmanagedType.LPStr)] StringBuilder sbBarcodes);
 
         ParamInfo[] Description = {
                         new ParamInfo( "Code 39", 0x1f ),
@@ -418,8 +418,6 @@ namespace WVA_Keychain_Synch
                 DataSend = true;
 
                 Stop();
-               // GetTime();
-                //Thread.Sleep(500);
                 CallbackFunction(ComCheck);
 
                 if (ReadBarcodes <= 0)

@@ -785,7 +785,7 @@
             {
             "Enabled" = "11:TRUE"
             "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:1"
+            "PrerequisitesLocation" = "2:2"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
                 "Items"
@@ -2749,7 +2749,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WVA_Keychain_Synch"
         "ProductCode" = "8:{4914904A-8B42-4273-B51D-C9E7968A6D1A}"
-        "PackageCode" = "8:{E47F049F-A4C4-43D0-8A2B-616BCABFD1AE}"
+        "PackageCode" = "8:{FF193774-A88B-4C04-AE9D-79194E5F8C76}"
         "UpgradeCode" = "8:{C63B0803-5A47-44F5-8D30-232BBDF39F71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
