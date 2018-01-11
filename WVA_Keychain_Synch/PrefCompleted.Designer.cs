@@ -71,7 +71,7 @@
             this.Name = "PrefCompleted";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WVA - Keychain Synch 3.0";
+            this.Text = "WVA Scan";
             ((System.ComponentModel.ISupportInitialize)(this.backdrop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

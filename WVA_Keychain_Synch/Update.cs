@@ -66,12 +66,11 @@ namespace WVA_Keychain_Synch
             try
             {
                 string[] stringArray;
-                string TextFromFile = "";
 
                 stringArray = UpdateString.Split(',');
 
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string updateConfig = @"/WVA_Keychain_Synch/Config/Config.txt";
+                string updateConfig = @"/WVA Scan/Config/Config.txt";
                 var publicFile = File.Create(dirPublicDocs + updateConfig);
                 publicFile.Close();
 
@@ -96,13 +95,13 @@ namespace WVA_Keychain_Synch
             if (DoesUpdateFileExist() == true)
             {
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string updateConfig = @"/WVA_Keychain_Synch/Config/Config.txt";
+                string updateConfig = @"/WVA Scan/Config/Config.txt";
                 selectedDir = dirPublicDocs + updateConfig;
             }
             else
             {
                 string dirProgram86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
-                string defaultConfig = @"/WVA_Keychain_Synch/WVA_Keychain_Synch/Config/Config.txt";
+                string defaultConfig = @"/WVA Scan/Config/Config.txt";
                 selectedDir = dirProgram86 + defaultConfig;
             }   
       
@@ -166,7 +165,7 @@ namespace WVA_Keychain_Synch
         public static bool DoesUpdateFileExist()
         {
             string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-            string updateConfig = @"/WVA_Keychain_Synch/Config/";
+            string updateConfig = @"/WVA Scan/Config/";
             
             if (File.Exists(dirPublicDocs + updateConfig))
                 return true;

@@ -1,4 +1,0 @@
-0 Error sending data. Be sure you are connected to the internet. 
-1 Data successfully sent! Check your WVA store account view and finalize your order.
-2 Scanner ID not recognized. Please contact WVA Scanner Support to register a new scanner, or plug in your registered Opticon Scanner.
-3 Data sent! # scanned barcodes total. # barcodes not valid. Be sure all products scanned are up-to-date and valid.

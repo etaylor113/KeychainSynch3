@@ -188,7 +188,7 @@ namespace WVA_Keychain_Synch
                                 };
 
                                 using (System.IO.StreamWriter writer =
-                                        new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Keychain_Synch\ScannerData\" + Time))
+                                        new System.IO.StreamWriter(dirPublicDocs + @"\WVA Scan\ScannerData\" + Time))
                                 {
                                     writer.Write("<Date Created>" + Time);
                                     writer.Write("\r\n<Account Number>" + AccountNumber);
@@ -320,7 +320,7 @@ namespace WVA_Keychain_Synch
             {
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
 
-                AccountNumber = File.ReadLines(dirPublicDocs + @"\WVA_Keychain_Synch\AccountNumber\AccountNumber.txt").Skip(0).Take(1).First();
+                AccountNumber = File.ReadLines(dirPublicDocs + @"\WVA Scan\AccountNumber\AccountNumber.txt").Skip(0).Take(1).First();
 
                 if (AccountNumber != "")
                     AccountTextBox.Text = ("Set to: " + AccountNumber);
@@ -344,7 +344,7 @@ namespace WVA_Keychain_Synch
 
                     string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
 
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Keychain_Synch\AccountNumber\AccountNumber.txt"))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(dirPublicDocs + @"\WVA Scan\AccountNumber\AccountNumber.txt"))
                     {
                         file.WriteLine(AccountNumber);
                         file.Close();
@@ -478,7 +478,7 @@ namespace WVA_Keychain_Synch
                     foreach (ParamInfo p in Description)
                     {
                         ComCheck = Opticon.csp2.Init(ComCheck);
-                        int line = Convert.ToInt32(File.ReadLines(dirProgramx86 + @"/WVA_Keychain_Synch/WVA_Keychain_Synch/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
+                        int line = Convert.ToInt32(File.ReadLines(dirProgramx86 + @"/WVA Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
                         szString[0] = (byte)line;
                         nParam = p.ParamNumber;
                         Int32 iRet = Opticon.csp2.SetParam(nParam, szString, nMaxLength);

@@ -426,7 +426,7 @@ namespace WVA_Keychain_Synch
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.Text = "WVA - Keychain Synch 3.0";
+            this.Text = "WVA Scan";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
