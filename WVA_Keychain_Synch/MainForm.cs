@@ -98,19 +98,19 @@ namespace WVA_Keychain_Synch
             int iRet = -1;
             try
             {
-                if (Opticon.csp2.DataAvailable(nComport) > 0)
+                if ( Opticon.csp2.DataAvailable(nComport) > 0)
                 {
                     iRet = Opticon.csp2.ReadData(nComport);
                     Status = 1;
                 }
                 else if (Opticon.csp2.GetDSR(nComport) > 0)
                 {
-                    Status = 1;
+                    Status = 1; 
                     iRet = Opticon.csp2.Interrogate(nComport);
                     Status = Opticon.csp2.Interrogate(nComport);
                 }
                 else
-                {
+                { 
                     Status = -1;
                 }
 
@@ -476,7 +476,7 @@ namespace WVA_Keychain_Synch
                     this.Cursor = Cursors.WaitCursor;
                     string dirProgramx86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
                     foreach (ParamInfo p in Description)
-                    {
+                    { 
                         ComCheck = Opticon.csp2.Init(ComCheck);
                         int line = Convert.ToInt32(File.ReadLines(dirProgramx86 + @"/WVA Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
                         szString[0] = (byte)line;

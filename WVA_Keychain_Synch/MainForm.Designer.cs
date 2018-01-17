@@ -237,7 +237,7 @@ namespace WVA_Keychain_Synch
             this.AccountLabel.Name = "AccountLabel";
             this.AccountLabel.Size = new System.Drawing.Size(278, 29);
             this.AccountLabel.TabIndex = 5;
-            this.AccountLabel.Text = "Enter account number";
+            this.AccountLabel.Text = "Enter Account Number";
             // 
             // AccountTextBox
             // 
@@ -257,7 +257,7 @@ namespace WVA_Keychain_Synch
             this.LLViewCart.Size = new System.Drawing.Size(291, 33);
             this.LLViewCart.TabIndex = 0;
             this.LLViewCart.TabStop = true;
-            this.LLViewCart.Text = "Review my order";
+            this.LLViewCart.Text = "Review My Order";
             this.LLViewCart.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLViewCart_LinkClicked);
             // 
             // logoTab2
