@@ -1,4 +1,3 @@
-C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\x64\Debug\WVA_Keychain_Synch.pdb
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\x64\Debug\WVA_Keychain_Synch.exe.config
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\x64\Debug\WVA_Keychain_Synch.exe
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\bin\x64\Debug\WVA_Keychain_Synch.pdb
@@ -15,3 +14,4 @@ C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\x64\Debug\WVA_Keych
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\x64\Debug\WVA_Keychain_Synch.csproj.GenerateResource.Cache
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\x64\Debug\WVA_Keychain_Synch.csproj.CoreCompileInputs.cache
 C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\x64\Debug\WVA_Keychain_Synch.exe
+C:\Users\Taylo\Desktop\KeychainSynch3\WVA_Keychain_Synch\obj\x64\Debug\WVA_Keychain_Synch.pdb

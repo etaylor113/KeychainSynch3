@@ -20,7 +20,7 @@ namespace WVA_Keychain_Synch
                 MessageFromApi = "";
                 var json = JsonConvert.SerializeObject(MainForm.data);
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/final.rb");
                 request.Method = "POST";
 
                 System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
@@ -29,7 +29,7 @@ namespace WVA_Keychain_Synch
                 request.ContentLength = byteArray.Length;
                 request.ContentType = @"application/json";
 
-                using (Stream dataStream = request.GetRequestStream())
+                using (Stream dataStream = request.GetRequestStream()  )
                 {
                     dataStream.Write(byteArray, 0, byteArray.Length);
                 }

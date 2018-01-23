@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Net.Sockets;
 using Newtonsoft.Json;
-using System.Runtime.InteropServices;
+using System.Runtime.InteropServices;   
 using System.Reflection;
 
 namespace WVA_Keychain_Synch
@@ -28,7 +28,6 @@ namespace WVA_Keychain_Synch
         public string AccountNumber { get; set; }  
         public int Status { get; set; }
         public string Time { get; set; }
-        public static bool SkipMainSleep { get; set; }
 
         public static List<object> data = new List<object>();
 
@@ -132,10 +131,12 @@ namespace WVA_Keychain_Synch
                     if (Ports.Count > 0)
                     {
                         labelConnected.Text = "Connected on COM " + nComport;
+                        
                     }
                     else
                     {
                         labelConnected.Text = "Not Connected";
+                        labelNumBarcodes.Text = "Not Connected";
                     }
                 });
 
@@ -223,10 +224,11 @@ namespace WVA_Keychain_Synch
                         ClearData = false;
                     }
                 }
-                if (SkipMainSleep == true)
-                    SkipMainSleep = false;
                 else
-                    Thread.Sleep(1000);
+                {
+                    ReadBarcodes = 0;
+                }
+                Thread.Sleep(500);
             }
             catch { }
         }
@@ -412,11 +414,10 @@ namespace WVA_Keychain_Synch
         private void SendData_Click(object sender, EventArgs e)
         {
             try
-            {
+            {              
                 this.Cursor = Cursors.WaitCursor;
                 sendData.Enabled = false;
                 DataSend = true;
-
                 Stop();
                 CallbackFunction(ComCheck);
 
@@ -430,7 +431,7 @@ namespace WVA_Keychain_Synch
                 else
                 {                             
                     if (AccountNumber != null && AccountNumber != "")
-                    {     
+                    {                     
                         API.RunApi();
                         Time = "";
                     }
@@ -469,7 +470,6 @@ namespace WVA_Keychain_Synch
             try
             {
                 Stop();
-                SkipMainSleep = true;
                 CallbackFunction(ComCheck);       
                 if (Status >= 0)
                 {
@@ -503,7 +503,6 @@ namespace WVA_Keychain_Synch
                 Errors.PrintToErrorLog();
             }
             PrefPB.Value = 0;
-            SkipMainSleep = true;
             Started = false;
             Start();
             CallbackFunction(ComCheck);
