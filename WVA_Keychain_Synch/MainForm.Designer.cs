@@ -235,7 +235,7 @@ namespace WVA_Keychain_Synch
             this.AccountLabel.Location = new System.Drawing.Point(-9, 153);
             this.AccountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AccountLabel.Name = "AccountLabel";
-            this.AccountLabel.Size = new System.Drawing.Size(278, 29);
+            this.AccountLabel.Size = new System.Drawing.Size(283, 29);
             this.AccountLabel.TabIndex = 5;
             this.AccountLabel.Text = "Enter Account Number";
             // 
@@ -419,13 +419,16 @@ namespace WVA_Keychain_Synch
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(622, 394);
             this.Controls.Add(this.tabControl1);
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::WVA_Keychain_Synch.Properties.Settings.Default, "Location", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Location = global::WVA_Keychain_Synch.Properties.Settings.Default.Location;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "WVA Scan";
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

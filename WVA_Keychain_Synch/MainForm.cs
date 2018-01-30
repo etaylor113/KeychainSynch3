@@ -337,12 +337,31 @@ namespace WVA_Keychain_Synch
                 AccountNumber = AccountTextBox.Text;
 
                 if (AccountNumber != "")
-                {
+                {                                 
                     if (AccountNumber.Contains("Set to: "))
+                    {
                         AccountNumber = AccountNumber.Remove(0, 8);
-
-                    if (AccountNumber.Contains("Set to:"))
+                        AccountTextBox.Text = ("Updated to: " + AccountNumber);
+                    }   
+                    else if (AccountNumber.Contains("Updated to: "))
+                    {
+                        AccountNumber = AccountNumber.Remove(0, 12);
+                        AccountTextBox.Text = ("Set to: " + AccountNumber);
+                    }
+                    else if (AccountNumber.Contains("Set to:"))
+                    {
                         AccountNumber = AccountNumber.Remove(0, 7);
+                        AccountTextBox.Text = ("Updated to: " + AccountNumber);
+                    }
+                    else if (AccountNumber.Contains("Updated to:"))
+                    {
+                        AccountNumber = AccountNumber.Remove(0, 11);
+                        AccountTextBox.Text = ("Set to: " + AccountNumber);
+                    }
+                    else
+                    {
+                        AccountTextBox.Text = ("Set to: " + AccountNumber);
+                    }
 
                     string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
 
@@ -351,8 +370,6 @@ namespace WVA_Keychain_Synch
                         file.WriteLine(AccountNumber);
                         file.Close();
                     }
-
-                    AccountTextBox.Text = ("Set to: " + AccountNumber);
                 }
             }
             catch (Exception e1)
@@ -493,7 +510,13 @@ namespace WVA_Keychain_Synch
                         prefComp.ShowDialog();
                     }
                     this.Cursor = Cursors.Arrow;
-                }         
+                }
+                else
+                {
+                    NoScanned noScanned = new NoScanned();
+                    noScanned.label1.Text = "Scanner not connected! Plug Scanner in USB port to change preferences.";
+                    noScanned.ShowDialog();
+                }
             }
             catch (System.AccessViolationException e)
             {
@@ -544,7 +567,12 @@ namespace WVA_Keychain_Synch
                 Errors.Error += "(Location: LLViewCart_LinkClicked())";
                 Errors.PrintToErrorLog();
             }
-        }          
+        }
+
+        private void MainForm_FormClosing(Object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
     }
 
     public class ParamInfo
