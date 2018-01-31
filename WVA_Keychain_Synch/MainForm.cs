@@ -427,13 +427,14 @@ namespace WVA_Keychain_Synch
         private void SendData_Click(object sender, EventArgs e)
         {
             try
-            {              
+            {                       
                 this.Cursor = Cursors.WaitCursor;
                 sendData.Enabled = false;
                 DataSend = true;
                 Stop();
                 CallbackFunction(ComCheck);
 
+                UpdateConfig.RunUpdate();
                 if (ReadBarcodes <= 0)
                 {
                     var noScan = new NoScanned();

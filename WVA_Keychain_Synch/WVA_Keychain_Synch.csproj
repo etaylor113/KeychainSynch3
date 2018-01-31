@@ -135,6 +135,7 @@
       <DependentUpon>ActNumErrorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="API.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="ErrorMessage.cs">
       <SubType>Form</SubType>
     </Compile>
