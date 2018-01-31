@@ -434,7 +434,6 @@ namespace WVA_Keychain_Synch
                 Stop();
                 CallbackFunction(ComCheck);
 
-                UpdateConfig.RunUpdate();
                 if (ReadBarcodes <= 0)
                 {
                     var noScan = new NoScanned();

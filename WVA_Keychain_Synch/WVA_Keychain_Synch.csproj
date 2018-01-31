@@ -144,6 +144,7 @@
     </Compile>
     <Compile Include="Errors.cs" />
     <Compile Include="FileLogic.cs" />
+    <Compile Include="Json_Response.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

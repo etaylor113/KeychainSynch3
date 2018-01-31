@@ -12,12 +12,9 @@ namespace WVA_Keychain_Synch
 {
     class API
     {
-        public static string MessageFromApi { get; set; }
-
         public static void RunApi()
         {
             try {
-                MessageFromApi = "";
 
                 // Create new order from order class
                 Order order = new Order()
@@ -30,9 +27,10 @@ namespace WVA_Keychain_Synch
                     Barcodes = MainForm.Barcodes.ToArray()
                 };
 
+                // Write response to api
                 var json = JsonConvert.SerializeObject(order);
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/final.rb");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/final.rb");
                 request.Method = "POST";
 
                 System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
@@ -46,37 +44,39 @@ namespace WVA_Keychain_Synch
                     dataStream.Write(byteArray, 0, byteArray.Length);
                 }
 
+                // Clear Json_Response variables
+                Json_Response.Status = "";
+                Json_Response.Message = "";
+
+                // Read response from api    
                 WebResponse response = request.GetResponse();
                 using (Stream responseStream = response.GetResponseStream())
-                {
+                {                 
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-                    MessageFromApi = reader.ReadToEnd();
+                    var json_Message = reader.ReadToEnd();
+                    var jsonResponse = JsonConvert.DeserializeObject<Json_Response>(json_Message);
 
-                    if (MessageFromApi == "Able to connect to remote server but File Send was not successful\nNo Response")
+                  
+                    if (Json_Response.Message == "Able to connect to remote server but File Send was not successful\nNo Response")
                     {
-                        MessageForm.Response = "There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, please call WVA Scanner Support. ";
+                        MessageForm.Response = "There was an error creating your order. Please try again. If the error persists, please contact WVA Scanner Support.";
                         MessageForm message = new MessageForm();
                         message.ShowDialog();
                         return;
-                    }                  
-
-                    if (MessageFromApi.Contains("FAIL:"))
+                    }                
+                    if (Json_Response.Status == "FAIL")
                     {
-                        MessageFromApi = MessageFromApi.Replace("FAIL:", "");
+                        SpawnErrorPage();
                     }
-                    if (MessageFromApi.Contains("SUCCESS:"))
+                    if (Json_Response.Status == "SUCCESS")
                     {
-                        MainForm.ClearData = true;
-                        MessageFromApi = MessageFromApi.Replace("SUCCESS:", "");
+                        MainForm.ClearData = true;    
                     }
-                    if (MessageFromApi.Contains("UPDATE"))
+                    if (Json_Response.Status == "UPDATE")
                     {
-                        MessageFromApi = MessageFromApi.Replace("UPDATE", "");
-                        Variables.ConfigFile = MessageFromApi.Remove(0, 6);
-                        MessageFromApi = MessageFromApi.Remove(0, 5);
+                        Variables.ConfigFile = Json_Response.Message;
                         UpdateConfig.RunUpdate();    
-                    }
-       
+                    }      
                     reader.Close();
                 }
 
@@ -84,27 +84,30 @@ namespace WVA_Keychain_Synch
 
                 if ((((HttpWebResponse)response).StatusDescription) == "OK")
                 {
-                    MessageForm.Response = MessageFromApi;
+                    MessageForm.Response = Json_Response.Message;
                     MessageForm message = new MessageForm();
                     message.ShowDialog();
                 }
                 else
                 {
-                    MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
-                    MessageForm message = new MessageForm();
-                    message.ShowDialog();
+                    SpawnErrorPage();
                 }
             }
             catch (Exception e)
             {
-                MessageForm.Response = "There was an error downloading \nscanner. Be sure you are connected \nto the internet. If the problem persists, \nplease call WVA Scanner Support. ";
-                MessageForm message = new MessageForm();
-                message.ShowDialog();
+                SpawnErrorPage();
 
                 Errors.Error = e.ToString();
                 Errors.Error += "(Location: RunApi())";
                 Errors.PrintToErrorLog();
             }
+        }
+
+        private static void SpawnErrorPage()
+        {
+            MessageForm.Response = "There was an error downloading scanner. Be sure you are connected to the internet. If the problem persists, please call WVA Scanner Support. ";
+            MessageForm message = new MessageForm();
+            message.ShowDialog();
         }
     }
 }

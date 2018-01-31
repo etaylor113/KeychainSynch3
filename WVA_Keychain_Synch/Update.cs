@@ -12,9 +12,6 @@ namespace WVA_Keychain_Synch
 {
     class UpdateConfig
     {
-
-        public static string UpdateString { get; set; }
-
         public static void RunUpdate()
         {
             GetUpdate();
@@ -26,12 +23,13 @@ namespace WVA_Keychain_Synch
         {
             try
             {
-
+                // Get config file version
                 Config config = new Config()
                 {
-                    Update = Variables.ConfigFile
+                    ConfigFile = Variables.ConfigFile
                 };
 
+                // Write response to api
                 var json = JsonConvert.SerializeObject(config);            
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/final.rb");
@@ -48,12 +46,14 @@ namespace WVA_Keychain_Synch
                     dataStream.Write(byteArray, 0, byteArray.Length);
                 }
 
+                // Read response from api
                 WebResponse response = request.GetResponse();
                 using (Stream responseStream = response.GetResponseStream())
                 {
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
-                    UpdateString = reader.ReadToEnd();
-
+                    var json_Message = reader.ReadToEnd();
+                    var jsonResponse = JsonConvert.DeserializeObject<Json_Response>(json_Message);
+                    
                     reader.Close();
                 }
                 response.Close();
@@ -71,8 +71,7 @@ namespace WVA_Keychain_Synch
             try
             {
                 string[] stringArray;
-
-                stringArray = UpdateString.Split(',');
+                stringArray = Json_Response.Message.Split(',');
 
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
                 string updateConfig = @"/WVA Scan/Config/Config.txt";
@@ -89,7 +88,12 @@ namespace WVA_Keychain_Synch
                     wr.Close();
                 }
             }
-            catch { }
+            catch (Exception e)
+            {          
+                Errors.Error = e.ToString();
+                Errors.Error += "(Location: Update.cs GetUpdateData()";
+                Errors.PrintToErrorLog();
+            }
         }
 
         public static void AssignVariables()
