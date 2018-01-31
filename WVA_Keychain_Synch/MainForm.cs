@@ -25,11 +25,12 @@ namespace WVA_Keychain_Synch
         public bool DataSend { get; set; }
         private string TxtReader { get; set; }
         public static bool ClearData { get; set; }
-        public string AccountNumber { get; set; }  
         public int Status { get; set; }
-        public string Time { get; set; }
 
-        public static List<object> data = new List<object>();
+        public static string AccountNumber { get; set; } 
+        public static string DeviceID { get; set; }
+        public static string SWVersion { get; set; }
+        public static List<string> Barcodes = new List<string>();   
 
         [DllImport("Opticon.csp2.net")]
         static extern void SetParameters([In, MarshalAs(UnmanagedType.LPStr)] string szString);
@@ -159,42 +160,36 @@ namespace WVA_Keychain_Synch
                             {
                                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
 
-                                data.Clear();
-
-                                GetTime();
-                                data.Add(Time);
-                             
-                                data.Add(AccountNumber);
+                                string strTime = GetTime();
 
                                 string szDeviceId;
                                 iRet = Opticon.csp2.GetDeviceId(out szDeviceId, nComport);
-                                data.Add(szDeviceId);
+                                DeviceID = szDeviceId;
 
                                 StringBuilder szSoftwareVersion = new StringBuilder(256);
                                 Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
-                                data.Add(szSoftwareVersion.ToString());
-
-                                data.Add(Variables.ConfigFile);
-
+                                SWVersion = szSoftwareVersion.ToString();
+                            
                                 StringBuilder sbBarcodes = new StringBuilder(1000);
                                 for (Int32 i = 0; i < ReadBarcodes; i++)
                                 {
                                     Opticon.csp2.BarCodeDataPacket aPacket;
                                     iRet = Opticon.csp2.GetPacket(out aPacket, i, nComport);
                                     if (aPacket.strBarData != null)
-                                    {
-                                        data.Add(aPacket.strBarData.ToString());
-                                        sbBarcodes.AppendLine(String.Format("<Item>" + "\t" + aPacket.strBarData));
+                                    {                                      
+                                        sbBarcodes.AppendLine(String.Format(aPacket.strBarData));
+                                        Barcodes.Add(aPacket.strBarData.ToString());
                                     }
-                                };
+                                };                              
 
+                                // Copy order to backup data file
                                 using (System.IO.StreamWriter writer =
-                                        new System.IO.StreamWriter(dirPublicDocs + @"\WVA Scan\ScannerData\" + Time))
+                                        new System.IO.StreamWriter(dirPublicDocs + @"\WVA Scan\ScannerData\" + strTime))
                                 {
-                                    writer.Write("<Date Created>" + Time);
-                                    writer.Write("\r\n<Account Number>" + AccountNumber);
-                                    writer.Write("\r\n<Scanner Id>" + szDeviceId);
-                                    writer.Write("\r\n<Software Version>" + szSoftwareVersion);
+                                    writer.Write("<Date Created> " + strTime);
+                                    writer.Write("\r\n<Account Number> " + AccountNumber);
+                                    writer.Write("\r\n<Scanner Id> " + szDeviceId);
+                                    writer.Write("\r\n<Software Version> " + szSoftwareVersion);
                                     writer.Write("\r\n" + sbBarcodes);
 
                                     writer.Close();
@@ -311,9 +306,10 @@ namespace WVA_Keychain_Synch
             }
         }
 
-        private void GetTime()
+        public static string GetTime()
         {
-            Time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+            string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+            return time.ToString();
         }
 
         private void CheckAccountNumber()
@@ -449,8 +445,7 @@ namespace WVA_Keychain_Synch
                 {                             
                     if (AccountNumber != null && AccountNumber != "")
                     {                     
-                        API.RunApi();
-                        Time = "";
+                        API.RunApi();                      
                     }
                     else
                     {

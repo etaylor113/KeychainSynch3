@@ -18,7 +18,19 @@ namespace WVA_Keychain_Synch
         {
             try {
                 MessageFromApi = "";
-                var json = JsonConvert.SerializeObject(MainForm.data);
+
+                // Create new order from order class
+                Order order = new Order()
+                {
+                    Time = MainForm.GetTime(),
+                    ActNumber = MainForm.AccountNumber,
+                    DeviceID = MainForm.DeviceID,
+                    SWVersion = MainForm.SWVersion.ToString(),
+                    ConfigFile = Variables.ConfigFile,
+                    Barcodes = MainForm.Barcodes.ToArray()
+                };
+
+                var json = JsonConvert.SerializeObject(order);
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/final.rb");
                 request.Method = "POST";
@@ -68,8 +80,7 @@ namespace WVA_Keychain_Synch
                     reader.Close();
                 }
 
-                response.Close();
-                json = "";
+                response.Close();          
 
                 if ((((HttpWebResponse)response).StatusDescription) == "OK")
                 {
