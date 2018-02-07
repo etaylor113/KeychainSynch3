@@ -22,7 +22,6 @@ namespace WVA_Keychain_Synch
                     Time = MainForm.GetTime(),
                     ActNumber = MainForm.AccountNumber,
                     DeviceID = MainForm.DeviceID,
-                    SWVersion = MainForm.SWVersion.ToString(),
                     ConfigFile = Variables.ConfigFile,
                     Barcodes = MainForm.Barcodes.ToArray()
                 };

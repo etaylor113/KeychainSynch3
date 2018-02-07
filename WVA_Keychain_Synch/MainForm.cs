@@ -165,11 +165,7 @@ namespace WVA_Keychain_Synch
                                 string szDeviceId;
                                 iRet = Opticon.csp2.GetDeviceId(out szDeviceId, nComport);
                                 DeviceID = szDeviceId;
-
-                                StringBuilder szSoftwareVersion = new StringBuilder(256);
-                                Opticon.csp2.GetSwVersion(szSoftwareVersion, 256, nComport);
-                                SWVersion = szSoftwareVersion.ToString();
-                            
+                                                       
                                 StringBuilder sbBarcodes = new StringBuilder(1000);
                                 for (Int32 i = 0; i < ReadBarcodes; i++)
                                 {
@@ -189,9 +185,7 @@ namespace WVA_Keychain_Synch
                                     writer.Write("<Date Created> " + strTime);
                                     writer.Write("\r\n<Account Number> " + AccountNumber);
                                     writer.Write("\r\n<Scanner Id> " + szDeviceId);
-                                    writer.Write("\r\n<Software Version> " + szSoftwareVersion);
                                     writer.Write("\r\n" + sbBarcodes);
-
                                     writer.Close();
                                 }
                             }
