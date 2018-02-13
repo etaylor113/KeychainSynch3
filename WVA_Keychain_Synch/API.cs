@@ -47,64 +47,71 @@ namespace WVA_Keychain_Synch
                 Json_Response.Status = "";
                 Json_Response.Message = "";
 
-                // Read response from api    
-                WebResponse response = request.GetResponse();
+                // Read response from api 
+                WebResponse response = request.GetResponse();           
                 using (Stream responseStream = response.GetResponseStream())
                 {                 
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     var json_Message = reader.ReadToEnd();
                     var jsonResponse = JsonConvert.DeserializeObject<Json_Response>(json_Message);
-
-                  
-                    if (Json_Response.Message == "Able to connect to remote server but File Send was not successful\nNo Response")
-                    {
-                        MessageForm.Response = "There was an error creating your order. Please try again. If the error persists, please contact WVA Scanner Support.";
-                        MessageForm message = new MessageForm();
-                        message.ShowDialog();
-                        return;
-                    }                
+                             
                     if (Json_Response.Status == "FAIL")
                     {
-                        SpawnErrorPage();
+                        SpawnGeneralErrorWindow();     // There was a problem creating the order
                     }
                     if (Json_Response.Status == "SUCCESS")
                     {
-                        MainForm.ClearData = true;    
+                        MainForm.ClearData = true;    // Tell polling thread in MainForm.cs it's okay to delete scanner data
                     }
-                    if (Json_Response.Status == "UPDATE")
+                    if (Json_Response.Status == "SUCCESS/UPDATE")
                     {
-                        Variables.ConfigFile = Json_Response.Message;
-                        UpdateConfig.RunUpdate();    
-                    }      
+                        MainForm.ClearData = true;   // Still want to clear the data beacause order was created, but run update process
+                        UpdateConfig.RunUpdate();  // Initiate a second API call to grab new config file for user
+                    }
+                    else
+                    {
+                        SpawnGeneralErrorWindow();   // If we got here, something was wrong with the payload
+                    }
                     reader.Close();
                 }
-
-                response.Close();          
-
+                response.Close();
+                
                 if ((((HttpWebResponse)response).StatusDescription) == "OK")
                 {
-                    MessageForm.Response = Json_Response.Message;
-                    MessageForm message = new MessageForm();
-                    message.ShowDialog();
+                    SpawnOrderApiMessageForm();    // App made its way to the api successfully
                 }
                 else
                 {
-                    SpawnErrorPage();
+                    SpawnNoConnectionErrorPage();   // Something went wrong when trying to connect to api
                 }
             }
             catch (Exception e)
             {
-                SpawnErrorPage();
-
                 Errors.Error = e.ToString();
                 Errors.Error += "(Location: RunApi())";
                 Errors.PrintToErrorLog();
+
+                SpawnNoConnectionErrorPage();    // Inform user something went wrong
             }
         }
 
-        private static void SpawnErrorPage()
+        private static void SpawnOrderApiMessageForm()
         {
-            MessageForm.Response = "There was an error downloading scanner. Be sure you are connected to the internet. If the problem persists, please call WVA Scanner Support. ";
+            MessageForm.Response = Json_Response.Message;
+            MessageForm message = new MessageForm();
+            message.ShowDialog();
+        }
+
+        private static void SpawnGeneralErrorWindow()
+        {
+            MessageForm.Response = "There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.";
+            MessageForm message = new MessageForm();
+            message.ShowDialog();
+        }
+
+        private static void SpawnNoConnectionErrorPage()
+        {
+            MessageForm.Response = "There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, contact WVA Scanner Support. ";
             MessageForm message = new MessageForm();
             message.ShowDialog();
         }
