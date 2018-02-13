@@ -32,7 +32,7 @@ namespace WVA_Keychain_Synch
                 // Write response to api
                 var json = JsonConvert.SerializeObject(config);            
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/final.rb");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/json_final.rb");
                 request.Method = "POST";
 
                 System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();

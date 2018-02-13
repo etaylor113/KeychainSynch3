@@ -92,7 +92,16 @@ namespace WVA_Keychain_Synch
                 Errors.Error += "(Location: CleanDirectory())";
                 Errors.PrintToErrorLog();
             }
-        }     
+        }  
+        
+        public static void ClearOldIcon()
+        {
+            try
+            {
+                System.IO.File.Delete("C:/Users/Public/Desktop/Keychain Synch.lnk");
+            }
+            catch { }
+        }
 
     }
 }

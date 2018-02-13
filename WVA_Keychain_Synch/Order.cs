@@ -11,7 +11,6 @@ namespace WVA_Keychain_Synch
         public string Time { get; set; }
         public string ActNumber { get; set; }
         public string DeviceID { get; set; }
-        public string SWVersion { get; set; }
         public string ConfigFile { get; set; }
         public string[] Barcodes { get; set; }
     }

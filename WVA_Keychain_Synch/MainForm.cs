@@ -222,6 +222,7 @@ namespace WVA_Keychain_Synch
             catch { }
         }
 
+        // Run on app execution 
         public MainForm()
         {
             InitializeComponent();
@@ -231,7 +232,7 @@ namespace WVA_Keychain_Synch
             FileLogic.CreateDirs();
             CheckAccountNumber();
             FileLogic.CleanDirectory();
-            
+            FileLogic.ClearOldIcon();
             Start();
         }
 
