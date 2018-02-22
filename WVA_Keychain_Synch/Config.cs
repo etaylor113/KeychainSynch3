@@ -8,6 +8,6 @@ namespace WVA_Keychain_Synch
 {
     class Config
     {
-        public string ConfigFile;
+        public string ActNumber;
     }
 }

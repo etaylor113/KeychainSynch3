@@ -2538,7 +2538,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_0FEDB67C1BF54B748EF9A457918AC43F"
                     {
-                    "Name" = "8:WVA Scan"
+                    "Name" = "8:WVA_Scan"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -2775,7 +2775,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WVA Scan"
         "ProductCode" = "8:{4914904A-8B42-4273-B51D-C9E7968A6D1A}"
-        "PackageCode" = "8:{857838A0-55A1-4A8B-A59C-98B464F43C13}"
+        "PackageCode" = "8:{8D7D4B39-3483-4861-81DB-2AC4D8722B4B}"
         "UpgradeCode" = "8:{C63B0803-5A47-44F5-8D30-232BBDF39F71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

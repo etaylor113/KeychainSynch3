@@ -14,5 +14,6 @@ namespace WVA_Keychain_Synch
 
         [JsonProperty("Message")]
         public static string Message { get; set; }
+
     }
 }

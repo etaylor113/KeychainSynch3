@@ -14,5 +14,7 @@ namespace WVA_Keychain_Synch
         public static string NoScanned_Text { get; set; }
         public static string labelContactNum_Text { get; set; }
         public static string ViewCart_Link { get; set; }
+        public static string Order_Api_Url { get; set; }
+        public static string Update_Api_Url { get; set; }
     }
 }

@@ -180,7 +180,7 @@ namespace WVA_Keychain_Synch
 
                                 // Copy order to backup data file
                                 using (System.IO.StreamWriter writer =
-                                        new System.IO.StreamWriter(dirPublicDocs + @"\WVA Scan\ScannerData\" + strTime))
+                                        new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Scan\ScannerData\" + strTime))
                                 {
                                     writer.Write("<Date Created> " + strTime);
                                     writer.Write("\r\n<Account Number> " + AccountNumber);
@@ -225,6 +225,9 @@ namespace WVA_Keychain_Synch
         // Run on app execution 
         public MainForm()
         {
+            // var assemblyVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            // System.IO.FileInfo file = new System.IO.FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
             InitializeComponent();
             BindObjsToBkrd();    
             UpdateConfig.AssignVariables();
@@ -256,7 +259,7 @@ namespace WVA_Keychain_Synch
                 LLViewCart.Parent = logoTab2;
                 LLViewCart.Location = pos3;
                 LLViewCart.BackColor = Color.Transparent;
-
+        
                 var pos5 = labelBarcodes.Location;
                 pos5 = logoTab1.PointToClient(pos5);
                 labelBarcodes.Parent = logoTab1;
@@ -313,10 +316,10 @@ namespace WVA_Keychain_Synch
             {
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
 
-                AccountNumber = File.ReadLines(dirPublicDocs + @"\WVA Scan\AccountNumber\AccountNumber.txt").Skip(0).Take(1).First();
+                AccountNumber = File.ReadLines(dirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt").Skip(0).Take(1).First();
 
                 if (AccountNumber != "")
-                    AccountTextBox.Text = ("Set to: " + AccountNumber);
+                    AccountTextBox.Text = (AccountNumber.ToString());
             }
             catch { }
         }
@@ -325,42 +328,52 @@ namespace WVA_Keychain_Synch
         {
             try
             {
+                setActPB.Value = 0;
                 AccountNumber = AccountTextBox.Text;
 
-                if (AccountNumber != "")
-                {                                 
-                    if (AccountNumber.Contains("Set to: "))
-                    {
-                        AccountNumber = AccountNumber.Remove(0, 8);
-                        AccountTextBox.Text = ("Updated to: " + AccountNumber);
-                    }   
-                    else if (AccountNumber.Contains("Updated to: "))
-                    {
-                        AccountNumber = AccountNumber.Remove(0, 12);
-                        AccountTextBox.Text = ("Set to: " + AccountNumber);
-                    }
-                    else if (AccountNumber.Contains("Set to:"))
-                    {
-                        AccountNumber = AccountNumber.Remove(0, 7);
-                        AccountTextBox.Text = ("Updated to: " + AccountNumber);
-                    }
-                    else if (AccountNumber.Contains("Updated to:"))
-                    {
-                        AccountNumber = AccountNumber.Remove(0, 11);
-                        AccountTextBox.Text = ("Set to: " + AccountNumber);
-                    }
-                    else
-                    {
-                        AccountTextBox.Text = ("Set to: " + AccountNumber);
-                    }
+                setActPB.Value += 25;
+                Thread.Sleep(250);
+                setActPB.Value += 25;
 
+                if (AccountNumber != "")
+                {
+                    AccountTextBox.Text = (AccountNumber.ToString());
+
+                    //if (AccountNumber.Contains("Set to: "))
+                    //{
+                    //    AccountNumber = AccountNumber.Remove(0, 8);
+                    //    AccountTextBox.Text = ("Updated to: " + AccountNumber);
+                    //}   
+                    //else if (AccountNumber.Contains("Updated to: "))
+                    //{
+                    //    AccountNumber = AccountNumber.Remove(0, 12);
+                    //    AccountTextBox.Text = ("Set to: " + AccountNumber);
+                    //}
+                    //else if (AccountNumber.Contains("Set to:"))
+                    //{
+                    //    AccountNumber = AccountNumber.Remove(0, 7);
+                    //    AccountTextBox.Text = ("Updated to: " + AccountNumber);
+                    //}
+                    //else if (AccountNumber.Contains("Updated to:"))
+                    //{
+                    //    AccountNumber = AccountNumber.Remove(0, 11);
+                    //    AccountTextBox.Text = ("Set to: " + AccountNumber);
+                    //}
+                    //else
+                    //{
+                    //    AccountTextBox.Text = ("Set to: " + AccountNumber);
+                    //}
+
+                    Thread.Sleep(250);
+                    setActPB.Value += 25;
                     string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
 
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(dirPublicDocs + @"\WVA Scan\AccountNumber\AccountNumber.txt"))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt"))
                     {
                         file.WriteLine(AccountNumber);
                         file.Close();
                     }
+                    setActPB.Value += 25;
                 }
             }
             catch (Exception e1)
@@ -485,7 +498,7 @@ namespace WVA_Keychain_Synch
                     foreach (ParamInfo p in Description)
                     { 
                         ComCheck = Opticon.csp2.Init(ComCheck);
-                        int line = Convert.ToInt32(File.ReadLines(dirProgramx86 + @"/WVA Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
+                        int line = Convert.ToInt32(File.ReadLines(dirProgramx86 + @"/WVA_Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
                         szString[0] = (byte)line;
                         nParam = p.ParamNumber;
                         Int32 iRet = Opticon.csp2.SetParam(nParam, szString, nMaxLength);
@@ -519,6 +532,11 @@ namespace WVA_Keychain_Synch
             Started = false;
             Start();
             CallbackFunction(ComCheck);
+        }
+
+        private void resetProgressBar(object sender, EventArgs e)
+        {
+            setActPB.Value = 0;
         }
 
         private void button2_Click(object sender, EventArgs e)

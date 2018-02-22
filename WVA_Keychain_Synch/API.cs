@@ -12,6 +12,8 @@ namespace WVA_Keychain_Synch
 {
     class API
     {
+        public static string apiMessage { get; set; }
+
         public static void RunApi()
         {
             try {
@@ -54,16 +56,22 @@ namespace WVA_Keychain_Synch
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     var json_Message = reader.ReadToEnd();
                     var jsonResponse = JsonConvert.DeserializeObject<Json_Response>(json_Message);
-                             
+
+                    apiMessage = Json_Response.Message;
+
                     if (Json_Response.Status == "FAIL")
                     {
                         SpawnGeneralErrorWindow();     // There was a problem creating the order
                     }
-                    if (Json_Response.Status == "SUCCESS")
+                    else if (Json_Response.Status == "SUCCESS")
                     {
                         MainForm.ClearData = true;    // Tell polling thread in MainForm.cs it's okay to delete scanner data
                     }
-                    if (Json_Response.Status == "SUCCESS/UPDATE")
+                    else if (Json_Response.Status == "UPDATE_FAIL")
+                    {
+                        UpdateConfig.RunUpdate();  // Initiate a second API call to grab new config file for user
+                    }
+                    else if (Json_Response.Status == "UPDATE_SUCCESS")
                     {
                         MainForm.ClearData = true;   // Still want to clear the data beacause order was created, but run update process
                         UpdateConfig.RunUpdate();  // Initiate a second API call to grab new config file for user
@@ -97,7 +105,7 @@ namespace WVA_Keychain_Synch
 
         private static void SpawnOrderApiMessageForm()
         {
-            MessageForm.Response = Json_Response.Message;
+            MessageForm.Response = apiMessage;
             MessageForm message = new MessageForm();
             message.ShowDialog();
         }

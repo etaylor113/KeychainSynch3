@@ -26,13 +26,13 @@ namespace WVA_Keychain_Synch
                 // Get config file version
                 Config config = new Config()
                 {
-                    ConfigFile = Variables.ConfigFile
+                    ActNumber = MainForm.AccountNumber
                 };
 
                 // Write response to api
                 var json = JsonConvert.SerializeObject(config);            
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/json_final.rb");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2-qa.wisvis.com/aws/scanner/json_final.rb");
                 request.Method = "POST";
 
                 System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
@@ -71,19 +71,25 @@ namespace WVA_Keychain_Synch
             try
             {
                 string[] stringArray;
-                stringArray = Json_Response.Message.Split(',');
+                stringArray = Json_Response.Message.Split('&');              
 
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string updateConfig = @"/WVA Scan/Config/Config.txt";
-                var publicFile = File.Create(dirPublicDocs + updateConfig);
+                string updateConfigFile = @"/WVA_Scan/Config/Config.txt";
+                string updateConfigFolder = @"/WVA_Scan/Config";
+
+                Directory.CreateDirectory(dirPublicDocs + updateConfigFolder);
+                var publicFile = File.Create(dirPublicDocs + updateConfigFile);
                 publicFile.Close();
 
-                StreamWriter wr = new StreamWriter(dirPublicDocs + updateConfig);
+                StreamWriter wr = new StreamWriter(dirPublicDocs + updateConfigFile);
                 {
                     foreach (string word in stringArray)
                     {
-                        word.Trim();
-                        wr.WriteLine(word);
+                        if (word != "")
+                        {
+                            word.Trim();
+                            wr.WriteLine(word);
+                        }          
                     }
                     wr.Close();
                 }
@@ -104,13 +110,13 @@ namespace WVA_Keychain_Synch
             if (DoesUpdateFileExist() == true)
             {
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string updateConfig = @"/WVA Scan/Config/Config.txt";
+                string updateConfig = @"/WVA_Scan/Config/Config.txt";
                 selectedDir = dirPublicDocs + updateConfig;
             }
             else
             {
                 string dirProgram86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
-                string defaultConfig = @"/WVA Scan/Config/Config.txt";
+                string defaultConfig = @"/WVA_Scan/Config/Config.txt";
                 selectedDir = dirProgram86 + defaultConfig;
             }   
       
@@ -134,7 +140,7 @@ namespace WVA_Keychain_Synch
                         switch (guid)
                         {
                             case "760c9199-afc1-4e54-bab6-90f6ca9a3a07":
-                                Variables.ConfigFile = variable;
+                                Variables.ConfigFile = variable;           
                                 break;
                             case "2cc9cc9a-befa-4314-89dc-88b6d66b6d96":
                                 Variables.ANEF_Text = variable;
@@ -152,10 +158,10 @@ namespace WVA_Keychain_Synch
                                 Variables.ViewCart_Link = variable;
                                 break;
                             case "9afe17ff-3885-41c4-9518-9869319b1c0b":
-                                //Var_7 = variable;
+                                Variables.Order_Api_Url = variable;
                                 break;
                             case "bb3516b6-9ff3-4912-9e27-266d3eb28fe5":
-                                //Var_8 = variable;
+                                Variables.Update_Api_Url = variable;
                                 break;
                             case "0cfcbed8-518f-414b-87fc-6baf5d23d321":
                                 //Var_9 = variable;
@@ -174,7 +180,7 @@ namespace WVA_Keychain_Synch
         public static bool DoesUpdateFileExist()
         {
             string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-            string updateConfig = @"/WVA Scan/Config/";
+            string updateConfig = @"\WVA_Scan\Config";
             
             if (File.Exists(dirPublicDocs + updateConfig))
                 return true;
@@ -308,7 +314,5 @@ namespace WVA_Keychain_Synch
 
             return unencrypted;
         }
-
-
     }
 }

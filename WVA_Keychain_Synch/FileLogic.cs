@@ -14,9 +14,9 @@ namespace WVA_Keychain_Synch
             try
             {
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string DirErrorLog = (dirPublicDocs + @"\WVA Scan\ErrorLog\");
-                string DirScannerData = (dirPublicDocs + @"\WVA Scan\ScannerData\");
-                var DirAccountNumber = (dirPublicDocs + @"\WVA Scan\AccountNumber\");
+                string DirErrorLog = (dirPublicDocs + @"\WVA_Scan\ErrorLog\");
+                string DirScannerData = (dirPublicDocs + @"\WVA_Scan\ScannerData\");
+                var DirAccountNumber = (dirPublicDocs + @"\WVA_Scan\AccountNumber\");
 
                 try
                 {
@@ -49,7 +49,7 @@ namespace WVA_Keychain_Synch
                         Directory.CreateDirectory(DirAccountNumber);
                         if (Directory.Exists(DirAccountNumber))
                         {
-                            var file = File.Create(dirPublicDocs + @"\WVA Scan\AccountNumber\AccountNumber.txt");
+                            var file = File.Create(dirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt");
                             file.Close();
                         }
                     }
@@ -74,7 +74,7 @@ namespace WVA_Keychain_Synch
             try
             {
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string[] files = Directory.GetFiles(dirPublicDocs + @"\WVA Scan\ScannerData\");
+                string[] files = Directory.GetFiles(dirPublicDocs + @"\WVA_Scan\ScannerData\");
 
                 foreach (string file in files)
                 {

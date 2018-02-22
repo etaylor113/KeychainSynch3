@@ -16,7 +16,7 @@ namespace WVA_Keychain_Synch
             try
             {
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string DirErrorLog = (dirPublicDocs + @"\WVA Scan\ErrorLog\");
+                string DirErrorLog = (dirPublicDocs + @"\WVA_Scan\ErrorLog\");
 
                 if (!Directory.Exists(DirErrorLog)) { }
                 Directory.CreateDirectory(DirErrorLog);

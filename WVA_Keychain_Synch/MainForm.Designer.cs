@@ -44,6 +44,7 @@ namespace WVA_Keychain_Synch
             this.sendData = new System.Windows.Forms.Button();
             this.labelMainDividerLine = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.setActPB = new System.Windows.Forms.ProgressBar();
             this.button5 = new System.Windows.Forms.Button();
             this.AccountLabel = new System.Windows.Forms.Label();
             this.AccountTextBox = new System.Windows.Forms.TextBox();
@@ -180,7 +181,7 @@ namespace WVA_Keychain_Synch
             this.sendData.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.sendData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sendData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendData.Location = new System.Drawing.Point(22, 260);
+            this.sendData.Location = new System.Drawing.Point(22, 250);
             this.sendData.Margin = new System.Windows.Forms.Padding(4);
             this.sendData.Name = "sendData";
             this.sendData.Size = new System.Drawing.Size(284, 43);
@@ -201,6 +202,7 @@ namespace WVA_Keychain_Synch
             // tabPage2
             // 
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage2.Controls.Add(this.setActPB);
             this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.AccountLabel);
             this.tabPage2.Controls.Add(this.AccountTextBox);
@@ -213,6 +215,14 @@ namespace WVA_Keychain_Synch
             this.tabPage2.Size = new System.Drawing.Size(614, 346);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = " My Account ";
+            this.tabPage2.Enter += new System.EventHandler(this.resetProgressBar);
+            // 
+            // setActPB
+            // 
+            this.setActPB.Location = new System.Drawing.Point(15, 121);
+            this.setActPB.Name = "setActPB";
+            this.setActPB.Size = new System.Drawing.Size(277, 31);
+            this.setActPB.TabIndex = 7;
             // 
             // button5
             // 
@@ -220,7 +230,7 @@ namespace WVA_Keychain_Synch
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(15, 127);
+            this.button5.Location = new System.Drawing.Point(15, 172);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(276, 40);
@@ -251,7 +261,7 @@ namespace WVA_Keychain_Synch
             // 
             this.LLViewCart.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LLViewCart.LinkColor = System.Drawing.Color.Black;
-            this.LLViewCart.Location = new System.Drawing.Point(18, 227);
+            this.LLViewCart.Location = new System.Drawing.Point(22, 273);
             this.LLViewCart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.LLViewCart.Name = "LLViewCart";
             this.LLViewCart.Size = new System.Drawing.Size(291, 33);
@@ -370,10 +380,10 @@ namespace WVA_Keychain_Synch
             // labelContactNum
             // 
             this.labelContactNum.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelContactNum.Location = new System.Drawing.Point(26, 53);
+            this.labelContactNum.Location = new System.Drawing.Point(42, 47);
             this.labelContactNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelContactNum.Name = "labelContactNum";
-            this.labelContactNum.Size = new System.Drawing.Size(557, 155);
+            this.labelContactNum.Size = new System.Drawing.Size(560, 213);
             this.labelContactNum.TabIndex = 2;
             // 
             // backdrop
@@ -466,14 +476,15 @@ namespace WVA_Keychain_Synch
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.ProgressBar PrefPB;
         private System.Windows.Forms.Label labelContactNum;
-        private System.Windows.Forms.LinkLabel LLViewCart;
-        private System.Windows.Forms.PictureBox logoTab1;
         private System.Windows.Forms.PictureBox logoTab2;
         private System.Windows.Forms.Button sendData;
         private Label AccountLabel;
         private TextBox AccountTextBox;
         private Button button5;
         private PictureBox backdrop;
+        private ProgressBar setActPB;
+        private PictureBox logoTab1;
+        private LinkLabel LLViewCart;
     }      
 }
 
