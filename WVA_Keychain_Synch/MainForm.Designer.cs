@@ -123,7 +123,7 @@ namespace WVA_Keychain_Synch
             // 
             this.labelStatusHead.AutoSize = true;
             this.labelStatusHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStatusHead.Location = new System.Drawing.Point(22, 67);
+            this.labelStatusHead.Location = new System.Drawing.Point(22, 62);
             this.labelStatusHead.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelStatusHead.Name = "labelStatusHead";
             this.labelStatusHead.Size = new System.Drawing.Size(85, 29);
@@ -134,7 +134,7 @@ namespace WVA_Keychain_Synch
             // 
             this.labelBarcodes.AutoSize = true;
             this.labelBarcodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBarcodes.Location = new System.Drawing.Point(22, 153);
+            this.labelBarcodes.Location = new System.Drawing.Point(22, 147);
             this.labelBarcodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelBarcodes.Name = "labelBarcodes";
             this.labelBarcodes.Size = new System.Drawing.Size(223, 29);
@@ -145,7 +145,7 @@ namespace WVA_Keychain_Synch
             // 
             this.labelNumBarcodes.BackColor = System.Drawing.Color.White;
             this.labelNumBarcodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumBarcodes.Location = new System.Drawing.Point(22, 187);
+            this.labelNumBarcodes.Location = new System.Drawing.Point(22, 182);
             this.labelNumBarcodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelNumBarcodes.Name = "labelNumBarcodes";
             this.labelNumBarcodes.Size = new System.Drawing.Size(284, 33);
@@ -157,7 +157,7 @@ namespace WVA_Keychain_Synch
             this.labelConnected.BackColor = System.Drawing.Color.White;
             this.labelConnected.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConnected.Location = new System.Drawing.Point(22, 103);
+            this.labelConnected.Location = new System.Drawing.Point(22, 98);
             this.labelConnected.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelConnected.Name = "labelConnected";
             this.labelConnected.Size = new System.Drawing.Size(284, 33);
@@ -181,7 +181,7 @@ namespace WVA_Keychain_Synch
             this.sendData.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.sendData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sendData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendData.Location = new System.Drawing.Point(22, 250);
+            this.sendData.Location = new System.Drawing.Point(22, 245);
             this.sendData.Margin = new System.Windows.Forms.Padding(4);
             this.sendData.Name = "sendData";
             this.sendData.Size = new System.Drawing.Size(284, 43);
@@ -242,7 +242,7 @@ namespace WVA_Keychain_Synch
             // AccountLabel
             // 
             this.AccountLabel.AutoSize = true;
-            this.AccountLabel.Location = new System.Drawing.Point(-9, 153);
+            this.AccountLabel.Location = new System.Drawing.Point(-9, 140);
             this.AccountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AccountLabel.Name = "AccountLabel";
             this.AccountLabel.Size = new System.Drawing.Size(283, 29);

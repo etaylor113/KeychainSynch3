@@ -93,6 +93,23 @@ namespace WVA_Keychain_Synch
 
         List<Int32> Ports = new List<Int32>();
 
+        // Run on app execution 
+        public MainForm()
+        {
+            var assemblyVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            System.IO.FileInfo file = new System.IO.FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
+
+            InitializeComponent();
+            BindObjsToBkrd();
+            UpdateConfig.AssignVariables();
+            SetVariables();
+            FileLogic.CreateDirs();
+            CheckAccountNumber();
+            FileLogic.CleanDirectory();
+            FileLogic.ClearOldIcon();
+            Start();
+        }
+
         public void CallbackFunction(Int32 nComport)
         {
             int iRet = -1;
@@ -220,23 +237,6 @@ namespace WVA_Keychain_Synch
                 Thread.Sleep(500);
             }
             catch { }
-        }
-
-        // Run on app execution 
-        public MainForm()
-        {
-            // var assemblyVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            // System.IO.FileInfo file = new System.IO.FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
-
-            InitializeComponent();
-            BindObjsToBkrd();    
-            UpdateConfig.AssignVariables();
-            SetVariables();
-            FileLogic.CreateDirs();
-            CheckAccountNumber();
-            FileLogic.CleanDirectory();
-            FileLogic.ClearOldIcon();
-            Start();
         }
 
         private void SetVariables()
