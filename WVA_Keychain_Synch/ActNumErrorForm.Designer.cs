@@ -1,6 +1,6 @@
 ﻿using System.Drawing;
 
-namespace WVA_Keychain_Synch
+namespace WVA_Scan
 {
     partial class ActNumErrorForm
     {

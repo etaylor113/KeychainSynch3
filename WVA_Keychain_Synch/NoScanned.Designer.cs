@@ -1,4 +1,4 @@
-﻿namespace WVA_Keychain_Synch
+﻿namespace WVA_Scan
 {
     partial class NoScanned
     {

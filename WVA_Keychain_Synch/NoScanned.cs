@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WVA_Keychain_Synch
+namespace WVA_Scan
 {
     public partial class NoScanned : Form
     {

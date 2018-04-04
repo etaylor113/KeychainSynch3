@@ -16,7 +16,7 @@ using Newtonsoft.Json;
 using System.Runtime.InteropServices;   
 using System.Reflection;
 
-namespace WVA_Keychain_Synch
+namespace WVA_Scan
 {
     public partial class MainForm : Form
     {

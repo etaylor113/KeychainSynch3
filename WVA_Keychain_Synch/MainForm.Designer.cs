@@ -2,7 +2,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace WVA_Keychain_Synch
+namespace WVA_Scan
 {
     partial class MainForm
     {
@@ -429,10 +429,10 @@ namespace WVA_Keychain_Synch
             this.BackColor = System.Drawing.Color.Gray;
             this.ClientSize = new System.Drawing.Size(622, 394);
             this.Controls.Add(this.tabControl1);
-            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::WVA_Keychain_Synch.Properties.Settings.Default, "Location", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::WVA_Scan.Properties.Settings.Default, "Location", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = global::WVA_Keychain_Synch.Properties.Settings.Default.Location;
+            this.Location = global::WVA_Scan.Properties.Settings.Default.Location;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

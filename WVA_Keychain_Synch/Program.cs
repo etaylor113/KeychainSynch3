@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
-namespace WVA_Keychain_Synch
+namespace WVA_Scan
 {
     static class Program
     {

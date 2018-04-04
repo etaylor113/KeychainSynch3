@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WVA_Keychain_Synch
+namespace WVA_Scan
 {
     class Variables
     {
