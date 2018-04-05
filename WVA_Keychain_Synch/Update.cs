@@ -60,9 +60,7 @@ namespace WVA_Scan
             }
             catch (Exception e)
             {
-                Errors.Error = e.ToString();
-                Errors.Error += "(Location: GetUpdate())";
-                Errors.PrintToErrorLog();
+                Errors.PrintToLog(e.ToString());
             }
         }
 
@@ -95,10 +93,8 @@ namespace WVA_Scan
                 }
             }
             catch (Exception e)
-            {          
-                Errors.Error = e.ToString();
-                Errors.Error += "(Location: Update.cs GetUpdateData()";
-                Errors.PrintToErrorLog();
+            {
+                Errors.PrintToLog(e.ToString());
             }
         }
 

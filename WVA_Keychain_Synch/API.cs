@@ -61,7 +61,7 @@ namespace WVA_Scan
 
                     if (Json_Response.Status == "FAIL")
                     {
-                        SpawnGeneralErrorWindow();     // There was a problem creating the order
+                        ShowMessage("There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.");     // There was a problem creating the order
                     }
                     else if (Json_Response.Status == "SUCCESS")
                     {
@@ -77,51 +77,33 @@ namespace WVA_Scan
                         UpdateConfig.RunUpdate();  // Initiate a second API call to grab new config file for user
                     }
                     else
-                    {
-                        SpawnGeneralErrorWindow();   // If we got here, something was wrong with the payload
-                    }
+                        ShowMessage("There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.");   // If we got here, something was wrong with the payload
+                    
                     reader.Close();
                 }
                 response.Close();
                 
                 if ((((HttpWebResponse)response).StatusDescription) == "OK")
                 {
-                    SpawnOrderApiMessageForm();    // App made its way to the api successfully
+                    ShowMessage(apiMessage); // App made its way to the api successfully  
                 }
                 else
                 {
-                    SpawnNoConnectionErrorPage();   // Something went wrong when trying to connect to api
+                    ShowMessage("There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, contact WVA Scanner Support. ");  // Something went wrong when trying to connect to api
                 }
             }
             catch (Exception e)
             {
-                Errors.Error = e.ToString();
-                Errors.Error += "(Location: RunApi())";
-                Errors.PrintToErrorLog();
-
-                SpawnNoConnectionErrorPage();    // Inform user something went wrong
+                Errors.PrintToLog(e.ToString());
+                ShowMessage("There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, contact WVA Scanner Support. ");  // Inform user something went wrong
             }
-        }
+        }    
 
-        private static void SpawnOrderApiMessageForm()
-        {
-            MessageForm.Response = apiMessage;
-            MessageForm message = new MessageForm();
-            message.ShowDialog();
-        }
-
-        private static void SpawnGeneralErrorWindow()
-        {
-            MessageForm.Response = "There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.";
-            MessageForm message = new MessageForm();
-            message.ShowDialog();
-        }
-
-        private static void SpawnNoConnectionErrorPage()
-        {
-            MessageForm.Response = "There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, contact WVA Scanner Support. ";
-            MessageForm message = new MessageForm();
-            message.ShowDialog();
+        private static void ShowMessage(string message)
+        {       
+            MessageForm.Response = message;
+            MessageForm mf = new MessageForm();
+            mf.ShowDialog();
         }
     }
 }

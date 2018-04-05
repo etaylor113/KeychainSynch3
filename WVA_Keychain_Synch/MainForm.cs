@@ -95,10 +95,7 @@ namespace WVA_Scan
 
         // Run on app execution 
         public MainForm()
-        {
-            var assemblyVersion = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            System.IO.FileInfo file = new System.IO.FileInfo(System.Reflection.Assembly.GetExecutingAssembly().Location);
-
+        {        
             InitializeComponent();
             BindObjsToBkrd();
             UpdateConfig.AssignVariables();
@@ -106,7 +103,6 @@ namespace WVA_Scan
             FileLogic.CreateDirs();
             CheckAccountNumber();
             FileLogic.CleanDirectory();
-            FileLogic.ClearOldIcon();
             Start();
         }
 
@@ -209,9 +205,7 @@ namespace WVA_Scan
                         }
                         catch (Exception e1)
                         {
-                            Errors.Error = e1.ToString();
-                            Errors.Error += "(Location: CallBack() :DataSend Block)";
-                            Errors.PrintToErrorLog();
+                            Errors.PrintToLog(e1.ToString());
                         }
 
                         DataSend = false;
@@ -222,9 +216,8 @@ namespace WVA_Scan
                     {
                         if (Opticon.csp2.ClearData(nComport) != 0)
                         {
-                            Errors.Error = "Erasing Failed!";
-                            Errors.Error += "(Location: CallBack() :ClearData Block)";
-                            Errors.PrintToErrorLog();
+                            string error = "Erasing Failed!";                           
+                            Errors.PrintToLog(error);
                         }
                         ReadBarcodes = 0;
                         ClearData = false;
@@ -298,9 +291,7 @@ namespace WVA_Scan
             }
             catch (Exception e)
             {
-                Errors.Error = e.ToString();
-                Errors.Error += "(Location: BindObjsToBkrd)";
-                Errors.PrintToErrorLog();
+                Errors.PrintToLog(e.ToString());
             }
         }
 
@@ -338,32 +329,7 @@ namespace WVA_Scan
                 if (AccountNumber != "")
                 {
                     AccountTextBox.Text = (AccountNumber.ToString());
-
-                    //if (AccountNumber.Contains("Set to: "))
-                    //{
-                    //    AccountNumber = AccountNumber.Remove(0, 8);
-                    //    AccountTextBox.Text = ("Updated to: " + AccountNumber);
-                    //}   
-                    //else if (AccountNumber.Contains("Updated to: "))
-                    //{
-                    //    AccountNumber = AccountNumber.Remove(0, 12);
-                    //    AccountTextBox.Text = ("Set to: " + AccountNumber);
-                    //}
-                    //else if (AccountNumber.Contains("Set to:"))
-                    //{
-                    //    AccountNumber = AccountNumber.Remove(0, 7);
-                    //    AccountTextBox.Text = ("Updated to: " + AccountNumber);
-                    //}
-                    //else if (AccountNumber.Contains("Updated to:"))
-                    //{
-                    //    AccountNumber = AccountNumber.Remove(0, 11);
-                    //    AccountTextBox.Text = ("Set to: " + AccountNumber);
-                    //}
-                    //else
-                    //{
-                    //    AccountTextBox.Text = ("Set to: " + AccountNumber);
-                    //}
-
+                    
                     Thread.Sleep(250);
                     setActPB.Value += 25;
                     string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
@@ -378,9 +344,7 @@ namespace WVA_Scan
             }
             catch (Exception e1)
             {
-                Errors.Error = e1.ToString();
-                Errors.Error += "(Location: SetAccountNumberBtn())";
-                Errors.PrintToErrorLog();
+                Errors.PrintToLog(e1.ToString());
             }
         }
 
@@ -473,9 +437,7 @@ namespace WVA_Scan
             }
             catch (Exception e1)
             {
-                Errors.Error = e1.ToString();
-                Errors.Error += "(Location: SendDataClick())";
-                Errors.PrintToErrorLog();
+                Errors.PrintToLog(e1.ToString());
             }
         }
 
@@ -524,9 +486,7 @@ namespace WVA_Scan
             catch (System.AccessViolationException e)
             {
                 this.Cursor = Cursors.Arrow;
-                Errors.Error = e.ToString();
-                Errors.Error += "(Location: SetParameters)";
-                Errors.PrintToErrorLog();
+                Errors.PrintToLog(e.ToString());
             }
             PrefPB.Value = 0;
             Started = false;
@@ -571,9 +531,7 @@ namespace WVA_Scan
             }
             catch (Exception e1)
             {
-                Errors.Error = e1.ToString();
-                Errors.Error += "(Location: LLViewCart_LinkClicked())";
-                Errors.PrintToErrorLog();
+                Errors.PrintToLog(e1.ToString());
             }
         }
 

@@ -15,57 +15,28 @@ namespace WVA_Scan
             {
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
                 string DirErrorLog = (dirPublicDocs + @"\WVA_Scan\ErrorLog\");
-                string DirScannerData = (dirPublicDocs + @"\WVA_Scan\ScannerData\");
-                var DirAccountNumber = (dirPublicDocs + @"\WVA_Scan\AccountNumber\");
+                string DirScannerData = (dirPublicDocs + @"\WVA_Scan\ScanData\");
+                var DirAccountNumber = (dirPublicDocs + @"\WVA_Scan\ActNum\");     
 
-                try
-                {
-                    if (Directory.Exists(DirErrorLog) == false)
-                        Directory.CreateDirectory(DirErrorLog);
-                }
-                catch (Exception e1)
-                {
-                    Errors.Error = e1.ToString();
-                    Errors.Error += "(Location: CreateDirs() :e1)";
-                    Errors.PrintToErrorLog();
-                }
+                if (Directory.Exists(DirErrorLog) == false)
+                    Directory.CreateDirectory(DirErrorLog);
 
-                try
-                {
-                    if (Directory.Exists(DirScannerData) == false)
-                        Directory.CreateDirectory(DirScannerData);
-                }
-                catch (Exception e2)
-                {
-                    Errors.Error = e2.ToString();
-                    Errors.Error += "(Location: CreateDirs() :e2)";
-                    Errors.PrintToErrorLog();
-                }
+                if (Directory.Exists(DirScannerData) == false)
+                    Directory.CreateDirectory(DirScannerData);
 
-                try
+                if (Directory.Exists(DirAccountNumber) == false)
                 {
-                    if (Directory.Exists(DirAccountNumber) == false)
+                    Directory.CreateDirectory(DirAccountNumber);
+                    if (Directory.Exists(DirAccountNumber))
                     {
-                        Directory.CreateDirectory(DirAccountNumber);
-                        if (Directory.Exists(DirAccountNumber))
-                        {
-                            var file = File.Create(dirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt");
-                            file.Close();
-                        }
+                        var file = File.Create(dirPublicDocs + DirAccountNumber + "ActNum.txt");
+                        file.Close();
                     }
                 }
-                catch (Exception e3)
-                {
-                    Errors.Error = e3.ToString();
-                    Errors.Error += "(Location: CreateDirs() :e3)";
-                    Errors.PrintToErrorLog();
-                }
-            }
-            catch (Exception e4)
+            }     
+            catch (Exception e)
             {
-                Errors.Error = e4.ToString();
-                Errors.Error += "(Location: CreateDirs() :e4)";
-                Errors.PrintToErrorLog();
+                Errors.PrintToLog(e.ToString());
             }
         }
 
@@ -74,34 +45,24 @@ namespace WVA_Scan
             try
             {
                 string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string[] files = Directory.GetFiles(dirPublicDocs + @"\WVA_Scan\ScannerData\");
-
+                string[] files = Directory.GetFiles(dirPublicDocs + @"\WVA_Scan\ScanData\");
+             
                 foreach (string file in files)
                 {
-                    FileInfo fi = new FileInfo(file);
+                    FileInfo f = new FileInfo(file);
 
-                    if (fi.CreationTime < DateTime.Now.AddDays(-30))
+                    if (f.CreationTime < DateTime.Now.AddDays(-30))
                     {
-                        fi.Delete();
+                        f.Delete();
                     }
                 }
             }
             catch (Exception e)
             {
-                Errors.Error = e.ToString();
-                Errors.Error += "(Location: CleanDirectory())";
-                Errors.PrintToErrorLog();
+                Errors.PrintToLog(e.ToString());
             }
         }  
-        
-        public static void ClearOldIcon()
-        {
-            try
-            {
-                System.IO.File.Delete("C:/Users/Public/Desktop/Keychain Synch.lnk");
-            }
-            catch { }
-        }
+              
 
     }
 }

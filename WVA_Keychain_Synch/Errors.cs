@@ -8,10 +8,8 @@ using System.Threading.Tasks;
 namespace WVA_Scan
 {
     class Errors
-    {
-        public static string Error { get; set; }
-
-        public static void PrintToErrorLog()
+    {    
+        public static void PrintToLog(string error)
         {
             try
             {
@@ -23,23 +21,20 @@ namespace WVA_Scan
 
                 if (!File.Exists(DirErrorLog + @"\ErrorLog.txt"))
                 {
-                    var file = File.Create(DirErrorLog + @"\ErrorLog.txt");
+                    var file = File.Create(DirErrorLog + @"ErrorLog.txt");
                     file.Close();
                 }
 
                 string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                 using (System.IO.StreamWriter writer = new System.IO.StreamWriter((DirErrorLog + @"\ErrorLog.txt"), true))
-                {                   
-                    writer.WriteLine("(TIME: "+ time + ")");
-                    writer.WriteLine("(ERROR:" + Error + ")");
+                {
+                    writer.WriteLine("(TIME: " + time + ")");
+                    writer.WriteLine("(ERROR:" + error + ")");
                     writer.WriteLine("");
                     writer.Close();
                 }
-
-                Error = "";
             }
             catch { };
         }
-
     }
 }

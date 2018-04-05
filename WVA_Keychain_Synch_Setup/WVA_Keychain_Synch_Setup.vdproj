@@ -171,12 +171,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_4EA56DCA7C5E4E6682CB822AF388F86F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_558759DC2FB94440AA2517DFFEF2C56E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -225,12 +219,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_772F3B9E3EB9C6505CE10530E93A6E96"
-        "OwnerKey" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_7754E79A224848AED9330EA7BC0DA022"
         "OwnerKey" = "8:_0A5C073F410849708975E7311EC9C799"
         "MsmSig" = "8:_UNDEFINED"
@@ -273,6 +261,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_83F04DF6C48560AF46C2A81A969E85DA"
+        "OwnerKey" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_87B8E124E898F417AB6B9C251D87A287"
         "OwnerKey" = "8:_0A5C073F410849708975E7311EC9C799"
         "MsmSig" = "8:_UNDEFINED"
@@ -305,6 +299,12 @@
         {
         "MsmKey" = "8:_8F27E0FCB4737CDEA98325B48214FEDE"
         "OwnerKey" = "8:_FFDB22EB833849FEA2517D899E8CF94F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8F6785FFBEB8C7AE8C58BD9C9ED86C59"
+        "OwnerKey" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -399,6 +399,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_C054C3FAA5D14A0D89B676EFEBCD8D41"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C2FFA5A2BD8643FF02B9EF21FA7BE940"
         "OwnerKey" = "8:_0A5C073F410849708975E7311EC9C799"
         "MsmSig" = "8:_UNDEFINED"
@@ -471,12 +477,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DE4DBB5E1882EA7F1025F60FDE805765"
-        "OwnerKey" = "8:_81CF87D8A84147EA87C581AEFEA9211F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_E0DA15D62C864258917D27286DCE69CB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -497,12 +497,6 @@
         {
         "MsmKey" = "8:_E874F4D2893FA75F0E7A55984F509EE8"
         "OwnerKey" = "8:_FFDB22EB833849FEA2517D899E8CF94F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E9D050DD8B9192FB1FF443778ADDED9F"
-        "OwnerKey" = "8:_4EA56DCA7C5E4E6682CB822AF388F86F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -569,12 +563,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_EA840B5813494F0B7B1A2D6741FD1FE0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E9D050DD8B9192FB1FF443778ADDED9F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -700,12 +688,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_4EA56DCA7C5E4E6682CB822AF388F86F"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3EE2D0836622492FA47BF2157E280B21"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -760,13 +742,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_772F3B9E3EB9C6505CE10530E93A6E96"
+        "OwnerKey" = "8:_8F6785FFBEB8C7AE8C58BD9C9ED86C59"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DE4DBB5E1882EA7F1025F60FDE805765"
+        "OwnerKey" = "8:_83F04DF6C48560AF46C2A81A969E85DA"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -791,7 +773,7 @@
             {
             "Enabled" = "11:TRUE"
             "PromptEnabled" = "11:TRUE"
-            "PrerequisitesLocation" = "2:2"
+            "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
                 "Items"
@@ -1343,37 +1325,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_4EA56DCA7C5E4E6682CB822AF388F86F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Keychain Synch, Version=2.0.4.9, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_4EA56DCA7C5E4E6682CB822AF388F86F"
-                    {
-                    "Name" = "8:Keychain Synch.ico"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\..\\WorkStuff\\Logos\\Keychain Synch.ico"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6EB68CC6EB884170BF7AEEAC4B2D2F08"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_558759DC2FB94440AA2517DFFEF2C56E"
             {
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\packages\\Newtonsoft.Json.10.0.3\\lib\\net40\\Newtonsoft.Json.xml"
@@ -1493,37 +1444,6 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_ED8CCD488BAA4F5D8C38CCF3F5E72019"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_772F3B9E3EB9C6505CE10530E93A6E96"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Opticon.csp2.net, Version=1.0.7.0, Culture=neutral, processorArchitecture=x86"
-                "ScatterAssemblies"
-                {
-                    "_772F3B9E3EB9C6505CE10530E93A6E96"
-                    {
-                    "Name" = "8:Opticon.csp2.net.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Opticon.csp2.net.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -1671,6 +1591,37 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_83F04DF6C48560AF46C2A81A969E85DA"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_83F04DF6C48560AF46C2A81A969E85DA"
+                    {
+                    "Name" = "8:Newtonsoft.Json.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_87B8E124E898F417AB6B9C251D87A287"
             {
             "AssemblyRegister" = "3:1"
@@ -1770,6 +1721,37 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_ED8CCD488BAA4F5D8C38CCF3F5E72019"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_8F6785FFBEB8C7AE8C58BD9C9ED86C59"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Opticon.csp2.net, Version=1.0.7.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_8F6785FFBEB8C7AE8C58BD9C9ED86C59"
+                    {
+                    "Name" = "8:Opticon.csp2.net.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Opticon.csp2.net.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2070,6 +2052,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C054C3FAA5D14A0D89B676EFEBCD8D41"
+            {
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\Resources\\wva_icon_SIN_icon.ico"
+            "TargetName" = "8:wva_icon_SIN_icon.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_6EB68CC6EB884170BF7AEEAC4B2D2F08"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C2FFA5A2BD8643FF02B9EF21FA7BE940"
             {
             "AssemblyRegister" = "3:1"
@@ -2274,37 +2276,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DE4DBB5E1882EA7F1025F60FDE805765"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_DE4DBB5E1882EA7F1025F60FDE805765"
-                    {
-                    "Name" = "8:Newtonsoft.Json.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E0DA15D62C864258917D27286DCE69CB"
             {
             "SourcePath" = "8:..\\WVA_Keychain_Synch\\Resources\\wva_icon_SIN_icon.ico"
@@ -2362,37 +2333,6 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_ED8CCD488BAA4F5D8C38CCF3F5E72019"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E9D050DD8B9192FB1FF443778ADDED9F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:TRUE"
-            "AssemblyAsmDisplayName" = "8:ADODB, Version=7.0.3300.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
-                "ScatterAssemblies"
-                {
-                    "_E9D050DD8B9192FB1FF443778ADDED9F"
-                    {
-                    "Name" = "8:ADODB.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:ADODB.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_6EB68CC6EB884170BF7AEEAC4B2D2F08"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -2775,7 +2715,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WVA Scan"
         "ProductCode" = "8:{4914904A-8B42-4273-B51D-C9E7968A6D1A}"
-        "PackageCode" = "8:{8D7D4B39-3483-4861-81DB-2AC4D8722B4B}"
+        "PackageCode" = "8:{8A9F1F41-1353-497F-8D28-0FE4D507D5E7}"
         "UpgradeCode" = "8:{C63B0803-5A47-44F5-8D30-232BBDF39F71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -3310,7 +3250,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_81CF87D8A84147EA87C581AEFEA9211F"
             {
-            "SourcePath" = "8:..\\WVA_Keychain_Synch\\obj\\x86\\Release\\WVA_Keychain_Synch.exe"
+            "SourcePath" = "8:..\\WVA_Keychain_Synch\\obj\\x86\\Release\\WVA_Scan.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
