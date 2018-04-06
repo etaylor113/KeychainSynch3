@@ -71,15 +71,11 @@ namespace WVA_Scan
                 string[] stringArray;
                 stringArray = Json_Response.Message.Split('&');              
 
-                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string updateConfigFile = @"/WVA_Scan/Config/Config.txt";
-                string updateConfigFolder = @"/WVA_Scan/Config";
-
-                Directory.CreateDirectory(dirPublicDocs + updateConfigFolder);
-                var publicFile = File.Create(dirPublicDocs + updateConfigFile);
+                Directory.CreateDirectory(Path.DirPublicDocs + Path.UpdateConfig);
+                var publicFile = File.Create(Path.DirPublicDocs + Path.ConfigFile);
                 publicFile.Close();
 
-                StreamWriter wr = new StreamWriter(dirPublicDocs + updateConfigFile);
+                StreamWriter wr = new StreamWriter(Path.DirPublicDocs + Path.ConfigFile);
                 {
                     foreach (string word in stringArray)
                     {
@@ -105,15 +101,11 @@ namespace WVA_Scan
 
             if (DoesUpdateFileExist() == true)
             {
-                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string updateConfig = @"/WVA_Scan/Config/Config.txt";
-                selectedDir = dirPublicDocs + updateConfig;
+                selectedDir = Path.DirPublicDocs + Path.ConfigFile;
             }
             else
             {
-                string dirProgram86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
-                string defaultConfig = @"/WVA_Scan/Config/Config.txt";
-                selectedDir = dirProgram86 + defaultConfig;
+                selectedDir = Path.DirProgram86 + Path.ConfigFile;
             }   
       
             StreamReader file = new StreamReader(selectedDir);
@@ -174,11 +166,8 @@ namespace WVA_Scan
         }
 
         public static bool DoesUpdateFileExist()
-        {
-            string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-            string updateConfig = @"\WVA_Scan\Config";
-            
-            if (File.Exists(dirPublicDocs + updateConfig))
+        {           
+            if (File.Exists(Path.DirPublicDocs + Path.UpdateConfig))
                 return true;
             else
                 return false;

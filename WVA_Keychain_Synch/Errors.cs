@@ -12,21 +12,18 @@ namespace WVA_Scan
         public static void PrintToLog(string error)
         {
             try
-            {
-                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string DirErrorLog = (dirPublicDocs + @"\WVA_Scan\ErrorLog\");
+            {            
+                if (!Directory.Exists(Path.DirErrorLog)) { }
+                Directory.CreateDirectory(Path.DirErrorLog);
 
-                if (!Directory.Exists(DirErrorLog)) { }
-                Directory.CreateDirectory(DirErrorLog);
-
-                if (!File.Exists(DirErrorLog + @"\ErrorLog.txt"))
+                if (!File.Exists(Path.DirErrorLog + @"\ErrorLog.txt"))
                 {
-                    var file = File.Create(DirErrorLog + @"ErrorLog.txt");
+                    var file = File.Create(Path.DirErrorLog + @"ErrorLog.txt");
                     file.Close();
                 }
 
                 string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-                using (System.IO.StreamWriter writer = new System.IO.StreamWriter((DirErrorLog + @"\ErrorLog.txt"), true))
+                using (System.IO.StreamWriter writer = new System.IO.StreamWriter((Path.DirErrorLog + @"\ErrorLog.txt"), true))
                 {
                     writer.WriteLine("(TIME: " + time + ")");
                     writer.WriteLine("(ERROR:" + error + ")");

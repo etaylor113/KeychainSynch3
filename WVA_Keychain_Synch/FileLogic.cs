@@ -12,24 +12,21 @@ namespace WVA_Scan
         public static void CreateDirs()
         {
             try
-            {
-                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string DirErrorLog = (dirPublicDocs + @"\WVA_Scan\ErrorLog\");
-                string DirScannerData = (dirPublicDocs + @"\WVA_Scan\ScanData\");
-                var DirAccountNumber = (dirPublicDocs + @"\WVA_Scan\ActNum\");     
+            {              
+                var DirAccountNumber = (Path.DirPublicDocs + @"\WVA_Scan\ActNum\");     
 
-                if (Directory.Exists(DirErrorLog) == false)
-                    Directory.CreateDirectory(DirErrorLog);
+                if (Directory.Exists(Path.DirErrorLog) == false)
+                    Directory.CreateDirectory(Path.DirErrorLog);
 
-                if (Directory.Exists(DirScannerData) == false)
-                    Directory.CreateDirectory(DirScannerData);
+                if (Directory.Exists(Path.DirScannerData) == false)
+                    Directory.CreateDirectory(Path.DirScannerData);
 
                 if (Directory.Exists(DirAccountNumber) == false)
                 {
                     Directory.CreateDirectory(DirAccountNumber);
                     if (Directory.Exists(DirAccountNumber))
                     {
-                        var file = File.Create(dirPublicDocs + DirAccountNumber + "ActNum.txt");
+                        var file = File.Create(Path.DirPublicDocs + DirAccountNumber + "ActNum.txt");
                         file.Close();
                     }
                 }
@@ -44,8 +41,7 @@ namespace WVA_Scan
         {
             try
             {
-                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-                string[] files = Directory.GetFiles(dirPublicDocs + @"\WVA_Scan\ScanData\");
+                string[] files = Directory.GetFiles(Path.DirPublicDocs + @"\WVA_Scan\ScanData\");
              
                 foreach (string file in files)
                 {

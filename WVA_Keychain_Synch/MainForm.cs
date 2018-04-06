@@ -170,9 +170,7 @@ namespace WVA_Scan
                         try
                         {                     
                             if (AccountNumber != null && AccountNumber != "")
-                            {
-                                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-
+                            {                          
                                 string strTime = GetTime();
 
                                 string szDeviceId;
@@ -192,8 +190,7 @@ namespace WVA_Scan
                                 };                              
 
                                 // Copy order to backup data file
-                                using (System.IO.StreamWriter writer =
-                                        new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Scan\ScannerData\" + strTime))
+                                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ScannerData\" + strTime))
                                 {
                                     writer.Write("<Date Created> " + strTime);
                                     writer.Write("\r\n<Account Number> " + AccountNumber);
@@ -305,9 +302,7 @@ namespace WVA_Scan
         {
             try
             {
-                string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
-
-                AccountNumber = File.ReadLines(dirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt").Skip(0).Take(1).First();
+                AccountNumber = File.ReadLines(Path.DirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt").Skip(0).Take(1).First();
 
                 if (AccountNumber != "")
                     AccountTextBox.Text = (AccountNumber.ToString());
@@ -332,9 +327,8 @@ namespace WVA_Scan
                     
                     Thread.Sleep(250);
                     setActPB.Value += 25;
-                    string dirPublicDocs = Environment.GetFolderPath(Environment.SpecialFolder.CommonDocuments);
 
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(dirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt"))
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt"))
                     {
                         file.WriteLine(AccountNumber);
                         file.Close();
@@ -456,11 +450,10 @@ namespace WVA_Scan
                 if (Status >= 0)
                 {
                     this.Cursor = Cursors.WaitCursor;
-                    string dirProgramx86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
                     foreach (ParamInfo p in Description)
                     { 
                         ComCheck = Opticon.csp2.Init(ComCheck);
-                        int line = Convert.ToInt32(File.ReadLines(dirProgramx86 + @"/WVA_Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
+                        int line = Convert.ToInt32(File.ReadLines(Path.DirProgram86 + @"/WVA_Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
                         szString[0] = (byte)line;
                         nParam = p.ParamNumber;
                         Int32 iRet = Opticon.csp2.SetParam(nParam, szString, nMaxLength);

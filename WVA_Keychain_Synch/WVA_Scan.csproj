@@ -164,6 +164,7 @@
       <DependentUpon>NoScanned.cs</DependentUpon>
     </Compile>
     <Compile Include="Order.cs" />
+    <Compile Include="Path.cs" />
     <Compile Include="PrefCompleted.cs">
       <SubType>Form</SubType>
     </Compile>
