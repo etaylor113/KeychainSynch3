@@ -16,7 +16,7 @@ namespace WVA_Scan
         {
             InitializeComponent();
 
-            this.label1.Text = Variables.ANEF_Text; 
+            this.label1.Text = "You must enter your WVA account number first. Please go to My Account tab to submit it."; 
         }
 
         

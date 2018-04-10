@@ -50,7 +50,7 @@ namespace WVA_Scan
             // 
             // backdrop
             // 
-            this.backdrop.Image = global::WVA_Scan.Properties.Resources.WVA;
+            this.backdrop.Image = global::WVA_Scan_App.Properties.Resources.WVA;
             this.backdrop.Location = new System.Drawing.Point(-212, -193);
             this.backdrop.Margin = new System.Windows.Forms.Padding(2);
             this.backdrop.Name = "backdrop";

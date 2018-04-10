@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WVA_Scan_Main", "WVA_Scanning\WVA_Scan_Main.csproj", "{5590BC2C-F6E2-44DB-8BEB-148D746B4487}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WVA_Scan_Installer", "WVA_Scan_Installer\WVA_Scan_Installer.vdproj", "{6A97EC5C-38E5-44E7-8E17-071859CB1DE7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5590BC2C-F6E2-44DB-8BEB-148D746B4487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5590BC2C-F6E2-44DB-8BEB-148D746B4487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5590BC2C-F6E2-44DB-8BEB-148D746B4487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5590BC2C-F6E2-44DB-8BEB-148D746B4487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A97EC5C-38E5-44E7-8E17-071859CB1DE7}.Debug|Any CPU.ActiveCfg = Debug
+		{6A97EC5C-38E5-44E7-8E17-071859CB1DE7}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {98460240-C428-46EE-9B63-76199349EF1D}
+	EndGlobalSection
+EndGlobal

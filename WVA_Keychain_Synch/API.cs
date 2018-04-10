@@ -24,7 +24,6 @@ namespace WVA_Scan
                     Time = MainForm.GetTime(),
                     ActNumber = MainForm.AccountNumber,
                     DeviceID = MainForm.DeviceID,
-                    ConfigFile = Variables.ConfigFile,
                     Barcodes = MainForm.Barcodes.ToArray()
                 };
 
@@ -66,16 +65,7 @@ namespace WVA_Scan
                     else if (Json_Response.Status == "SUCCESS")
                     {
                         MainForm.ClearData = true;    // Tell polling thread in MainForm.cs it's okay to delete scanner data
-                    }
-                    else if (Json_Response.Status == "UPDATE_FAIL")
-                    {
-                        UpdateConfig.RunUpdate();  // Initiate a second API call to grab new config file for user
-                    }
-                    else if (Json_Response.Status == "UPDATE_SUCCESS")
-                    {
-                        MainForm.ClearData = true;   // Still want to clear the data beacause order was created, but run update process
-                        UpdateConfig.RunUpdate();  // Initiate a second API call to grab new config file for user
-                    }
+                    }                   
                     else
                         ShowMessage("There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.");   // If we got here, something was wrong with the payload
                     

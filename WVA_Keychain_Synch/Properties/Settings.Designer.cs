@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WVA_Scan.Properties {
+namespace WVA_Scan_App.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

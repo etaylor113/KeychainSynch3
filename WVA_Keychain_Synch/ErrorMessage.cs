@@ -21,7 +21,7 @@ namespace WVA_Scan
             label1.Location = pos;
             label1.BackColor = Color.Transparent;
      
-            this.label1.Text = Variables.ErrorMessage_Text;
+            this.label1.Text = "An error has occurred. Please call WVA Scanner Support if the problem persists.";
         }
     }
 }

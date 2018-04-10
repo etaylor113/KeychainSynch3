@@ -79,13 +79,12 @@ namespace WVA_Scan
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Font = new System.Drawing.Font("MS Reference Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ItemSize = new System.Drawing.Size(100, 40);
             this.tabControl1.Location = new System.Drawing.Point(1, 1);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(622, 394);
+            this.tabControl1.Size = new System.Drawing.Size(466, 320);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -101,20 +100,18 @@ namespace WVA_Scan
             this.tabPage1.Controls.Add(this.sendData);
             this.tabPage1.Controls.Add(this.labelMainDividerLine);
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage1.Size = new System.Drawing.Size(614, 346);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Size = new System.Drawing.Size(458, 272);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = " Scan  ";
             // 
             // logoTab1
             // 
             this.logoTab1.Image = ((System.Drawing.Image)(resources.GetObject("logoTab1.Image")));
-            this.logoTab1.Location = new System.Drawing.Point(-15, -233);
-            this.logoTab1.Margin = new System.Windows.Forms.Padding(4);
+            this.logoTab1.Location = new System.Drawing.Point(-11, -189);
             this.logoTab1.Name = "logoTab1";
-            this.logoTab1.Size = new System.Drawing.Size(933, 861);
+            this.logoTab1.Size = new System.Drawing.Size(700, 700);
             this.logoTab1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logoTab1.TabIndex = 3;
             this.logoTab1.TabStop = false;
@@ -123,10 +120,9 @@ namespace WVA_Scan
             // 
             this.labelStatusHead.AutoSize = true;
             this.labelStatusHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelStatusHead.Location = new System.Drawing.Point(22, 62);
-            this.labelStatusHead.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelStatusHead.Location = new System.Drawing.Point(16, 50);
             this.labelStatusHead.Name = "labelStatusHead";
-            this.labelStatusHead.Size = new System.Drawing.Size(85, 29);
+            this.labelStatusHead.Size = new System.Drawing.Size(65, 24);
             this.labelStatusHead.TabIndex = 4;
             this.labelStatusHead.Text = "Status:";
             // 
@@ -134,10 +130,9 @@ namespace WVA_Scan
             // 
             this.labelBarcodes.AutoSize = true;
             this.labelBarcodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelBarcodes.Location = new System.Drawing.Point(22, 147);
-            this.labelBarcodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelBarcodes.Location = new System.Drawing.Point(16, 119);
             this.labelBarcodes.Name = "labelBarcodes";
-            this.labelBarcodes.Size = new System.Drawing.Size(223, 29);
+            this.labelBarcodes.Size = new System.Drawing.Size(176, 24);
             this.labelBarcodes.TabIndex = 5;
             this.labelBarcodes.Text = "Scanned Barcodes:";
             // 
@@ -145,10 +140,9 @@ namespace WVA_Scan
             // 
             this.labelNumBarcodes.BackColor = System.Drawing.Color.White;
             this.labelNumBarcodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNumBarcodes.Location = new System.Drawing.Point(22, 182);
-            this.labelNumBarcodes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelNumBarcodes.Location = new System.Drawing.Point(16, 148);
             this.labelNumBarcodes.Name = "labelNumBarcodes";
-            this.labelNumBarcodes.Size = new System.Drawing.Size(284, 33);
+            this.labelNumBarcodes.Size = new System.Drawing.Size(213, 27);
             this.labelNumBarcodes.TabIndex = 6;
             this.labelNumBarcodes.Text = "Not Connected";
             // 
@@ -157,10 +151,9 @@ namespace WVA_Scan
             this.labelConnected.BackColor = System.Drawing.Color.White;
             this.labelConnected.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelConnected.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelConnected.Location = new System.Drawing.Point(22, 98);
-            this.labelConnected.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelConnected.Location = new System.Drawing.Point(16, 80);
             this.labelConnected.Name = "labelConnected";
-            this.labelConnected.Size = new System.Drawing.Size(284, 33);
+            this.labelConnected.Size = new System.Drawing.Size(213, 27);
             this.labelConnected.TabIndex = 7;
             this.labelConnected.Text = "Not Connected";
             // 
@@ -168,10 +161,9 @@ namespace WVA_Scan
             // 
             this.labelMain.AutoSize = true;
             this.labelMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelMain.Location = new System.Drawing.Point(7, 12);
-            this.labelMain.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelMain.Location = new System.Drawing.Point(5, 10);
             this.labelMain.Name = "labelMain";
-            this.labelMain.Size = new System.Drawing.Size(535, 26);
+            this.labelMain.Size = new System.Drawing.Size(452, 22);
             this.labelMain.TabIndex = 8;
             this.labelMain.Text = "Be sure device is connected before sending data.";
             // 
@@ -181,10 +173,9 @@ namespace WVA_Scan
             this.sendData.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.sendData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.sendData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sendData.Location = new System.Drawing.Point(22, 245);
-            this.sendData.Margin = new System.Windows.Forms.Padding(4);
+            this.sendData.Location = new System.Drawing.Point(16, 199);
             this.sendData.Name = "sendData";
-            this.sendData.Size = new System.Drawing.Size(284, 43);
+            this.sendData.Size = new System.Drawing.Size(213, 35);
             this.sendData.TabIndex = 1;
             this.sendData.Text = "Download Scanner";
             this.sendData.UseVisualStyleBackColor = false;
@@ -193,10 +184,9 @@ namespace WVA_Scan
             // labelMainDividerLine
             // 
             this.labelMainDividerLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelMainDividerLine.Location = new System.Drawing.Point(0, 55);
-            this.labelMainDividerLine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelMainDividerLine.Location = new System.Drawing.Point(0, 45);
             this.labelMainDividerLine.Name = "labelMainDividerLine";
-            this.labelMainDividerLine.Size = new System.Drawing.Size(613, 3);
+            this.labelMainDividerLine.Size = new System.Drawing.Size(460, 2);
             this.labelMainDividerLine.TabIndex = 6;
             // 
             // tabPage2
@@ -209,19 +199,19 @@ namespace WVA_Scan
             this.tabPage2.Controls.Add(this.LLViewCart);
             this.tabPage2.Controls.Add(this.logoTab2);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage2.Size = new System.Drawing.Size(614, 346);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Size = new System.Drawing.Size(458, 272);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = " My Account ";
             this.tabPage2.Enter += new System.EventHandler(this.resetProgressBar);
             // 
             // setActPB
             // 
-            this.setActPB.Location = new System.Drawing.Point(15, 121);
+            this.setActPB.Location = new System.Drawing.Point(11, 98);
+            this.setActPB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.setActPB.Name = "setActPB";
-            this.setActPB.Size = new System.Drawing.Size(277, 31);
+            this.setActPB.Size = new System.Drawing.Size(208, 25);
             this.setActPB.TabIndex = 7;
             // 
             // button5
@@ -229,11 +219,11 @@ namespace WVA_Scan
             this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("MS Reference Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(15, 172);
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(11, 140);
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(276, 40);
+            this.button5.Size = new System.Drawing.Size(207, 32);
             this.button5.TabIndex = 6;
             this.button5.Text = "Set Account Number";
             this.button5.UseVisualStyleBackColor = true;
@@ -242,29 +232,28 @@ namespace WVA_Scan
             // AccountLabel
             // 
             this.AccountLabel.AutoSize = true;
-            this.AccountLabel.Location = new System.Drawing.Point(-9, 140);
+            this.AccountLabel.Location = new System.Drawing.Point(-7, 114);
             this.AccountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.AccountLabel.Name = "AccountLabel";
-            this.AccountLabel.Size = new System.Drawing.Size(283, 29);
+            this.AccountLabel.Size = new System.Drawing.Size(204, 24);
             this.AccountLabel.TabIndex = 5;
             this.AccountLabel.Text = "Enter Account Number";
             // 
             // AccountTextBox
             // 
-            this.AccountTextBox.Location = new System.Drawing.Point(15, 63);
+            this.AccountTextBox.Location = new System.Drawing.Point(11, 51);
             this.AccountTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.AccountTextBox.Name = "AccountTextBox";
-            this.AccountTextBox.Size = new System.Drawing.Size(277, 36);
+            this.AccountTextBox.Size = new System.Drawing.Size(209, 29);
             this.AccountTextBox.TabIndex = 4;
             // 
             // LLViewCart
             // 
             this.LLViewCart.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LLViewCart.LinkColor = System.Drawing.Color.Black;
-            this.LLViewCart.Location = new System.Drawing.Point(22, 273);
-            this.LLViewCart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.LLViewCart.Location = new System.Drawing.Point(16, 222);
             this.LLViewCart.Name = "LLViewCart";
-            this.LLViewCart.Size = new System.Drawing.Size(291, 33);
+            this.LLViewCart.Size = new System.Drawing.Size(218, 27);
             this.LLViewCart.TabIndex = 0;
             this.LLViewCart.TabStop = true;
             this.LLViewCart.Text = "Review My Order";
@@ -273,10 +262,9 @@ namespace WVA_Scan
             // logoTab2
             // 
             this.logoTab2.Image = ((System.Drawing.Image)(resources.GetObject("logoTab2.Image")));
-            this.logoTab2.Location = new System.Drawing.Point(-15, -233);
-            this.logoTab2.Margin = new System.Windows.Forms.Padding(4);
+            this.logoTab2.Location = new System.Drawing.Point(-11, -189);
             this.logoTab2.Name = "logoTab2";
-            this.logoTab2.Size = new System.Drawing.Size(933, 861);
+            this.logoTab2.Size = new System.Drawing.Size(700, 700);
             this.logoTab2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.logoTab2.TabIndex = 3;
             this.logoTab2.TabStop = false;
@@ -291,10 +279,9 @@ namespace WVA_Scan
             this.tabPage3.Controls.Add(this.PrefPB);
             this.tabPage3.Controls.Add(this.labelPrefHead);
             this.tabPage3.Location = new System.Drawing.Point(4, 44);
-            this.tabPage3.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage3.Size = new System.Drawing.Size(614, 346);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Size = new System.Drawing.Size(458, 272);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = " Preferences ";
             // 
@@ -304,10 +291,9 @@ namespace WVA_Scan
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(164, 80);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(123, 65);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(267, 49);
+            this.button2.Size = new System.Drawing.Size(200, 40);
             this.button2.TabIndex = 1;
             this.button2.Text = "Scan UPC only";
             this.button2.UseVisualStyleBackColor = false;
@@ -319,10 +305,9 @@ namespace WVA_Scan
             this.button3.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(164, 148);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(123, 120);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(267, 49);
+            this.button3.Size = new System.Drawing.Size(200, 40);
             this.button3.TabIndex = 2;
             this.button3.Text = "Scan OPC only";
             this.button3.UseVisualStyleBackColor = false;
@@ -334,10 +319,9 @@ namespace WVA_Scan
             this.button4.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(164, 215);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Location = new System.Drawing.Point(123, 175);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(267, 49);
+            this.button4.Size = new System.Drawing.Size(200, 40);
             this.button4.TabIndex = 3;
             this.button4.Text = "Scan UPC and OPC";
             this.button4.UseVisualStyleBackColor = false;
@@ -345,21 +329,19 @@ namespace WVA_Scan
             // 
             // PrefPB
             // 
-            this.PrefPB.Location = new System.Drawing.Point(97, 283);
-            this.PrefPB.Margin = new System.Windows.Forms.Padding(4);
+            this.PrefPB.Location = new System.Drawing.Point(73, 230);
             this.PrefPB.Maximum = 50;
             this.PrefPB.Name = "PrefPB";
-            this.PrefPB.Size = new System.Drawing.Size(400, 37);
+            this.PrefPB.Size = new System.Drawing.Size(300, 30);
             this.PrefPB.TabIndex = 4;
             // 
             // labelPrefHead
             // 
             this.labelPrefHead.AutoSize = true;
             this.labelPrefHead.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPrefHead.Location = new System.Drawing.Point(130, 9);
-            this.labelPrefHead.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPrefHead.Location = new System.Drawing.Point(98, 7);
             this.labelPrefHead.Name = "labelPrefHead";
-            this.labelPrefHead.Size = new System.Drawing.Size(338, 58);
+            this.labelPrefHead.Size = new System.Drawing.Size(261, 50);
             this.labelPrefHead.TabIndex = 0;
             this.labelPrefHead.Text = "Be sure device is connected \nwhile changing preferences!";
             // 
@@ -370,29 +352,28 @@ namespace WVA_Scan
             this.tabPage4.Controls.Add(this.labelContactNum);
             this.tabPage4.Controls.Add(this.backdrop);
             this.tabPage4.Location = new System.Drawing.Point(4, 44);
-            this.tabPage4.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(4);
-            this.tabPage4.Size = new System.Drawing.Size(614, 346);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Size = new System.Drawing.Size(458, 272);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = " Help ";
             // 
             // labelContactNum
             // 
             this.labelContactNum.Font = new System.Drawing.Font("Tahoma", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelContactNum.Location = new System.Drawing.Point(42, 47);
-            this.labelContactNum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelContactNum.Location = new System.Drawing.Point(32, 38);
             this.labelContactNum.Name = "labelContactNum";
-            this.labelContactNum.Size = new System.Drawing.Size(560, 213);
+            this.labelContactNum.Size = new System.Drawing.Size(382, 79);
             this.labelContactNum.TabIndex = 2;
+            this.labelContactNum.Text = "For questions or concerns, please contact WVA Scanner Support at 800.747.9000 x81" +
+    "91.";
             // 
             // backdrop
             // 
             this.backdrop.Image = ((System.Drawing.Image)(resources.GetObject("backdrop.Image")));
-            this.backdrop.Location = new System.Drawing.Point(-227, -215);
-            this.backdrop.Margin = new System.Windows.Forms.Padding(4);
+            this.backdrop.Location = new System.Drawing.Point(-170, -175);
             this.backdrop.Name = "backdrop";
-            this.backdrop.Size = new System.Drawing.Size(1067, 985);
+            this.backdrop.Size = new System.Drawing.Size(800, 800);
             this.backdrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.backdrop.TabIndex = 4;
             this.backdrop.TabStop = false;
@@ -424,16 +405,15 @@ namespace WVA_Scan
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Gray;
-            this.ClientSize = new System.Drawing.Size(622, 394);
+            this.ClientSize = new System.Drawing.Size(466, 320);
             this.Controls.Add(this.tabControl1);
-            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::WVA_Scan.Properties.Settings.Default, "Location", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.DataBindings.Add(new System.Windows.Forms.Binding("Location", global::WVA_Scan_App.Properties.Settings.Default, "Location", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Location = global::WVA_Scan.Properties.Settings.Default.Location;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Location = global::WVA_Scan_App.Properties.Settings.Default.Location;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "MainForm";

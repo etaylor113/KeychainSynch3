@@ -20,13 +20,17 @@ namespace WVA_Scan
 {
     public partial class MainForm : Form
     {
-        public static Int32 ComCheck { get; set; }
+        // ===============================================================================================================================================================
+        //                        GLOBALS
+        // ===============================================================================================================================================================
+      
         public int ReadBarcodes { get; set; } = 0;
         public bool DataSend { get; set; }
         private string TxtReader { get; set; }
-        public static bool ClearData { get; set; }
         public int Status { get; set; }
 
+        public static Int32 ComCheck { get; set; }
+        public static bool ClearData { get; set; }
         public static string AccountNumber { get; set; } 
         public static string DeviceID { get; set; }
         public static string SWVersion { get; set; }
@@ -93,18 +97,23 @@ namespace WVA_Scan
 
         List<Int32> Ports = new List<Int32>();
 
-        // Run on app execution 
+        // ===============================================================================================================================================================
+        //                        MAIN METHOD
+        // ===============================================================================================================================================================
+
         public MainForm()
         {        
             InitializeComponent();
             BindObjsToBkrd();
-            UpdateConfig.AssignVariables();
-            SetVariables();
             FileLogic.CreateDirs();
             CheckAccountNumber();
             FileLogic.CleanDirectory();
             Start();
         }
+
+        // ===============================================================================================================================================================
+        //                        MAIN LOOP
+        // ===============================================================================================================================================================
 
         public void CallbackFunction(Int32 nComport)
         {
@@ -190,7 +199,7 @@ namespace WVA_Scan
                                 };                              
 
                                 // Copy order to backup data file
-                                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ScannerData\" + strTime))
+                                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ScanData\" + strTime))
                                 {
                                     writer.Write("<Date Created> " + strTime);
                                     writer.Write("\r\n<Account Number> " + AccountNumber);
@@ -227,12 +236,59 @@ namespace WVA_Scan
                 Thread.Sleep(500);
             }
             catch { }
+        }   
+
+        bool Started = false;
+        Opticon.csp2.csp2CallBackFunctionAll Csp2Callback = null;
+
+        public void Start()
+        {
+            if (!Started)
+            {
+                Int32 iRet;
+
+                StringBuilder szDLLVersion = new StringBuilder(256);
+                iRet = Opticon.csp2.GetDllVersion(szDLLVersion, 100);
+                if (iRet < 0)
+                {
+                    Trace.WriteLine(String.Format(" Fail {0} ", iRet));
+                }
+                else
+                {
+                    Trace.WriteLine(String.Format("DLL Version = {0}", szDLLVersion));
+                }
+
+                Int32[] ports = new Int32[100];
+
+                int Count = Opticon.csp2.GetOpnCompatiblePorts(ports);
+
+                if (Csp2Callback == null)
+                    Csp2Callback = new Opticon.csp2.csp2CallBackFunctionAll(CallbackFunction);
+
+                iRet = Opticon.csp2.StartPollingAll(Csp2Callback);
+
+                if (iRet != 0)
+                {
+                    return;
+                }
+
+                Started = true;
+            }
+            else
+            {
+                Opticon.csp2.EnablePolling();
+            }
         }
 
-        private void SetVariables()
+        public void Stop()
         {
-            this.labelContactNum.Text = Variables.labelContactNum_Text;
+            Opticon.csp2.DisablePolling();
+            Opticon.csp2.StopPolling();
         }
+
+        // ===============================================================================================================================================================
+        //                        FORM SETUP
+        // ===============================================================================================================================================================
 
         private void BindObjsToBkrd()
         { 
@@ -292,6 +348,10 @@ namespace WVA_Scan
             }
         }
 
+        // ===============================================================================================================================================================
+        //                        HELPER METHODS
+        // ===============================================================================================================================================================
+
         public static string GetTime()
         {
             string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
@@ -302,7 +362,7 @@ namespace WVA_Scan
         {
             try
             {
-                AccountNumber = File.ReadLines(Path.DirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt").Skip(0).Take(1).First();
+                AccountNumber = File.ReadLines(Path.DirPublicDocs + @"\WVA_Scan\ActNum\ActNum.txt").Skip(0).Take(1).First();
 
                 if (AccountNumber != "")
                     AccountTextBox.Text = (AccountNumber.ToString());
@@ -310,148 +370,23 @@ namespace WVA_Scan
             catch { }
         }
 
-        public void SetAccountNumberBtn(object sender, EventArgs e)
-        {
-            try
-            {
-                setActPB.Value = 0;
-                AccountNumber = AccountTextBox.Text;
-
-                setActPB.Value += 25;
-                Thread.Sleep(250);
-                setActPB.Value += 25;
-
-                if (AccountNumber != "")
-                {
-                    AccountTextBox.Text = (AccountNumber.ToString());
-                    
-                    Thread.Sleep(250);
-                    setActPB.Value += 25;
-
-                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\AccountNumber\AccountNumber.txt"))
-                    {
-                        file.WriteLine(AccountNumber);
-                        file.Close();
-                    }
-                    setActPB.Value += 25;
-                }
-            }
-            catch (Exception e1)
-            {
-                Errors.PrintToLog(e1.ToString());
-            }
-        }
-
-        bool Started = false;
-        Opticon.csp2.csp2CallBackFunctionAll Csp2Callback = null; 
-
-        public void Start()
-        {
-            if (!Started)
-            {
-                Int32 iRet;
-
-                StringBuilder szDLLVersion = new StringBuilder(256);
-                iRet = Opticon.csp2.GetDllVersion(szDLLVersion, 100);
-                if (iRet < 0)
-                {
-                    Trace.WriteLine(String.Format(" Fail {0} ", iRet));
-                }
-                else
-                {
-                    Trace.WriteLine(String.Format("DLL Version = {0}", szDLLVersion));
-                }
-
-                Int32[] ports = new Int32[100];
-
-                int Count = Opticon.csp2.GetOpnCompatiblePorts(ports);
-
-                if (Csp2Callback == null)
-                    Csp2Callback = new Opticon.csp2.csp2CallBackFunctionAll(CallbackFunction);
-
-                iRet = Opticon.csp2.StartPollingAll(Csp2Callback);
-
-                if (iRet != 0)
-                {
-                    return;
-                }
-              
-                Started = true;
-            }
-            else
-            {
-                Opticon.csp2.EnablePolling();
-            }
-        }
-        
-        public void Stop()
-        {
-            Opticon.csp2.DisablePolling();
-            Opticon.csp2.StopPolling();
-        }        
-
-        private void SendData_Click(object sender, EventArgs e)
-        {
-            try
-            {                       
-                this.Cursor = Cursors.WaitCursor;
-                sendData.Enabled = false;
-                DataSend = true;
-                Stop();
-                CallbackFunction(ComCheck);
-
-                if (ReadBarcodes <= 0)
-                {
-                    var noScan = new NoScanned();
-                    if (Application.OpenForms.OfType<NoScanned>().Count() == 1)
-                        Application.OpenForms.OfType<NoScanned>().First().Close();
-                    noScan.ShowDialog();
-                }
-                else
-                {                             
-                    if (AccountNumber != null && AccountNumber != "")
-                    {                     
-                        API.RunApi();                      
-                    }
-                    else
-                    {
-                        var anef = new ActNumErrorForm();
-                        if (Application.OpenForms.OfType<ActNumErrorForm>().Count() == 1)
-                            Application.OpenForms.OfType<ActNumErrorForm>().First().Close();
-                        anef.ShowDialog();
-                    }                             
-                }
-        
-                Started = false;
-                Start();
-                CallbackFunction(ComCheck);
-
-                sendData.Enabled = true;
-                this.Cursor = Cursors.Arrow;          
-            }
-            catch (Exception e1)
-            {
-                Errors.PrintToLog(e1.ToString());
-            }
-        }
-
         private void SetParameters()
-        {        
+        {
             PrefPB.Value = 0;
             int counter = 0;
             Int32 nParam = 0;
             byte[] szString = new byte[100];
             Int32 nMaxLength = 1;
-           
+
             try
             {
                 Stop();
-                CallbackFunction(ComCheck);       
+                CallbackFunction(ComCheck);
                 if (Status >= 0)
                 {
                     this.Cursor = Cursors.WaitCursor;
                     foreach (ParamInfo p in Description)
-                    { 
+                    {
                         ComCheck = Opticon.csp2.Init(ComCheck);
                         int line = Convert.ToInt32(File.ReadLines(Path.DirProgram86 + @"/WVA_Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
                         szString[0] = (byte)line;
@@ -492,12 +427,93 @@ namespace WVA_Scan
             setActPB.Value = 0;
         }
 
+        // ===============================================================================================================================================================
+        //                        FORM CONTROLS
+        // ===============================================================================================================================================================
+
+        public void SetAccountNumberBtn(object sender, EventArgs e)
+        {
+            try
+            {
+                setActPB.Value = 0;
+                AccountNumber = AccountTextBox.Text;
+
+                setActPB.Value += 25;
+                Thread.Sleep(250);
+                setActPB.Value += 25;
+
+                if (AccountNumber != "")
+                {
+                    AccountTextBox.Text = (AccountNumber.ToString());
+                    
+                    Thread.Sleep(250);
+                    setActPB.Value += 25;
+
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ActNum\ActNum.txt"))
+                    {
+                        file.WriteLine(AccountNumber);
+                        file.Close();
+                    }
+                    setActPB.Value += 25;
+                }
+            }
+            catch (Exception e1)
+            {
+                Errors.PrintToLog(e1.ToString());
+            }
+        }
+
+        private void SendData_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+                sendData.Enabled = false;
+                DataSend = true;
+                Stop();
+                CallbackFunction(ComCheck);
+
+                if (ReadBarcodes <= 0)
+                {
+                    var noScan = new NoScanned();
+                    if (Application.OpenForms.OfType<NoScanned>().Count() == 1)
+                        Application.OpenForms.OfType<NoScanned>().First().Close();
+                    noScan.ShowDialog();
+                }
+                else
+                {
+                    if (AccountNumber != null && AccountNumber != "")
+                    {
+                        API.RunApi();
+                    }
+                    else
+                    {
+                        var anef = new ActNumErrorForm();
+                        if (Application.OpenForms.OfType<ActNumErrorForm>().Count() == 1)
+                            Application.OpenForms.OfType<ActNumErrorForm>().First().Close();
+                        anef.ShowDialog();
+                    }
+                }
+
+                Started = false;
+                Start();
+                CallbackFunction(ComCheck);
+
+                sendData.Enabled = true;
+                this.Cursor = Cursors.Arrow;
+            }
+            catch (Exception e1)
+            {
+                Errors.PrintToLog(e1.ToString());
+            }
+        }
+
         private void button2_Click(object sender, EventArgs e)
-        {            
+        {
             button2.Enabled = false;
             TxtReader = "ReadUPC_Only.txt";
             SetParameters();
-            button2.Enabled = true;         
+            button2.Enabled = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -509,7 +525,7 @@ namespace WVA_Scan
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {          
+        {
             button4.Enabled = false;
             TxtReader = "ReadStock+UPC.txt";
             SetParameters();
@@ -520,7 +536,7 @@ namespace WVA_Scan
         {
             try
             {
-                System.Diagnostics.Process.Start(Variables.ViewCart_Link);
+                System.Diagnostics.Process.Start("https://www.wewillship.com/landing.html?navTo=login");
             }
             catch (Exception e1)
             {
@@ -530,9 +546,13 @@ namespace WVA_Scan
 
         private void MainForm_FormClosing(Object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.Save();
+            Launcher_Update.Init();
         }
     }
+
+    // ===============================================================================================================================================================
+    //                        PARAMINFO CLASS
+    // ===============================================================================================================================================================
 
     public class ParamInfo
     {
@@ -542,6 +562,7 @@ namespace WVA_Scan
             _ParamNumber = Num;
             _ParamValue = -1;
         }
+
         private String _Parameter;
         public String Parameter
         {
@@ -553,7 +574,7 @@ namespace WVA_Scan
         public int ParamNumber
         {
             get { return _ParamNumber; }
-            set { _ParamNumber = value; }
+            set { _ParamNumber = value; }   
         }
 
         private int _ParamValue;

@@ -16,7 +16,7 @@ namespace WVA_Scan
         {
             InitializeComponent();
 
-            this.label1.Text = Variables.NoScanned_Text;
+            this.label1.Text = "You have not scanned any items.";
         }
      
     }

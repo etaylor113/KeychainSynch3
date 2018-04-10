@@ -13,23 +13,23 @@ namespace WVA_Scan
         {
             try
             {              
-                var DirAccountNumber = (Path.DirPublicDocs + @"\WVA_Scan\ActNum\");     
+                string DirActnum = (Path.DirPublicDocs + @"\WVA_Scan\ActNum\");
+                string ActNumTXT = DirActnum + "ActNum.txt";
 
-                if (Directory.Exists(Path.DirErrorLog) == false)
+                if (!Directory.Exists(Path.DirErrorLog))
                     Directory.CreateDirectory(Path.DirErrorLog);
 
-                if (Directory.Exists(Path.DirScannerData) == false)
+                if (!Directory.Exists(Path.DirScannerData))
                     Directory.CreateDirectory(Path.DirScannerData);
 
-                if (Directory.Exists(DirAccountNumber) == false)
+                if (!Directory.Exists(DirActnum)) { }          
+                    Directory.CreateDirectory(DirActnum);
+
+                if (Directory.Exists(DirActnum))
                 {
-                    Directory.CreateDirectory(DirAccountNumber);
-                    if (Directory.Exists(DirAccountNumber))
-                    {
-                        var file = File.Create(Path.DirPublicDocs + DirAccountNumber + "ActNum.txt");
-                        file.Close();
-                    }
-                }
+                    var file = File.Create(ActNumTXT);
+                    file.Close();
+                }         
             }     
             catch (Exception e)
             {

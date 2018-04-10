@@ -8,8 +8,8 @@
     <ProjectGuid>{E3026F78-3952-4CD8-BF22-D0C7B3AEE15B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WVA_Scan</RootNamespace>
-    <AssemblyName>WVA_Scan</AssemblyName>
+    <RootNamespace>WVA_Scan_App</RootNamespace>
+    <AssemblyName>WVA_Scan_App</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
@@ -135,7 +135,6 @@
       <DependentUpon>ActNumErrorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="API.cs" />
-    <Compile Include="Config.cs" />
     <Compile Include="ErrorMessage.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +144,9 @@
     <Compile Include="Errors.cs" />
     <Compile Include="FileLogic.cs" />
     <Compile Include="Json_Response.cs" />
+    <Compile Include="Launcher_API.cs" />
+    <Compile Include="Launcher_Controls.cs" />
+    <Compile Include="Launcher_Update.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,8 +175,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Update.cs" />
-    <Compile Include="Variables.cs" />
     <EmbeddedResource Include="ActNumErrorForm.resx">
       <DependentUpon>ActNumErrorForm.cs</DependentUpon>
     </EmbeddedResource>
