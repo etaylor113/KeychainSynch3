@@ -12,7 +12,7 @@ namespace WVA_Scan
         public static string DirProgram86 = Environment.GetFolderPath(Environment.SpecialFolder.ProgramFilesX86);
         public static string DirErrorLog = (DirPublicDocs + @"\WVA_Scan\ErrorLog\");
         public static string DirScannerData = (DirPublicDocs + @"\WVA_Scan\ScanData\");
-        public static string tempDir = (DirPublicDocs + @"WVA_Scan\Temp\");        
+        public static string tempDir = (DirPublicDocs + @"\WVA_Scan\Temp\");        
         public static string appMsiName = @"WVA_Scan_App.msi";
         public static string launchMsiName = @"WVA_Scan_Launcher.msi";
     }

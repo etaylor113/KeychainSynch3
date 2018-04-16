@@ -64,7 +64,8 @@ namespace WVA_Scan
                     }
                     else if (Json_Response.Status == "SUCCESS")
                     {
-                        MainForm.ClearData = true;    // Tell polling thread in MainForm.cs it's okay to delete scanner data
+                        MainForm.ClearData = true; // Tell polling thread in MainForm.cs it's okay to delete scanner data
+                        ShowMessage("Your order was successfully created.");
                     }                   
                     else
                         ShowMessage("There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.");   // If we got here, something was wrong with the payload

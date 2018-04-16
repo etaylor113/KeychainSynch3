@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27428.2015
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WVA_Scan_Main", "WVA_Scanning\WVA_Scan_Main.csproj", "{5590BC2C-F6E2-44DB-8BEB-148D746B4487}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WVA_Scan_Launcher", "WVA_Scanning\WVA_Scan_Launcher.csproj", "{5590BC2C-F6E2-44DB-8BEB-148D746B4487}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "WVA_Scan_Installer", "WVA_Scan_Installer\WVA_Scan_Installer.vdproj", "{6A97EC5C-38E5-44E7-8E17-071859CB1DE7}"
 EndProject

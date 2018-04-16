@@ -544,7 +544,7 @@ namespace WVA_Scan
             }
         }
 
-        private void MainForm_FormClosing(Object sender, FormClosingEventArgs e)
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Launcher_Update.Init();
         }

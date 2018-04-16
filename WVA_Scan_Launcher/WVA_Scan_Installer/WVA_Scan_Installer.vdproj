@@ -15,7 +15,7 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_8D236014CF11487FAB0DDF0AF1AD3CE1"
+        "MsmKey" = "8:_60B55A6FA9034E97A0A04E70D5311956"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -138,9 +138,9 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8D236014CF11487FAB0DDF0AF1AD3CE1"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_60B55A6FA9034E97A0A04E70D5311956"
             {
-            "SourcePath" = "8:..\\..\\..\\WVA_Scan\\WVA_Scan\\WVA_Keychain_Synch\\Resources\\wva_icon_SIN_icon.ico"
+            "SourcePath" = "8:..\\WVA_Scanning\\Resources\\wva_icon_SIN_icon.ico"
             "TargetName" = "8:wva_icon_SIN_icon.ico"
             "Tag" = "8:"
             "Folder" = "8:_1520221D87D4458497454F11A594A451"
@@ -257,7 +257,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WVA_Scan_Installer"
         "ProductCode" = "8:{E576AA6B-C1B5-40DB-A9F6-C3474E7C3EA7}"
-        "PackageCode" = "8:{A97BAB82-D271-4175-AD76-AF90A279E5AC}"
+        "PackageCode" = "8:{123D3E2C-949A-4681-A7E1-C96280157C55}"
         "UpgradeCode" = "8:{0ED3896C-5DC5-4268-89B3-F85BEC3B9881}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -377,7 +377,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F4E567D35A0C401AB60D48EC7345AF80"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_648323C0804944B7927B9950C99EDC7F"
             {
             "Name" = "8:WVA Scan"
             "Arguments" = "8:"
@@ -387,8 +387,8 @@
             "Transitive" = "11:FALSE"
             "Target" = "8:_941AB492CCF24487974795AD5A01DC5C"
             "Folder" = "8:_EF7FE006B81745C3B470DE3596FE6BC7"
-            "WorkingFolder" = "8:_DFE6787AE3934ED189B7CFA5E41CA5A4"
-            "Icon" = "8:_8D236014CF11487FAB0DDF0AF1AD3CE1"
+            "WorkingFolder" = "8:_1520221D87D4458497454F11A594A451"
+            "Icon" = "8:_60B55A6FA9034E97A0A04E70D5311956"
             "Feature" = "8:"
             }
         }
@@ -792,7 +792,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_941AB492CCF24487974795AD5A01DC5C"
             {
-            "SourcePath" = "8:..\\WVA_Scanning\\obj\\Debug\\WVA_Scan_Main.exe"
+            "SourcePath" = "8:..\\WVA_Scanning\\obj\\Debug\\WVA_Scan_Launcher.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_1520221D87D4458497454F11A594A451"

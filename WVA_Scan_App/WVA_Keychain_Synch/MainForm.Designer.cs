@@ -101,7 +101,7 @@ namespace WVA_Scan
             this.tabPage1.Controls.Add(this.labelMainDividerLine);
             this.tabPage1.Location = new System.Drawing.Point(4, 44);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(458, 272);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = " Scan  ";
@@ -200,7 +200,7 @@ namespace WVA_Scan
             this.tabPage2.Controls.Add(this.logoTab2);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(458, 272);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = " My Account ";
@@ -209,7 +209,7 @@ namespace WVA_Scan
             // setActPB
             // 
             this.setActPB.Location = new System.Drawing.Point(11, 98);
-            this.setActPB.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.setActPB.Margin = new System.Windows.Forms.Padding(2);
             this.setActPB.Name = "setActPB";
             this.setActPB.Size = new System.Drawing.Size(208, 25);
             this.setActPB.TabIndex = 7;
@@ -280,7 +280,7 @@ namespace WVA_Scan
             this.tabPage3.Controls.Add(this.labelPrefHead);
             this.tabPage3.Location = new System.Drawing.Point(4, 44);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(458, 272);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = " Preferences ";
@@ -353,7 +353,7 @@ namespace WVA_Scan
             this.tabPage4.Controls.Add(this.backdrop);
             this.tabPage4.Location = new System.Drawing.Point(4, 44);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(458, 272);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = " Help ";
@@ -420,6 +420,7 @@ namespace WVA_Scan
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "WVA Scan";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

@@ -36,3 +36,13 @@ C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scan_Launcher\obj\Deb
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scan_Launcher\obj\Debug\WVA_Scan_Main.csproj.CoreCompileInputs.cache
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scan_Launcher\obj\Debug\WVA_Scan_Launcher.exe
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scan_Launcher\obj\Debug\WVA_Scan_Launcher.pdb
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\bin\Debug\WVA_Scan_Launcher.exe.config
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\bin\Debug\WVA_Scan_Launcher.exe
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\bin\Debug\WVA_Scan_Launcher.pdb
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Debug\WVA_Scan_Main.csprojResolveAssemblyReference.cache
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Debug\WVA_Scan_Main.Form1.resources
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Debug\WVA_Scan_Launcher.Properties.Resources.resources
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Debug\WVA_Scan_Main.csproj.GenerateResource.cache
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Debug\WVA_Scan_Main.csproj.CoreCompileInputs.cache
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Debug\WVA_Scan_Launcher.exe
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Debug\WVA_Scan_Launcher.pdb

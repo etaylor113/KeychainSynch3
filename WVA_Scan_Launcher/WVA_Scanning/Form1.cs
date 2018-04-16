@@ -61,8 +61,7 @@ namespace WVA_Scan_Main
                         App.Close();
                         App.LaunchWVA_Scan();
                         App.Close();
-                    }
-                    
+                    }              
                 }
                 else
                 {

@@ -14,7 +14,7 @@ namespace WVA_Scan
         {
             Process p = new Process();
             p.StartInfo.FileName = "msiexec.exe";
-            p.StartInfo.Arguments = "/i \"C:\\Users\\Public\\Documents\\WVA_Scan\\Temp\\WVA_Scan_Launcher.msi\"/quiet";
+            p.StartInfo.Arguments = "/i \"C:\\Users\\Public\\Documents\\WVA_Scan\\Temp\\WVA_Scan_Launcher.msi\"/passive";
             p.Start();
             p.WaitForExit();
         }
@@ -23,7 +23,7 @@ namespace WVA_Scan
         {
             Process p = new Process();
             p.StartInfo.FileName = "msiexec.exe";
-            p.StartInfo.Arguments = "/x \"C:\\Users\\Public\\Documents\\WVA_Scan\\Temp\\WVA_Scan_Launcher.msi\"/quiet";
+            p.StartInfo.Arguments = "/x \"C:\\Users\\Public\\Documents\\WVA_Scan\\Temp\\WVA_Scan_Launcher.msi\"/passive";
             p.Start();
             p.WaitForExit();
         }     

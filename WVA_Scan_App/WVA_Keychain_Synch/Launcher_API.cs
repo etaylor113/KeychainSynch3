@@ -19,7 +19,8 @@ namespace WVA_Scan
         {
             using (var client = new WebClient())
             {
-                client.DownloadFile("https://ws2.wisvis.com/aws/scanner/CurrentMSI/WVA_Scan_Launcher.msi", (Path.DirPublicDocs + Path.tempDir + Path.launchMsiName)); // old link -- https://www.wisvis.com/WVA_Scan_Launcher.msi
+                string path = (Path.tempDir + Path.launchMsiName);
+                client.DownloadFile("https://ws2.wisvis.com/aws/scanner/CurrentMSI/WVA_Scan_Launcher.msi", path);
             }
         }
     }
