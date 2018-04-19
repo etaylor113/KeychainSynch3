@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WVA_Scan_Main
+namespace WVA_Scan_Launcher
 {
     class Error
     {
@@ -25,12 +25,14 @@ namespace WVA_Scan_Main
                 string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
                 using (System.IO.StreamWriter writer = new System.IO.StreamWriter((Path.DirErrorLog + @"ErrorLog.txt"), true))
                 {
+                    writer.WriteLine("");
                     writer.WriteLine("-----------------------------------------------------------------------------------");
                     writer.WriteLine("");
                     writer.WriteLine("(TIME: " + time + ")");
                     writer.WriteLine("(ERROR:" + error + ")");
                     writer.WriteLine("");
                     writer.WriteLine("-----------------------------------------------------------------------------------");
+                    writer.WriteLine("");
                     writer.Close();
                 }
             }

@@ -89,7 +89,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
-    <PlatformTarget>AnyCPU</PlatformTarget>
+    <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>
     </CodeAnalysisRuleSet>
@@ -143,6 +143,7 @@
     </Compile>
     <Compile Include="Errors.cs" />
     <Compile Include="FileLogic.cs" />
+    <Compile Include="JSON_Output.cs" />
     <Compile Include="Json_Response.cs" />
     <Compile Include="Launcher_API.cs" />
     <Compile Include="Launcher_Controls.cs" />

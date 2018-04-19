@@ -34,3 +34,4 @@ C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_App\WVA_Keychain_Synch\obj\Debug\W
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_App\WVA_Keychain_Synch\obj\Debug\WVA_Scan.csproj.CopyComplete
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_App\WVA_Keychain_Synch\obj\Debug\WVA_Scan_App.exe
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_App\WVA_Keychain_Synch\obj\Debug\WVA_Scan_App.pdb
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_App\WVA_Keychain_Synch\obj\Debug\WVA_Scan.csprojResolveAssemblyReference.cache

@@ -1,4 +1,4 @@
-﻿namespace WVA_Scan_Main
+﻿namespace WVA_Scan_Launcher
 {
     partial class Form1
     {

@@ -7,3 +7,4 @@ C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Release\
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Release\WVA_Scan_Launcher.csproj.CoreCompileInputs.cache
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Release\WVA_Scan_Launcher.exe
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Release\WVA_Scan_Launcher.pdb
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Release\WVA_Scan_Launcher.csprojResolveAssemblyReference.cache

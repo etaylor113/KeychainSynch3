@@ -10,10 +10,10 @@ namespace WVA_Scan
     class Json_Response
     {
         [JsonProperty("Status")]
-        public static string Status { get; set; }
+        public string Status { get; set; }
 
         [JsonProperty("Message")]
-        public static string Message { get; set; }
+        public string Message { get; set; }
 
     }
 }

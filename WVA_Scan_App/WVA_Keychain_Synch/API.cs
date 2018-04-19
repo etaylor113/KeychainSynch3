@@ -12,8 +12,6 @@ namespace WVA_Scan
 {
     class API
     {
-        public static string apiMessage { get; set; }
-
         public static void RunApi()
         {
             try {
@@ -44,29 +42,26 @@ namespace WVA_Scan
                     dataStream.Write(byteArray, 0, byteArray.Length);
                 }
 
-                // Clear Json_Response variables
-                Json_Response.Status = "";
-                Json_Response.Message = "";
-
                 // Read response from api 
                 WebResponse response = request.GetResponse();           
                 using (Stream responseStream = response.GetResponseStream())
-                {                 
+                {
+                    //Json_Response json_response = new Json_Response();
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     var json_Message = reader.ReadToEnd();
                     var jsonResponse = JsonConvert.DeserializeObject<Json_Response>(json_Message);
+                    string status = jsonResponse.Status;
+                    string message = jsonResponse.Message;
 
-                    apiMessage = Json_Response.Message;
-
-                    if (Json_Response.Status == "FAIL")
+                    if (status.Contains("FAIL"))
                     {
                         ShowMessage("There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.");     // There was a problem creating the order
                     }
-                    else if (Json_Response.Status == "SUCCESS")
+                    else if (status.Contains("SUCCESS"))
                     {
                         MainForm.ClearData = true; // Tell polling thread in MainForm.cs it's okay to delete scanner data
-                        ShowMessage("Your order was successfully created.");
-                    }                   
+                        ShowMessage(message);
+                    }                  
                     else
                         ShowMessage("There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.");   // If we got here, something was wrong with the payload
                     
@@ -74,21 +69,22 @@ namespace WVA_Scan
                 }
                 response.Close();
                 
-                if ((((HttpWebResponse)response).StatusDescription) == "OK")
+                if ((((HttpWebResponse)response).StatusDescription) != "OK")
                 {
-                    ShowMessage(apiMessage); // App made its way to the api successfully  
-                }
-                else
-                {
-                    ShowMessage("There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, contact WVA Scanner Support. ");  // Something went wrong when trying to connect to api
+                    PrintGeneralError();
                 }
             }
             catch (Exception e)
             {
                 Errors.PrintToLog(e.ToString());
-                ShowMessage("There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, contact WVA Scanner Support. ");  // Inform user something went wrong
+                PrintGeneralError();
             }
         }    
+
+        private static void PrintGeneralError()
+        {
+            ShowMessage("There was an error downloading scanner. Be sure you are connected to the internet and your scanner is plugged in. If the problem persists, contact WVA Scanner Support. ");  
+        }
 
         private static void ShowMessage(string message)
         {       

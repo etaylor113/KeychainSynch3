@@ -22,8 +22,8 @@ namespace WVA_Scan
                 if (!Directory.Exists(Path.DirScannerData))
                     Directory.CreateDirectory(Path.DirScannerData);
 
-                if (!Directory.Exists(DirActnum)) { }          
-                    Directory.CreateDirectory(DirActnum);
+                if (!File.Exists(DirActnum)) { }          
+                    File.Create(DirActnum);
 
                 if (Directory.Exists(DirActnum))
                 {

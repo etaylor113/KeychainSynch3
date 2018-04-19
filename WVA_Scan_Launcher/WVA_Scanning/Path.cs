@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WVA_Scan_Main
+namespace WVA_Scan_Launcher
 {
     class Path
     {
