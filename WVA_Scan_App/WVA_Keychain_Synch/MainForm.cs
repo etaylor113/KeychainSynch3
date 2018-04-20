@@ -425,6 +425,8 @@ namespace WVA_Scan
         private void resetProgressBar(object sender, EventArgs e)
         {
             setActPB.Value = 0;
+            if (AccountNumber != "" || AccountNumber != null)
+                AccountTextBox.Text = AccountNumber;
         }
 
         // ===============================================================================================================================================================
@@ -436,25 +438,24 @@ namespace WVA_Scan
             try
             {
                 setActPB.Value = 0;
-                AccountNumber = AccountTextBox.Text;
-
+                CheckAccountNumber();
                 setActPB.Value += 25;
-                Thread.Sleep(250);
-                setActPB.Value += 25;
+                Thread.Sleep(150);
 
                 if (AccountNumber != "")
                 {
-                    AccountTextBox.Text = (AccountNumber.ToString());
-                    
-                    Thread.Sleep(250);
+                    AccountTextBox.Text = (AccountNumber.ToString());                 
                     setActPB.Value += 25;
+                    Thread.Sleep(150);
 
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ActNum\ActNum.txt"))
                     {
                         file.WriteLine(AccountNumber);
                         file.Close();
                     }
-                    setActPB.Value += 25;
+                    setActPB.Value += 50;
+                    Thread.Sleep(250);
+                    AccountTextBox.Text = ("Updated to: " + AccountNumber.ToString());
                 }
             }
             catch (Exception e1)
