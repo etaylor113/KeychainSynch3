@@ -46,7 +46,6 @@ namespace WVA_Scan
                 WebResponse response = request.GetResponse();           
                 using (Stream responseStream = response.GetResponseStream())
                 {
-                    //Json_Response json_response = new Json_Response();
                     StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
                     var json_Message = reader.ReadToEnd();
                     var jsonResponse = JsonConvert.DeserializeObject<Json_Response>(json_Message);
