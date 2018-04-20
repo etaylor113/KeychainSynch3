@@ -23,5 +23,10 @@ namespace WVA_Scan
      
             this.label1.Text = "An error has occurred. Please call WVA Scanner Support if the problem persists.";
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

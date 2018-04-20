@@ -17,7 +17,17 @@ namespace WVA_Scan
             InitializeComponent();
 
             this.label1.Text = "You have not scanned any items.";
+
+            var pos = label1.Location;
+            pos = backdrop.PointToClient(pos);
+            label1.Parent = backdrop;
+            label1.Location = pos;
+            label1.BackColor = Color.Transparent;
         }
-     
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

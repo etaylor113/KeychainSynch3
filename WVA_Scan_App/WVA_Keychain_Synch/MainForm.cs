@@ -388,7 +388,7 @@ namespace WVA_Scan
                     foreach (ParamInfo p in Description)
                     {
                         ComCheck = Opticon.csp2.Init(ComCheck);
-                        int line = Convert.ToInt32(File.ReadLines(Path.DirProgram86 + @"/WVA_Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
+                        int line = Convert.ToInt32(File.ReadLines(Path.DirProgram86 + @"/WVA Scan/WVA_Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
                         szString[0] = (byte)line;
                         nParam = p.ParamNumber;
                         Int32 iRet = Opticon.csp2.SetParam(nParam, szString, nMaxLength);
@@ -407,7 +407,7 @@ namespace WVA_Scan
                 else
                 {
                     NoScanned noScanned = new NoScanned();
-                    noScanned.label1.Text = "Scanner not connected! Plug Scanner in USB port to change preferences.";
+                    noScanned.label1.Text = "Scanner not connected! Plug Scanner into USB port to change preferences.";
                     noScanned.ShowDialog();
                 }
             }

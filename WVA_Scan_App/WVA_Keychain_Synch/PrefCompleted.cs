@@ -22,5 +22,10 @@ namespace WVA_Scan
             label1.BackColor = Color.Transparent;
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

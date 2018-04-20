@@ -41,20 +41,20 @@ namespace WVA_Scan
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.label1.Location = new System.Drawing.Point(22, 47);
+            this.label1.Location = new System.Drawing.Point(37, 43);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.MaximumSize = new System.Drawing.Size(531, 0);
+            this.label1.MaximumSize = new System.Drawing.Size(398, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 29);
+            this.label1.Size = new System.Drawing.Size(0, 25);
             this.label1.TabIndex = 0;
             // 
             // backdrop
             // 
             this.backdrop.Image = global::WVA_Scan_App.Properties.Resources.WVA;
-            this.backdrop.Location = new System.Drawing.Point(-212, -193);
+            this.backdrop.Location = new System.Drawing.Point(-128, -153);
             this.backdrop.Margin = new System.Windows.Forms.Padding(2);
             this.backdrop.Name = "backdrop";
-            this.backdrop.Size = new System.Drawing.Size(945, 867);
+            this.backdrop.Size = new System.Drawing.Size(709, 704);
             this.backdrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.backdrop.TabIndex = 4;
             this.backdrop.TabStop = false;
@@ -65,9 +65,10 @@ namespace WVA_Scan
             this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(206, 292);
+            this.button1.Location = new System.Drawing.Point(187, 282);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 38);
+            this.button1.Size = new System.Drawing.Size(79, 31);
             this.button1.TabIndex = 5;
             this.button1.Text = "Close";
             this.button1.UseVisualStyleBackColor = true;
@@ -75,9 +76,9 @@ namespace WVA_Scan
             // 
             // MessageForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(543, 342);
+            this.ClientSize = new System.Drawing.Size(466, 320);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.backdrop);
