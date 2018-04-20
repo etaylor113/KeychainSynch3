@@ -364,7 +364,7 @@ namespace WVA_Scan
             {
                 AccountNumber = File.ReadLines(Path.DirPublicDocs + @"\WVA_Scan\ActNum\ActNum.txt").Skip(0).Take(1).First();
 
-                if (AccountNumber != "")
+                if (AccountNumber != "" & AccountNumber != null)
                     AccountTextBox.Text = (AccountNumber.ToString());
             }
             catch { }
@@ -437,26 +437,35 @@ namespace WVA_Scan
         {
             try
             {
-                setActPB.Value = 0;
-                CheckAccountNumber();
-                setActPB.Value += 25;
-                Thread.Sleep(150);
+                string message = "";
 
-                if (AccountNumber != "")
+                AccountNumber = AccountTextBox.Text.Trim();
+
+                if (AccountNumber.Contains("Updated to: "))
                 {
-                    AccountTextBox.Text = (AccountNumber.ToString());                 
+                    AccountNumber = AccountNumber.Remove(0, 12).Trim();
+                }
+                    
+                if (AccountNumber != null && AccountNumber != "")
+                {
+                    setActPB.Value = 0;
+                    CheckAccountNumber();
                     setActPB.Value += 25;
                     Thread.Sleep(150);
-
+                    setActPB.Value += 25;
+                    Thread.Sleep(150);
+                
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ActNum\ActNum.txt"))
                     {
                         file.WriteLine(AccountNumber);
                         file.Close();
                     }
+                    message = "Updated to: " + AccountNumber.ToString();
+
                     setActPB.Value += 50;
                     Thread.Sleep(250);
-                    AccountTextBox.Text = ("Updated to: " + AccountNumber.ToString());
                 }
+                AccountTextBox.Text = (message);        
             }
             catch (Exception e1)
             {

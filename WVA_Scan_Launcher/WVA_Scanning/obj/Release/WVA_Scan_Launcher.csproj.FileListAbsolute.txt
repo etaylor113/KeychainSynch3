@@ -10,3 +10,4 @@ C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\bin\Release\
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\bin\Release\Newtonsoft.Json.xml
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Release\WVA_Scan_Launcher.Form1.resources
 C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Release\WVA_Scan_Launcher.csproj.CopyComplete
+C:\Users\evan\Desktop\KeychainSynch3\WVA_Scan_Launcher\WVA_Scanning\obj\Release\WVA_Scan_Launcher.csprojResolveAssemblyReference.cache
