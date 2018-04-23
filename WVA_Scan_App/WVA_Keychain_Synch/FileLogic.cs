@@ -12,29 +12,38 @@ namespace WVA_Scan
         public static void CreateDirs()
         {
             try
-            {              
-                string DirActnum = (Path.DirPublicDocs + @"\WVA_Scan\ActNum\");
-                string ActNumTXT = DirActnum + "ActNum.txt";
-
-                if (!Directory.Exists(Path.DirErrorLog))
-                    Directory.CreateDirectory(Path.DirErrorLog);
-
-                if (!Directory.Exists(Path.DirScannerData))
-                    Directory.CreateDirectory(Path.DirScannerData);
-
-                if (!File.Exists(DirActnum)) { }          
-                    File.Create(DirActnum);
-
-                if (Directory.Exists(DirActnum))
-                {
-                    var file = File.Create(ActNumTXT);
-                    file.Close();
-                }         
+            {            
+                CreateScanDataDir();
+                CreateActNumFiles();
             }     
             catch (Exception e)
             {
                 Errors.PrintToLog(e.ToString());
-            }
+            }    
+        }
+
+        public static void CreateScanDataDir()
+        {
+            // Create ScanData Dir
+            if (!Directory.Exists(Path.DirScannerData))
+                Directory.CreateDirectory(Path.DirScannerData);
+        }
+
+        public static void CreateActNumFiles()
+        {       
+            string DirActnum = (Path.DirPublicDocs + @"\WVA_Scan\ActNum\");
+            string ActNumTXT = DirActnum + "ActNum.txt";
+
+            // Create ActNum Dir
+            if (!Directory.Exists(DirActnum))
+                Directory.CreateDirectory(DirActnum);
+
+            // Create ActNum.txt file            
+            if (!File.Exists(ActNumTXT))
+            {
+                var file = File.Create(ActNumTXT);
+                file.Close();
+            }         
         }
 
         public static void CleanDirectory()

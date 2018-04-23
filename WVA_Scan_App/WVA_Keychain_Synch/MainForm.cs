@@ -196,9 +196,10 @@ namespace WVA_Scan
                                         sbBarcodes.AppendLine(String.Format(aPacket.strBarData));
                                         Barcodes.Add(aPacket.strBarData.ToString());
                                     }
-                                };                              
+                                };
 
                                 // Copy order to backup data file
+                                FileLogic.CreateScanDataDir();
                                 using (System.IO.StreamWriter writer = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ScanData\" + strTime))
                                 {
                                     writer.Write("<Date Created> " + strTime);
@@ -438,28 +439,30 @@ namespace WVA_Scan
             try
             {
                 string message = "";
+                setActPB.Value = 0;
 
                 AccountNumber = AccountTextBox.Text.Trim();
 
-                if (AccountNumber.Contains("Updated to: "))
+                if (AccountNumber.Contains("Updated to:"))
                 {
-                    AccountNumber = AccountNumber.Remove(0, 12).Trim();
+                    AccountNumber = AccountNumber.Replace("Updated to:","").Trim();
                 }
                     
                 if (AccountNumber != null && AccountNumber != "")
-                {
-                    setActPB.Value = 0;
-                    CheckAccountNumber();
+                {                  
                     setActPB.Value += 25;
-                    Thread.Sleep(150);
+                    Thread.Sleep(125);
                     setActPB.Value += 25;
-                    Thread.Sleep(150);
-                
+                    Thread.Sleep(125);
+
+                    FileLogic.CreateActNumFiles();
+
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ActNum\ActNum.txt"))
                     {
                         file.WriteLine(AccountNumber);
                         file.Close();
                     }
+
                     message = "Updated to: " + AccountNumber.ToString();
 
                     setActPB.Value += 50;

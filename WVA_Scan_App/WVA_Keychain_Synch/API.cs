@@ -54,7 +54,7 @@ namespace WVA_Scan
 
                     if (status.Contains("FAIL"))
                     {
-                        ShowMessage("There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.");     // There was a problem creating the order
+                        ShowMessage(message);     // There was a problem creating the order
                     }
                     else if (status.Contains("SUCCESS"))
                     {
