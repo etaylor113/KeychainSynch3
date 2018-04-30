@@ -141,6 +141,7 @@
     <Compile Include="ErrorMessage.Designer.cs">
       <DependentUpon>ErrorMessage.cs</DependentUpon>
     </Compile>
+    <Compile Include="ErrorOutput.cs" />
     <Compile Include="Errors.cs" />
     <Compile Include="FileLogic.cs" />
     <Compile Include="JSON_Output.cs" />

@@ -18,7 +18,7 @@ namespace WVA_Scan
             }     
             catch (Exception e)
             {
-                Errors.PrintToLog(e.ToString());
+                Errors.ReportError(e.ToString());
             }    
         }
 
@@ -64,7 +64,7 @@ namespace WVA_Scan
             }
             catch (Exception e)
             {
-                Errors.PrintToLog(e.ToString());
+                Errors.ReportError(e.ToString());
             }
         }  
               

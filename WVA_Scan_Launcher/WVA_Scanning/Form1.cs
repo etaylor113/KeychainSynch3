@@ -108,9 +108,7 @@ namespace WVA_Scan_Launcher
                     break;
 
             }
-
         }
-
-        
+       
     }
 }

@@ -8,12 +8,12 @@ using System.Threading.Tasks;
 
 namespace WVA_Scan
 {
-    class JSON_Output
+    class UpdateOutput
     {
         public string Version;
         public string Program;
 
-        public JSON_Output()
+        public UpdateOutput()
         {
             Program = "WVA_Scan_App";
             Version = GetVersion();

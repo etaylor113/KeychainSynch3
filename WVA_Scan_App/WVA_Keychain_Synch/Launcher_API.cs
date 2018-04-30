@@ -13,13 +13,15 @@ namespace WVA_Scan
     {
         public static bool NeedsUpdate()
         {
-            try { 
-            bool needsUpdate = false;
+            try
+            { 
+                bool needsUpdate = false;
+
                 Json_Response payload = new Json_Response();
 
-                JSON_Output jsonOutput = new JSON_Output();
+                UpdateOutput updateOutput = new UpdateOutput();
             
-                var json = JsonConvert.SerializeObject(jsonOutput);
+                var json = JsonConvert.SerializeObject(updateOutput);
 
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/json_check_update.rb");
                 request.Method = "POST";
@@ -78,7 +80,7 @@ namespace WVA_Scan
             }
             catch(Exception e)
             {               
-                Errors.PrintToLog(e.ToString());
+                Errors.ReportError(e.ToString());
                 return false;
             }
         }

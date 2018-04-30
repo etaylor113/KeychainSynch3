@@ -2,14 +2,86 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace WVA_Scan
 {
     class Errors
-    {    
-        public static void PrintToLog(string error)
+    {
+
+        private static bool writeError { get; set; }
+
+        public static void ReportError(string error)
+        {
+            PostError(error);
+            if (writeError)
+            {
+                PrintToLog(error);
+            }
+        }
+
+        private static void PostError(string error)
+        {
+            try
+            { 
+                ErrorOutput errorOutput = new ErrorOutput(MainForm.AccountNumber, error);
+
+                var json = JsonConvert.SerializeObject(errorOutput);
+
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/json_error_handler.rb");
+                request.Method = "POST";
+
+                System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
+                Byte[] byteArray = encoding.GetBytes(json);
+
+                request.ContentLength = byteArray.Length;
+                request.ContentType = @"application/json";
+
+                using (Stream dataStream = request.GetRequestStream())
+                {
+                    dataStream.Write(byteArray, 0, byteArray.Length);
+                }
+
+                // Read response from api 
+                WebResponse response = request.GetResponse();
+                using (Stream responseStream = response.GetResponseStream())
+                {
+                    StreamReader reader = new StreamReader(responseStream, Encoding.UTF8);
+                    var json_Message = reader.ReadToEnd();
+                    var jsonResponse = JsonConvert.DeserializeObject<Json_Response>(json_Message);
+
+                    if (jsonResponse.Status == "SUCCESS")
+                    {
+                        writeError = false;
+                    }
+                    else if (jsonResponse.Message == "FAIL")
+                    {
+                        writeError = true;
+                    }
+                    else
+                    {
+                        // If we got here, something went wrong with the api. 
+                        throw new System.InvalidOperationException("API broke while attemping to send error.");
+                    }
+                    reader.Close();
+                }
+                response.Close();
+
+                if ((((HttpWebResponse)response).StatusDescription) != "OK")
+                {
+                    throw new System.InvalidOperationException("Attempted to connect but connection could not be established.");
+                }
+            }
+            catch(Exception e)
+            {
+                PrintToLog(e.ToString());
+            }
+        }
+
+        private static void PrintToLog(string error)
         {
             try
             {            
@@ -35,6 +107,6 @@ namespace WVA_Scan
                 }
             }
             catch { };
-        }
+        }    
     }
 }

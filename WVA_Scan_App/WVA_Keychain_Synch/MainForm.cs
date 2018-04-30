@@ -26,7 +26,6 @@ namespace WVA_Scan
       
         public int ReadBarcodes { get; set; } = 0;
         public bool DataSend { get; set; }
-        private string TxtReader { get; set; }
         public int Status { get; set; }
 
         public static Int32 ComCheck { get; set; }
@@ -35,9 +34,6 @@ namespace WVA_Scan
         public static string DeviceID { get; set; }
         public static string SWVersion { get; set; }
         public static List<string> Barcodes = new List<string>();   
-
-        [DllImport("Opticon.csp2.net")]
-        static extern void SetParameters([In, MarshalAs(UnmanagedType.LPStr)] string szString);
 
         [DllImport("Opticon.csp2.net")]
         static extern void CallbackFunction([In, MarshalAs(UnmanagedType.LPStr)] string szDeviceId, [In, MarshalAs(UnmanagedType.LPStr)] string szSoftwareVersion, [In, MarshalAs(UnmanagedType.LPStr)] StringBuilder sbBarcodes);
@@ -212,7 +208,7 @@ namespace WVA_Scan
                         }
                         catch (Exception e1)
                         {
-                            Errors.PrintToLog(e1.ToString());
+                            Errors.ReportError(e1.ToString());
                         }
 
                         DataSend = false;
@@ -224,7 +220,7 @@ namespace WVA_Scan
                         if (Opticon.csp2.ClearData(nComport) != 0)
                         {
                             string error = "Erasing Failed!";                           
-                            Errors.PrintToLog(error);
+                            Errors.ReportError(error);
                         }
                         ReadBarcodes = 0;
                         ClearData = false;
@@ -345,7 +341,7 @@ namespace WVA_Scan
             }
             catch (Exception e)
             {
-                Errors.PrintToLog(e.ToString());
+                Errors.ReportError(e.ToString());
             }
         }
 
@@ -371,7 +367,7 @@ namespace WVA_Scan
             catch { }
         }
 
-        private void SetParameters()
+        private void SetParameters(string file)
         {
             PrefPB.Value = 0;
             int counter = 0;
@@ -389,7 +385,7 @@ namespace WVA_Scan
                     foreach (ParamInfo p in Description)
                     {
                         ComCheck = Opticon.csp2.Init(ComCheck);
-                        int line = Convert.ToInt32(File.ReadLines(Path.DirProgram86 + @"/WVA Scan/WVA_Scan/Config/Prefs/" + TxtReader).Skip(counter).Take(1).First());
+                        int line = Convert.ToInt32(File.ReadLines(Path.DirProgram86 + @"/WVA Scan/WVA_Scan/Config/Prefs/" + file).Skip(counter).Take(1).First());
                         szString[0] = (byte)line;
                         nParam = p.ParamNumber;
                         Int32 iRet = Opticon.csp2.SetParam(nParam, szString, nMaxLength);
@@ -412,10 +408,10 @@ namespace WVA_Scan
                     noScanned.ShowDialog();
                 }
             }
-            catch (System.AccessViolationException e)
+            catch (Exception e)
             {
                 this.Cursor = Cursors.Arrow;
-                Errors.PrintToLog(e.ToString());
+                Errors.ReportError(e.ToString());
             }
             PrefPB.Value = 0;
             Started = false;
@@ -429,7 +425,6 @@ namespace WVA_Scan
             if (AccountNumber != "" || AccountNumber != null)
                 AccountTextBox.Text = AccountNumber;
         }
-
         // ===============================================================================================================================================================
         //                        FORM CONTROLS
         // ===============================================================================================================================================================
@@ -472,7 +467,7 @@ namespace WVA_Scan
             }
             catch (Exception e1)
             {
-                Errors.PrintToLog(e1.ToString());
+                Errors.ReportError(e1.ToString());
             }
         }
 
@@ -517,31 +512,28 @@ namespace WVA_Scan
             }
             catch (Exception e1)
             {
-                Errors.PrintToLog(e1.ToString());
+                Errors.ReportError(e1.ToString());
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             button2.Enabled = false;
-            TxtReader = "ReadUPC_Only.txt";
-            SetParameters();
+            SetParameters("ReadUPC_Only.txt");
             button2.Enabled = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
             button3.Enabled = false;
-            TxtReader = "ReadStockOnly.txt";
-            SetParameters();
+            SetParameters("ReadStockOnly.txt");
             button3.Enabled = true;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             button4.Enabled = false;
-            TxtReader = "ReadStock+UPC.txt";
-            SetParameters();
+            SetParameters("ReadStock+UPC.txt");
             button4.Enabled = true;
         }
 
@@ -553,7 +545,7 @@ namespace WVA_Scan
             }
             catch (Exception e1)
             {
-                Errors.PrintToLog(e1.ToString());
+                Errors.ReportError(e1.ToString());
             }
         }
 
