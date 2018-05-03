@@ -12,12 +12,12 @@ namespace WVA_Scan
     class Errors
     {
 
-        private static bool writeError { get; set; }
+        private static bool shouldWriteError { get; set; }
 
         public static void ReportError(string error)
         {
             PostError(error);
-            if (writeError)
+            if (shouldWriteError)
             {
                 PrintToLog(error);
             }
@@ -31,7 +31,7 @@ namespace WVA_Scan
 
                 var json = JsonConvert.SerializeObject(errorOutput);
 
-                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/json_error_handler.rb");
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://ws2.wisvis.com/aws/scanner/error_handler.rb");
                 request.Method = "POST";
 
                 System.Text.UTF8Encoding encoding = new System.Text.UTF8Encoding();
@@ -55,11 +55,12 @@ namespace WVA_Scan
 
                     if (jsonResponse.Status == "SUCCESS")
                     {
-                        writeError = false;
+                        shouldWriteError = false;
                     }
                     else if (jsonResponse.Message == "FAIL")
                     {
-                        writeError = true;
+                        shouldWriteError = true;
+                        PrintToLog(jsonResponse.Message);
                     }
                     else
                     {

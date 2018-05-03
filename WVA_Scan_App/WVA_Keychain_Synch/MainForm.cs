@@ -425,6 +425,7 @@ namespace WVA_Scan
             if (AccountNumber != "" || AccountNumber != null)
                 AccountTextBox.Text = AccountNumber;
         }
+
         // ===============================================================================================================================================================
         //                        FORM CONTROLS
         // ===============================================================================================================================================================
@@ -539,6 +540,7 @@ namespace WVA_Scan
 
         private void LLViewCart_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+           
             try
             {
                 System.Diagnostics.Process.Start("https://www.wewillship.com/landing.html?navTo=login");

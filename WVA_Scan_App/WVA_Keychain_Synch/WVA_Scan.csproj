@@ -144,7 +144,7 @@
     <Compile Include="ErrorOutput.cs" />
     <Compile Include="Errors.cs" />
     <Compile Include="FileLogic.cs" />
-    <Compile Include="JSON_Output.cs" />
+    <Compile Include="UpdateOutput.cs" />
     <Compile Include="Json_Response.cs" />
     <Compile Include="Launcher_API.cs" />
     <Compile Include="Launcher_Controls.cs" />
