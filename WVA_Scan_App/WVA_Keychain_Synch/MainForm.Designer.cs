@@ -35,6 +35,7 @@ namespace WVA_Scan
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.warningLabel = new System.Windows.Forms.Label();
             this.logoTab1 = new System.Windows.Forms.PictureBox();
             this.labelStatusHead = new System.Windows.Forms.Label();
             this.labelBarcodes = new System.Windows.Forms.Label();
@@ -91,6 +92,7 @@ namespace WVA_Scan
             // 
             this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(126)))), ((int)(((byte)(195)))));
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.tabPage1.Controls.Add(this.warningLabel);
             this.tabPage1.Controls.Add(this.logoTab1);
             this.tabPage1.Controls.Add(this.labelStatusHead);
             this.tabPage1.Controls.Add(this.labelBarcodes);
@@ -104,7 +106,7 @@ namespace WVA_Scan
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(458, 272);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = " Scan  ";
+            this.tabPage1.Text = " Scan  ";        
             // 
             // logoTab1
             // 
@@ -180,6 +182,16 @@ namespace WVA_Scan
             this.sendData.Text = "Download Scanner";
             this.sendData.UseVisualStyleBackColor = false;
             this.sendData.Click += new System.EventHandler(this.SendData_Click);
+            // 
+            // warningLabel
+            // 
+            this.warningLabel.AutoSize = true;
+            this.warningLabel.Location = new System.Drawing.Point(10, 250);
+            this.warningLabel.Name = "warningLabel";
+            this.warningLabel.Size = new System.Drawing.Size(370, 24);
+            this.warningLabel.TabIndex = 9;
+            this.warningLabel.Text = "Do not unplug scanner while downloading!";
+            this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             // 
             // labelMainDividerLine
             // 
@@ -460,12 +472,13 @@ namespace WVA_Scan
         private System.Windows.Forms.PictureBox logoTab2;
         private System.Windows.Forms.Button sendData;
         private Label AccountLabel;
-        private static TextBox AccountTextBox;
         private Button button5;
         private PictureBox backdrop;
-        private static ProgressBar setActPB;
         private PictureBox logoTab1;
         private LinkLabel LLViewCart;
+        private Label warningLabel;
+        private static TextBox AccountTextBox;
+        private static ProgressBar setActPB;
     }      
 }
 

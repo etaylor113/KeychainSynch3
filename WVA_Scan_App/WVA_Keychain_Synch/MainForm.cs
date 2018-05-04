@@ -277,6 +277,12 @@ namespace WVA_Scan
                 AccountLabel.Parent = logoTab2;
                 AccountLabel.Location = pos10;
                 AccountLabel.BackColor = Color.Transparent;
+
+                var pos11 = warningLabel.Location;
+                pos11 = logoTab1.PointToClient(pos11);
+                warningLabel.Parent = logoTab1;
+                warningLabel.Location = pos11;
+                warningLabel.BackColor = Color.Transparent;
             }
             catch (Exception e)
             {
@@ -454,7 +460,7 @@ namespace WVA_Scan
                 {
                     string actNum = GetAccountNumber();
 
-                    if (actNum != null && actNum != "")
+                    if (actNum != null && actNum != "" && actNum != " ")
                     {
                         API.RunApi(CreateOrder(actNum));
                     }
