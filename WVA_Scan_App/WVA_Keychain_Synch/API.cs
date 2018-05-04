@@ -5,26 +5,22 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace WVA_Scan
 {
     class API
     {
-        public static void RunApi()
+        [DllImport("Opticon.csp2.net")]
+        static extern void RunApi([In, MarshalAs(UnmanagedType.SysInt)] int ReadBarcodes);
+
+        public static void RunApi(Order order)
         {
-            try {
-
-                // Create new order from order class
-                Order order = new Order()
-                {
-                    Time = MainForm.GetTime(),
-                    ActNumber = MainForm.AccountNumber,
-                    DeviceID = MainForm.DeviceID,
-                    Barcodes = MainForm.Barcodes.ToArray()
-                };
-
+            try
+            {        
                 // Write response to api
                 var json = JsonConvert.SerializeObject(order);
 
@@ -58,11 +54,18 @@ namespace WVA_Scan
                     }
                     else if (status.Contains("SUCCESS"))
                     {
-                        MainForm.ClearData = true; // Tell polling thread in MainForm.cs it's okay to delete scanner data
+                        if (Opticon.csp2.ClearData(MainForm.ComCheck) != 0)
+                        {
+                            string error = "Erasing scanner data failed!";
+                            Errors.ReportError(error);
+                        }             
+          
                         ShowMessage(message);
-                    }                  
+                    }
                     else
+                    {
                         ShowMessage("There was an error creating your order. Please try again. If the error persists, contact WVA Scanner Support.");   // If we got here, something was wrong with the payload
+                    }                     
                     
                     reader.Close();
                 }

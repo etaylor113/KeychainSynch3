@@ -26,8 +26,10 @@ namespace WVA_Scan
         private static void PostError(string error)
         {
             try
-            { 
-                ErrorOutput errorOutput = new ErrorOutput(MainForm.AccountNumber, error);
+            {
+                string actNum = MainForm.GetAccountNumber();
+
+                ErrorOutput errorOutput = new ErrorOutput(actNum, error);
 
                 var json = JsonConvert.SerializeObject(errorOutput);
 

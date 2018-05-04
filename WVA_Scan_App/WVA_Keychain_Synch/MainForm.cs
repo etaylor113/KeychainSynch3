@@ -24,16 +24,11 @@ namespace WVA_Scan
         //                        GLOBALS
         // ===============================================================================================================================================================
       
-        public int ReadBarcodes { get; set; } = 0;
-        public bool DataSend { get; set; }
+        
         public int Status { get; set; }
 
         public static Int32 ComCheck { get; set; }
-        public static bool ClearData { get; set; }
-        public static string AccountNumber { get; set; } 
-        public static string DeviceID { get; set; }
-        public static string SWVersion { get; set; }
-        public static List<string> Barcodes = new List<string>();   
+        public static int ReadBarcodes { get; set; } = 0; 
 
         [DllImport("Opticon.csp2.net")]
         static extern void CallbackFunction([In, MarshalAs(UnmanagedType.LPStr)] string szDeviceId, [In, MarshalAs(UnmanagedType.LPStr)] string szSoftwareVersion, [In, MarshalAs(UnmanagedType.LPStr)] StringBuilder sbBarcodes);
@@ -102,7 +97,7 @@ namespace WVA_Scan
             InitializeComponent();
             BindObjsToBkrd();
             FileLogic.CreateDirs();
-            CheckAccountNumber();
+            GetAccountNumber();
             FileLogic.CleanDirectory();
             Start();
         }
@@ -144,7 +139,7 @@ namespace WVA_Scan
                 }
 
                 ComCheck = nComport;
-
+     
                 BeginInvoke((Action)delegate ()
                 {
                     if (Ports.Count > 0)
@@ -168,63 +163,7 @@ namespace WVA_Scan
                     BeginInvoke((Action)delegate ()
                     {
                         labelNumBarcodes.Text = ReadBarcodes.ToString();
-                    });
-
-                    if (DataSend == true)
-                    {
-                        try
-                        {                     
-                            if (AccountNumber != null && AccountNumber != "")
-                            {                          
-                                string strTime = GetTime();
-
-                                string szDeviceId;
-                                iRet = Opticon.csp2.GetDeviceId(out szDeviceId, nComport);
-                                DeviceID = szDeviceId;
-                                                       
-                                StringBuilder sbBarcodes = new StringBuilder(1000);
-                                for (Int32 i = 0; i < ReadBarcodes; i++)
-                                {
-                                    Opticon.csp2.BarCodeDataPacket aPacket;
-                                    iRet = Opticon.csp2.GetPacket(out aPacket, i, nComport);
-                                    if (aPacket.strBarData != null)
-                                    {                                      
-                                        sbBarcodes.AppendLine(String.Format(aPacket.strBarData));
-                                        Barcodes.Add(aPacket.strBarData.ToString());
-                                    }
-                                };
-
-                                // Copy order to backup data file
-                                FileLogic.CreateScanDataDir();
-                                using (System.IO.StreamWriter writer = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ScanData\" + strTime))
-                                {
-                                    writer.Write("<Date Created> " + strTime);
-                                    writer.Write("\r\n<Account Number> " + AccountNumber);
-                                    writer.Write("\r\n<Scanner Id> " + szDeviceId);
-                                    writer.Write("\r\n" + sbBarcodes);
-                                    writer.Close();
-                                }
-                            }
-                        }
-                        catch (Exception e1)
-                        {
-                            Errors.ReportError(e1.ToString());
-                        }
-
-                        DataSend = false;
-                        return;
-
-                    }
-                    if (ClearData == true)
-                    {
-                        if (Opticon.csp2.ClearData(nComport) != 0)
-                        {
-                            string error = "Erasing Failed!";                           
-                            Errors.ReportError(error);
-                        }
-                        ReadBarcodes = 0;
-                        ClearData = false;
-                    }
+                    });                                   
                 }
                 else
                 {
@@ -355,17 +294,24 @@ namespace WVA_Scan
             return time.ToString();
         }
 
-        private void CheckAccountNumber()
+        public static string GetAccountNumber()
         {
             try
             {
-                AccountNumber = File.ReadLines(Path.DirPublicDocs + @"\WVA_Scan\ActNum\ActNum.txt").Skip(0).Take(1).First();
+                string accountNumber = File.ReadLines(Path.DirPublicDocs + @"\WVA_Scan\ActNum\ActNum.txt").Skip(0).Take(1).First();
 
-                if (AccountNumber != "" & AccountNumber != null)
-                    AccountTextBox.Text = (AccountNumber.ToString());
+                if (accountNumber != "" && accountNumber != null)
+                {
+                    AccountTextBox.Text = (accountNumber.ToString());
+                }
+
+                return accountNumber;
             }
-            catch { }
-        }
+            catch
+            {
+                return "";
+            }
+        }      
 
         private void SetParameters(string file)
         {
@@ -413,38 +359,54 @@ namespace WVA_Scan
                 this.Cursor = Cursors.Arrow;
                 Errors.ReportError(e.ToString());
             }
-            PrefPB.Value = 0;
-            Started = false;
-            Start();
-            CallbackFunction(ComCheck);
+            finally
+            {
+                PrefPB.Value = 0;
+                Started = false;
+                Start();
+                CallbackFunction(ComCheck);
+            }      
         }
 
         private void resetProgressBar(object sender, EventArgs e)
         {
-            setActPB.Value = 0;
-            if (AccountNumber != "" || AccountNumber != null)
-                AccountTextBox.Text = AccountNumber;
+            try
+            {
+                setActPB.Value = 0;
+
+                string actNum = GetAccountNumber();
+
+                if (actNum != "" || actNum != null)
+                {
+                    AccountTextBox.Text = actNum;
+                }                
+            } 
+            catch (Exception error)
+            {
+                Errors.ReportError(error.ToString());
+            }
+            
         }
 
         // ===============================================================================================================================================================
         //                        FORM CONTROLS
         // ===============================================================================================================================================================
 
-        public void SetAccountNumberBtn(object sender, EventArgs e)
+        public static void SetAccountNumberBtn(object sender, EventArgs e)
         {
             try
             {
                 string message = "";
                 setActPB.Value = 0;
 
-                AccountNumber = AccountTextBox.Text.Trim();
+                string actNum = AccountTextBox.Text.Trim();
 
-                if (AccountNumber.Contains("Updated to:"))
+                if (actNum.Contains("Updated to:"))
                 {
-                    AccountNumber = AccountNumber.Replace("Updated to:","").Trim();
+                    actNum = actNum.Replace("Updated to:","").Trim();
                 }
                     
-                if (AccountNumber != null && AccountNumber != "")
+                if (actNum != null && actNum != "")
                 {                  
                     setActPB.Value += 25;
                     Thread.Sleep(125);
@@ -455,11 +417,11 @@ namespace WVA_Scan
 
                     using (System.IO.StreamWriter file = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ActNum\ActNum.txt"))
                     {
-                        file.WriteLine(AccountNumber);
+                        file.WriteLine(actNum);
                         file.Close();
                     }
 
-                    message = "Updated to: " + AccountNumber.ToString();
+                    message = "Updated to: " + actNum.ToString();
 
                     setActPB.Value += 50;
                     Thread.Sleep(250);
@@ -476,11 +438,10 @@ namespace WVA_Scan
         {
             try
             {
+                // Create loading cursor
                 this.Cursor = Cursors.WaitCursor;
+                // Disable Download scanner button
                 sendData.Enabled = false;
-                DataSend = true;
-                Stop();
-                CallbackFunction(ComCheck);
 
                 if (ReadBarcodes <= 0)
                 {
@@ -491,9 +452,11 @@ namespace WVA_Scan
                 }
                 else
                 {
-                    if (AccountNumber != null && AccountNumber != "")
+                    string actNum = GetAccountNumber();
+
+                    if (actNum != null && actNum != "")
                     {
-                        API.RunApi();
+                        API.RunApi(CreateOrder(actNum));
                     }
                     else
                     {
@@ -504,16 +467,67 @@ namespace WVA_Scan
                     }
                 }
 
-                Started = false;
-                Start();
-                CallbackFunction(ComCheck);
-
+                // Enable Download scanner button
                 sendData.Enabled = true;
+                // Turn cursor back to original state
                 this.Cursor = Cursors.Arrow;
             }
             catch (Exception e1)
             {
                 Errors.ReportError(e1.ToString());
+            }
+        }
+
+        [DllImport("Opticon.csp2.net")]
+        static extern void CreateOrder([In, MarshalAs(UnmanagedType.LPStr)] string deviceID, [In, MarshalAs(UnmanagedType.LPStr)] List<string> listBarcodes);
+
+        private Order CreateOrder(string actNum)
+        {
+            string time = GetTime();       
+            string deviceID;
+
+            List<string> listBarcodes = new List<string>();
+           
+            int iRet = Opticon.csp2.GetDeviceId(out deviceID, ComCheck);           
+
+            for (Int32 i = 0; i < ReadBarcodes; i++)
+            {
+                Opticon.csp2.BarCodeDataPacket aPacket;
+                iRet = Opticon.csp2.GetPacket(out aPacket, i, ComCheck);
+                if (aPacket.strBarData != null)
+                {
+                    listBarcodes.Add(aPacket.strBarData.ToString());
+                }
+            };
+
+            WriteToDataLog(time, actNum, deviceID, listBarcodes);
+
+            // Create new order from order class
+            Order order = new Order()
+            {
+                Time = time,
+                ActNumber = actNum,
+                DeviceID = deviceID,
+                Barcodes = listBarcodes.ToArray()
+            };
+           
+            return order;
+        }
+
+        private void WriteToDataLog(string time, string accountNumber, string deviceID, List<string> listBarcodes)
+        {
+            // Copy order to backup data file
+            FileLogic.CreateScanDataDir();
+            using (System.IO.StreamWriter writer = new System.IO.StreamWriter(Path.DirPublicDocs + @"\WVA_Scan\ScanData\" + time))
+            {
+                writer.Write("<Date Created> " + time);
+                writer.Write("\r\n<Account Number> " + accountNumber);
+                writer.Write("\r\n<Scanner Id> " + deviceID);
+                foreach (string barcode in listBarcodes)
+                {
+                    writer.Write("\r\n<Item> " + barcode);
+                }
+                writer.Close();
             }
         }
 

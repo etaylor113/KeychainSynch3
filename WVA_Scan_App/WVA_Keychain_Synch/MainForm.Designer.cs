@@ -44,10 +44,10 @@ namespace WVA_Scan
             this.sendData = new System.Windows.Forms.Button();
             this.labelMainDividerLine = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.setActPB = new System.Windows.Forms.ProgressBar();
+            setActPB = new System.Windows.Forms.ProgressBar();
             this.button5 = new System.Windows.Forms.Button();
             this.AccountLabel = new System.Windows.Forms.Label();
-            this.AccountTextBox = new System.Windows.Forms.TextBox();
+            AccountTextBox = new System.Windows.Forms.TextBox();
             this.LLViewCart = new System.Windows.Forms.LinkLabel();
             this.logoTab2 = new System.Windows.Forms.PictureBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -192,10 +192,10 @@ namespace WVA_Scan
             // tabPage2
             // 
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabPage2.Controls.Add(this.setActPB);
+            this.tabPage2.Controls.Add(setActPB);
             this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.AccountLabel);
-            this.tabPage2.Controls.Add(this.AccountTextBox);
+            this.tabPage2.Controls.Add(AccountTextBox);
             this.tabPage2.Controls.Add(this.LLViewCart);
             this.tabPage2.Controls.Add(this.logoTab2);
             this.tabPage2.Location = new System.Drawing.Point(4, 44);
@@ -208,11 +208,11 @@ namespace WVA_Scan
             // 
             // setActPB
             // 
-            this.setActPB.Location = new System.Drawing.Point(11, 98);
-            this.setActPB.Margin = new System.Windows.Forms.Padding(2);
-            this.setActPB.Name = "setActPB";
-            this.setActPB.Size = new System.Drawing.Size(208, 25);
-            this.setActPB.TabIndex = 7;
+            setActPB.Location = new System.Drawing.Point(11, 98);
+            setActPB.Margin = new System.Windows.Forms.Padding(2);
+            setActPB.Name = "setActPB";
+            setActPB.Size = new System.Drawing.Size(208, 25);
+            setActPB.TabIndex = 7;
             // 
             // button5
             // 
@@ -227,7 +227,7 @@ namespace WVA_Scan
             this.button5.TabIndex = 6;
             this.button5.Text = "Set Account Number";
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.SetAccountNumberBtn);
+            this.button5.Click += new System.EventHandler(SetAccountNumberBtn);
             // 
             // AccountLabel
             // 
@@ -241,11 +241,11 @@ namespace WVA_Scan
             // 
             // AccountTextBox
             // 
-            this.AccountTextBox.Location = new System.Drawing.Point(11, 51);
-            this.AccountTextBox.Margin = new System.Windows.Forms.Padding(2);
-            this.AccountTextBox.Name = "AccountTextBox";
-            this.AccountTextBox.Size = new System.Drawing.Size(209, 29);
-            this.AccountTextBox.TabIndex = 4;
+            AccountTextBox.Location = new System.Drawing.Point(11, 51);
+            AccountTextBox.Margin = new System.Windows.Forms.Padding(2);
+            AccountTextBox.Name = "AccountTextBox";
+            AccountTextBox.Size = new System.Drawing.Size(209, 29);
+            AccountTextBox.TabIndex = 4;
             // 
             // LLViewCart
             // 
@@ -460,10 +460,10 @@ namespace WVA_Scan
         private System.Windows.Forms.PictureBox logoTab2;
         private System.Windows.Forms.Button sendData;
         private Label AccountLabel;
-        private TextBox AccountTextBox;
+        private static TextBox AccountTextBox;
         private Button button5;
         private PictureBox backdrop;
-        private ProgressBar setActPB;
+        private static ProgressBar setActPB;
         private PictureBox logoTab1;
         private LinkLabel LLViewCart;
     }      

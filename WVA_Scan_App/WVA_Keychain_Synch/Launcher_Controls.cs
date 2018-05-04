@@ -39,14 +39,7 @@ namespace WVA_Scan
             FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
             string version = fvi.FileVersion;
             return version;
-        }
-
-        public static string GetActNum()
-        {
-            string ActNum = "";
-
-            return ActNum;
-        }
+        }     
 
         public static void CloseApp()
         {
