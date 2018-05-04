@@ -58,8 +58,8 @@ namespace WVA_Scan
                         {
                             string error = "Erasing scanner data failed!";
                             Errors.ReportError(error);
-                        }             
-          
+                        }    
+                        
                         ShowMessage(message);
                     }
                     else

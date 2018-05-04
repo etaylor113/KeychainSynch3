@@ -224,7 +224,25 @@ namespace WVA_Scan
             setActPB.Margin = new System.Windows.Forms.Padding(2);
             setActPB.Name = "setActPB";
             setActPB.Size = new System.Drawing.Size(208, 25);
-            setActPB.TabIndex = 7;
+            setActPB.TabIndex = 5;          
+            // 
+            // AccountLabel
+            // 
+            this.AccountLabel.AutoSize = true;
+            this.AccountLabel.Location = new System.Drawing.Point(-7, 114);
+            this.AccountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.AccountLabel.Name = "AccountLabel";
+            this.AccountLabel.Size = new System.Drawing.Size(204, 24);
+            this.AccountLabel.TabIndex = 0;
+            this.AccountLabel.Text = "Enter Account Number";
+            // 
+            // AccountTextBox
+            // 
+            AccountTextBox.Location = new System.Drawing.Point(11, 51);
+            AccountTextBox.Margin = new System.Windows.Forms.Padding(2);
+            AccountTextBox.Name = "AccountTextBox";
+            AccountTextBox.Size = new System.Drawing.Size(209, 29);
+            AccountTextBox.TabIndex = 1;
             // 
             // button5
             // 
@@ -236,28 +254,10 @@ namespace WVA_Scan
             this.button5.Margin = new System.Windows.Forms.Padding(2);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(207, 32);
-            this.button5.TabIndex = 6;
+            this.button5.TabIndex = 2;
             this.button5.Text = "Set Account Number";
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(SetAccountNumberBtn);
-            // 
-            // AccountLabel
-            // 
-            this.AccountLabel.AutoSize = true;
-            this.AccountLabel.Location = new System.Drawing.Point(-7, 114);
-            this.AccountLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.AccountLabel.Name = "AccountLabel";
-            this.AccountLabel.Size = new System.Drawing.Size(204, 24);
-            this.AccountLabel.TabIndex = 5;
-            this.AccountLabel.Text = "Enter Account Number";
-            // 
-            // AccountTextBox
-            // 
-            AccountTextBox.Location = new System.Drawing.Point(11, 51);
-            AccountTextBox.Margin = new System.Windows.Forms.Padding(2);
-            AccountTextBox.Name = "AccountTextBox";
-            AccountTextBox.Size = new System.Drawing.Size(209, 29);
-            AccountTextBox.TabIndex = 4;
             // 
             // LLViewCart
             // 
@@ -266,10 +266,10 @@ namespace WVA_Scan
             this.LLViewCart.Location = new System.Drawing.Point(16, 222);
             this.LLViewCart.Name = "LLViewCart";
             this.LLViewCart.Size = new System.Drawing.Size(218, 27);
-            this.LLViewCart.TabIndex = 0;
+            this.LLViewCart.TabIndex = 3;
             this.LLViewCart.TabStop = true;
             this.LLViewCart.Text = "Review My Order";
-            this.LLViewCart.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLViewCart_LinkClicked);
+            this.LLViewCart.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLViewCart_LinkClicked);          
             // 
             // logoTab2
             // 
@@ -278,7 +278,7 @@ namespace WVA_Scan
             this.logoTab2.Name = "logoTab2";
             this.logoTab2.Size = new System.Drawing.Size(700, 700);
             this.logoTab2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.logoTab2.TabIndex = 3;
+            //this.logoTab2.TabIndex = 4;
             this.logoTab2.TabStop = false;
             // 
             // tabPage3

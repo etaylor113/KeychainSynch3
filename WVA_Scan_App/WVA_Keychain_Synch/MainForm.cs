@@ -107,10 +107,11 @@ namespace WVA_Scan
         // ===============================================================================================================================================================
 
         public void CallbackFunction(Int32 nComport)
-        {
-            int iRet = -1;
+        {           
             try
             {
+                int iRet = -1;
+
                 if ( Opticon.csp2.DataAvailable(nComport) > 0)
                 {
                     iRet = Opticon.csp2.ReadData(nComport);
@@ -169,9 +170,12 @@ namespace WVA_Scan
                 {
                     ReadBarcodes = 0;
                 }
-                Thread.Sleep(500);
+                Thread.Sleep(333);
             }
-            catch { }
+            catch (Exception error)
+            {
+                Errors.ReportError(error.ToString());
+            }
         }   
 
         bool Started = false;
@@ -296,8 +300,16 @@ namespace WVA_Scan
 
         public static string GetTime()
         {
-            string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
-            return time.ToString();
+            try
+            {
+                string time = DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
+                return time.ToString();
+            }
+            catch (Exception error)
+            {               
+                Errors.ReportError(error.ToString());
+                return "TIME ERROR!";
+            }
         }
 
         public static string GetAccountNumber()
@@ -391,7 +403,6 @@ namespace WVA_Scan
             {
                 Errors.ReportError(error.ToString());
             }
-            
         }
 
         // ===============================================================================================================================================================
@@ -473,6 +484,9 @@ namespace WVA_Scan
                     }
                 }
 
+                Start();
+                CallbackFunction(ComCheck);
+
                 // Enable Download scanner button
                 sendData.Enabled = true;
                 // Turn cursor back to original state
@@ -489,12 +503,12 @@ namespace WVA_Scan
 
         private Order CreateOrder(string actNum)
         {
-            string time = GetTime();       
+            string time = GetTime();
             string deviceID;
 
             List<string> listBarcodes = new List<string>();
-           
-            int iRet = Opticon.csp2.GetDeviceId(out deviceID, ComCheck);           
+
+            int iRet = Opticon.csp2.GetDeviceId(out deviceID, ComCheck);
 
             for (Int32 i = 0; i < ReadBarcodes; i++)
             {
@@ -516,8 +530,8 @@ namespace WVA_Scan
                 DeviceID = deviceID,
                 Barcodes = listBarcodes.ToArray()
             };
-           
-            return order;
+
+            return order;         
         }
 
         private void WriteToDataLog(string time, string accountNumber, string deviceID, List<string> listBarcodes)
