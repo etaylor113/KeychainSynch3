@@ -12,9 +12,9 @@ namespace WVA_Scan
         public static void Init()
         {      
             if (Launcher_API.NeedsUpdate())
-            {
-                Launcher_API.GetUpdate();
+            {               
                 Launcher_Controls.Uninstall();
+                Launcher_API.GetUpdate();
                 Launcher_Controls.Install();
                 Launcher_Controls.CloseApp();
             }

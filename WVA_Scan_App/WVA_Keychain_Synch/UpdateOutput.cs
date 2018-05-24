@@ -15,15 +15,14 @@ namespace WVA_Scan
 
         public UpdateOutput()
         {
-            Program = "WVA_Scan_App";
+            Program = "WVA_Scan_Launcher";
             Version = GetVersion();
         }
 
         public string GetVersion()
         {
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
-            string version = fileVersionInfo.ProductVersion;
+            string path = Path.DirProgram86 + @"\WVA Scan\Launcher\WVA_Scan_Launcher.exe";
+            string version = AssemblyName.GetAssemblyName(path).Version.ToString();
             return version;
         }
     }

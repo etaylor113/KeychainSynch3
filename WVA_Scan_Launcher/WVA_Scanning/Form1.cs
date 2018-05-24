@@ -59,8 +59,6 @@ namespace WVA_Scan_Launcher
                         backgroundWorker1.ReportProgress(99);
                         App.LaunchWVA_Scan();
                         App.Close();
-                        App.LaunchWVA_Scan();
-                        App.Close();
                     }              
                 }
                 else

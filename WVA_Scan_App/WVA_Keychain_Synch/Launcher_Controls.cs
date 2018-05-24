@@ -17,6 +17,7 @@ namespace WVA_Scan
             p.StartInfo.Arguments = "/i \"C:\\Users\\Public\\Documents\\WVA_Scan\\Temp\\WVA_Scan_Launcher.msi\"/passive";
             p.Start();
             p.WaitForExit();
+            string ecode = p.ExitCode.ToString();
         }
 
         public static void Uninstall()
@@ -26,6 +27,7 @@ namespace WVA_Scan
             p.StartInfo.Arguments = "/x \"C:\\Users\\Public\\Documents\\WVA_Scan\\Temp\\WVA_Scan_Launcher.msi\"/passive";
             p.Start();
             p.WaitForExit();
+            string ecode = p.ExitCode.ToString();
         }     
 
         public static void CreateDirs()
