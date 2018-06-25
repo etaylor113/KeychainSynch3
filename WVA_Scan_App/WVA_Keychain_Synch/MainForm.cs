@@ -26,9 +26,9 @@ namespace WVA_Scan
       
         
         public int Status { get; set; }
-
+        public static int ReadBarcodes { get; set; } = 0;
         public static Int32 ComCheck { get; set; }
-        public static int ReadBarcodes { get; set; } = 0; 
+        
 
         [DllImport("Opticon.csp2.net")]
         static extern void CallbackFunction([In, MarshalAs(UnmanagedType.LPStr)] string szDeviceId, [In, MarshalAs(UnmanagedType.LPStr)] string szSoftwareVersion, [In, MarshalAs(UnmanagedType.LPStr)] StringBuilder sbBarcodes);
@@ -112,7 +112,7 @@ namespace WVA_Scan
             {
                 int iRet = -1;
 
-                if ( Opticon.csp2.DataAvailable(nComport) > 0)
+                if (Opticon.csp2.DataAvailable(nComport) > 0)
                 {
                     iRet = Opticon.csp2.ReadData(nComport);
                     Status = 1;
@@ -409,7 +409,7 @@ namespace WVA_Scan
         //                        FORM CONTROLS
         // ===============================================================================================================================================================
 
-        public static void SetAccountNumberBtn(object sender, EventArgs e)
+        public void SetAccountNumberBtn(object sender, EventArgs e)
         {
             try
             {
@@ -424,7 +424,7 @@ namespace WVA_Scan
                 }
                     
                 if (actNum != null && actNum != "")
-                {                  
+                {         
                     setActPB.Value += 25;
                     Thread.Sleep(125);
                     setActPB.Value += 25;

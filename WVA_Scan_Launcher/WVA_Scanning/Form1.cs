@@ -41,7 +41,7 @@ namespace WVA_Scan_Launcher
                 backgroundWorker1.ReportProgress(0);
                 if (App.DoesExist())
                 {
-                    if (API.NeedsUpdate())
+                    if (true)     //API.NeedsUpdate())
                     {
                         backgroundWorker1.ReportProgress(15);
                         API.GetUpdate();

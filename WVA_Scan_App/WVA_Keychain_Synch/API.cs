@@ -33,7 +33,7 @@ namespace WVA_Scan
                 request.ContentLength = byteArray.Length;
                 request.ContentType = @"application/json";
 
-                using (Stream dataStream = request.GetRequestStream()  )
+                using (Stream dataStream = request.GetRequestStream())
                 {
                     dataStream.Write(byteArray, 0, byteArray.Length);
                 }

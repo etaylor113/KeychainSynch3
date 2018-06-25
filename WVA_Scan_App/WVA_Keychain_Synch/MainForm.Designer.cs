@@ -45,7 +45,7 @@ namespace WVA_Scan
             this.sendData = new System.Windows.Forms.Button();
             this.labelMainDividerLine = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            setActPB = new System.Windows.Forms.ProgressBar();
+            this.setActPB = new System.Windows.Forms.ProgressBar();
             this.button5 = new System.Windows.Forms.Button();
             this.AccountLabel = new System.Windows.Forms.Label();
             AccountTextBox = new System.Windows.Forms.TextBox();
@@ -106,7 +106,17 @@ namespace WVA_Scan
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(458, 272);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = " Scan  ";        
+            this.tabPage1.Text = " Scan  ";
+            // 
+            // warningLabel
+            // 
+            this.warningLabel.AutoSize = true;
+            this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.warningLabel.Location = new System.Drawing.Point(10, 250);
+            this.warningLabel.Name = "warningLabel";
+            this.warningLabel.Size = new System.Drawing.Size(420, 26);
+            this.warningLabel.TabIndex = 9;
+            this.warningLabel.Text = "Do not unplug scanner while downloading!";
             // 
             // logoTab1
             // 
@@ -183,16 +193,6 @@ namespace WVA_Scan
             this.sendData.UseVisualStyleBackColor = false;
             this.sendData.Click += new System.EventHandler(this.SendData_Click);
             // 
-            // warningLabel
-            // 
-            this.warningLabel.AutoSize = true;
-            this.warningLabel.Location = new System.Drawing.Point(10, 250);
-            this.warningLabel.Name = "warningLabel";
-            this.warningLabel.Size = new System.Drawing.Size(370, 24);
-            this.warningLabel.TabIndex = 9;
-            this.warningLabel.Text = "Do not unplug scanner while downloading!";
-            this.warningLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            // 
             // labelMainDividerLine
             // 
             this.labelMainDividerLine.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -204,7 +204,7 @@ namespace WVA_Scan
             // tabPage2
             // 
             this.tabPage2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.tabPage2.Controls.Add(setActPB);
+            this.tabPage2.Controls.Add(this.setActPB);
             this.tabPage2.Controls.Add(this.button5);
             this.tabPage2.Controls.Add(this.AccountLabel);
             this.tabPage2.Controls.Add(AccountTextBox);
@@ -220,11 +220,26 @@ namespace WVA_Scan
             // 
             // setActPB
             // 
-            setActPB.Location = new System.Drawing.Point(11, 98);
-            setActPB.Margin = new System.Windows.Forms.Padding(2);
-            setActPB.Name = "setActPB";
-            setActPB.Size = new System.Drawing.Size(208, 25);
-            setActPB.TabIndex = 5;          
+            this.setActPB.Location = new System.Drawing.Point(11, 98);
+            this.setActPB.Margin = new System.Windows.Forms.Padding(2);
+            this.setActPB.Name = "setActPB";
+            this.setActPB.Size = new System.Drawing.Size(208, 25);
+            this.setActPB.TabIndex = 5;
+            // 
+            // button5
+            // 
+            this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(11, 140);
+            this.button5.Margin = new System.Windows.Forms.Padding(2);
+            this.button5.Name = "SetAccountNumberBtn";
+            this.button5.Size = new System.Drawing.Size(207, 32);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "Set Account Number";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.SetAccountNumberBtn);
             // 
             // AccountLabel
             // 
@@ -244,21 +259,6 @@ namespace WVA_Scan
             AccountTextBox.Size = new System.Drawing.Size(209, 29);
             AccountTextBox.TabIndex = 1;
             // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.DarkSlateGray;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(11, 140);
-            this.button5.Margin = new System.Windows.Forms.Padding(2);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(207, 32);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Set Account Number";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(SetAccountNumberBtn);
-            // 
             // LLViewCart
             // 
             this.LLViewCart.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -269,7 +269,7 @@ namespace WVA_Scan
             this.LLViewCart.TabIndex = 3;
             this.LLViewCart.TabStop = true;
             this.LLViewCart.Text = "Review My Order";
-            this.LLViewCart.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLViewCart_LinkClicked);          
+            this.LLViewCart.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LLViewCart_LinkClicked);
             // 
             // logoTab2
             // 
@@ -278,7 +278,7 @@ namespace WVA_Scan
             this.logoTab2.Name = "logoTab2";
             this.logoTab2.Size = new System.Drawing.Size(700, 700);
             this.logoTab2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            //this.logoTab2.TabIndex = 4;
+            this.logoTab2.TabIndex = 6;
             this.logoTab2.TabStop = false;
             // 
             // tabPage3
@@ -355,7 +355,7 @@ namespace WVA_Scan
             this.labelPrefHead.Name = "labelPrefHead";
             this.labelPrefHead.Size = new System.Drawing.Size(261, 50);
             this.labelPrefHead.TabIndex = 0;
-            this.labelPrefHead.Text = "Be sure device is connected \nwhile changing preferences!";
+            this.labelPrefHead.Text = "Be sure device is connected \r\nwhile changing preferences!";
             // 
             // tabPage4
             // 
@@ -477,8 +477,8 @@ namespace WVA_Scan
         private PictureBox logoTab1;
         private LinkLabel LLViewCart;
         private Label warningLabel;
-        private static TextBox AccountTextBox;
-        private static ProgressBar setActPB;
+        public static TextBox AccountTextBox;
+        public ProgressBar setActPB;
     }      
 }
 

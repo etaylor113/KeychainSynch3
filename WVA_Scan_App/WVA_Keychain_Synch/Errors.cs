@@ -11,7 +11,6 @@ namespace WVA_Scan
 {
     class Errors
     {
-
         private static bool shouldWriteError { get; set; }
 
         public static void ReportError(string error)
