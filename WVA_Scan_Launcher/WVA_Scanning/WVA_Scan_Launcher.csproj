@@ -51,21 +51,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="API.cs" />
-    <Compile Include="Application.cs" />
-    <Compile Include="Error.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="API\API.cs" />
+    <Compile Include="Controls\App.cs" />
+    <Compile Include="Error\Error.cs" />
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="JSON_Output.cs" />
-    <Compile Include="JSON_Payload.cs" />
-    <Compile Include="Path.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="Account\Account.cs" />
+    <Compile Include="Error\ErrorOutput.cs" />
+    <Compile Include="JSON\JSON_Output.cs" />
+    <Compile Include="JSON\JSON_Payload.cs" />
+    <Compile Include="FileStuff\Path.cs" />
+    <Compile Include="Main\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -78,7 +80,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config" />
+    <None Include="Main\packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -90,10 +92,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\WVA_Scan_Icon.ico" />
+    <None Include="Main\App.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\backdrop.jpg" />
