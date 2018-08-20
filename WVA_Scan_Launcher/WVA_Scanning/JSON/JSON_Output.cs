@@ -18,14 +18,7 @@ namespace WVA_Scan_Launcher
         {
             Program = "WVA_Scan_App";
             ActNum = Account.GetAccountNumber();
-            Version = GetVersion();      
-        }
-
-        public string GetVersion()
-        {
-            string path = Path.programx86 + @"\WVA Scan\WVA_Scan\Release\WVA_Scan_App.exe";
-            string version = AssemblyName.GetAssemblyName(path).Version.ToString();
-            return version;
-        }
+            Version = AppVersion.GetVersion(Path.programx86 + @"\WVA Scan\WVA_Scan\Release\WVA_Scan_App.exe");
+        }   
     }
 }
