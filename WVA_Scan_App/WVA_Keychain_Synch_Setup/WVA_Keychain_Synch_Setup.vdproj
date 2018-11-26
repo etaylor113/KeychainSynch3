@@ -75,6 +75,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_BEE07C63552D6D0E82577571E537DA1F"
+        "OwnerKey" = "8:_1236102588134E159B54B5D783C868D3"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C25D9C16BF794EDA8838B2BF1B519E16"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -101,6 +107,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8491892AA67790786E7AA418F6B142B2"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_BEE07C63552D6D0E82577571E537DA1F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -417,6 +429,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BEE07C63552D6D0E82577571E537DA1F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:DotNetZip, Version=1.11.0.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_BEE07C63552D6D0E82577571E537DA1F"
+                    {
+                    "Name" = "8:DotNetZip.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:DotNetZip.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_7610BB3077D843FF8A7C96EC79EDFF22"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C25D9C16BF794EDA8838B2BF1B519E16"
             {
             "SourcePath" = "8:..\\..\\..\\Logos\\WVAScanLogo-Clear.png"
@@ -557,15 +600,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:WVA Scan"
-        "ProductCode" = "8:{3F1F3664-EE11-484F-A251-3880E068CF78}"
-        "PackageCode" = "8:{B7B73512-F459-408E-A900-6FBC2CBF6802}"
+        "ProductCode" = "8:{98880FEB-1DAD-4799-8DA9-E7EAE9BD7A13}"
+        "PackageCode" = "8:{8E2E1790-7CF5-487C-9F30-DB7C4C333526}"
         "UpgradeCode" = "8:{C63B0803-5A47-44F5-8D30-232BBDF39F71}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.3.0"
+        "ProductVersion" = "8:2.3.3"
         "Manufacturer" = "8:Wisconsin Vision Associates"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
